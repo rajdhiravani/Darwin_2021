@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="international conference, biology conference, covid19 conference, biohacking, diy biology"
+    />
+    <meta
+      name="description"
+      content="An International Conference brought to you in the comfort of your portable devices. Darwin provides an endless drive to encourage innovation and connect bio-enthusiasts from across the globe. With the ongoing pandemic, we have decided to go virtual this year!"
+    />
+    <meta name="robots" content="index, follow" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="icon" type="image/png" href="./img/favico.png" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Speakers | Darwin 2021</title>
+    <script src="./world-map/mapdata.js"></script>
+    <script src="./world-map/worldmap.js"></script>
+  </head>
+  <body>
+    <nav class="navBGChange">
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkBtn"><i class="fa fa-bars"></i></label>
+      <div class="navbarLogos">
+        <a href="">
+          <img src="./img/darwin.png" alt="Darwin" />
+        </a>
+      </div>
+
+      <ul>
+        <li><a href="./index.html#about">About</a></li>
+        <li>
+          <a href="./index.html#conferenceOverview">Overview</a>
+        </li>
+        <li>
+          <a href="./index.html#speakers">Speakers</a>
+        </li>
+        <li class="dropdown">
+          <a onclick="dropdownAppear(this)">Collaborate</a>
+          <ul class="dropdown-content">
+            <li>
+              <a href="https://thedarwin.in" target="_blank">Sponsor us</a>
+            </li>
+            <li>
+              <a href="https://thedarwin.in" target="_blank">Partner with us</a>
+            </li>
+            <li>
+              <a href="https://thedarwin.in" target="_blank">
+                Conduct a workshop
+              </a>
+            </li>
+            <li>
+              <a href="https://thedarwin.in" target="_blank">Conduct a tour</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="./blogs.html">Blogs</a>
+        </li>
+        <li>
+          <a href="https://thedarwin.in" target="_blank">Darwin 2020</a>
+        </li>
+        <li>
+          <a
+            href="https://www.riidl.org/thedarwin.in/darwin2019.html"
+            target="_blank"
+            >Darwin 2019</a
+          >
+        </li>
+        <li>
+          <a href="./index.html#footer">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="speakersContainer">
+      <div class="speakerDivTint">
+        <div class="speakersRow">
+          <div
+            class="speakerCard"
+            onclick="openSpeakerWithMessage('George Church')"
+          >
+            <div class="speakerTint">
+              <h3><span>George</span> Church</h3>
+            </div>
+          </div>
+
+          <div class="speakerCard">
+            <div class="speakerTint">
+              <h3><span>George</span> Church</h3>
+            </div>
+          </div>
+
+          <div class="speakerCard">
+            <div class="speakerTint">
+              <h3><span>George</span> Church</h3>
+            </div>
+          </div>
+
+          <div class="speakerCard">
+            <div class="speakerTint">
+              <h3><span>George</span> Church</h3>
+            </div>
+          </div>
+
+          <div class="speakerCard">
+            <div class="speakerTint">
+              <h3><span>George</span> Church</h3>
+            </div>
+          </div>
+
+          <div class="speakerCard">
+            <div class="speakerTint">
+              <h3><span>George</span> Church</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="speaker" id="speaker">
+          <div class="speakerBox">
+            <h3 id="speakerHeader"></h3>
+            <hr />
+            <p id="speakerBody"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footerContainer">
+      <img src="./img/darwin.png" alt="Darwin logo" />
+      <div class="footerContact">
+        <p>Contact us:</p>
+        <div class="contactDetails">
+          <a
+            target="_blank"
+            href="whatsapp://send?phone=+917666478569&?text=Hello! I have a query regarding the Darwin Conference. Could you please help me out"
+          >
+            <i class="fa fa-phone"></i> +91 76664 78569
+          </a>
+          <a target="_blank" href="mailto:darwin@somaiya.edu">
+            <i class="fa fa-envelope"></i> darwin@somaiya.edu
+          </a>
+        </div>
+      </div>
+      <div class="socialMedia">
+        <p>Follow us:</p>
+        <div class="socialMediaLogos">
+          <a target="_blank" href="https://instagram.com/darwinindia">
+            <i class="fa fa-instagram"></i>
+          </a>
+          <a target="_blank" href="https://twitter.com/darwin_india">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://facebook.com/darwin.bioriidl/">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/company/darwin-india"
+          >
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+      <a
+        target="_blank"
+        href="https://www.facebook.com/groups/1496081137211146"
+      >
+        Join our Facebook Community
+      </a>
+    </div>
+
+    <script>
+      // Navbar height
+
+      const r = document.querySelector(":root");
+      const rs = getComputedStyle(r);
+
+      if (window.innerWidth <= 760) {
+        r.style.setProperty("--nav-height", "75px");
+      }
+
+      //   First speaker appear
+
+      window.onload = function () {
+        const firstSpeaker = document.getElementsByClassName("speakersRow")[0];
+        console.log(firstSpeaker.childNodes[0].nextSibling.click());
+      };
+
+      //   Speaker Details
+
+      const speaker = document.getElementById("speaker");
+      const body = `
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, labore.
+        Earum molestias dolores obcaecati cum, quia similique ut deserunt nam. Nemo
+        voluptatum hic blanditiis alias mollitia vel? Quia, nulla qui!
+        Voluptatum, labore.
+        Earum molestias dolores obcaecati cum, quia similique ut deserunt nam. Nemo
+        voluptatum hic blanditiis alias mollitia vel? Quia, nulla qui!
+        <br>
+        <br>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, labore.
+        Earum molestias dolores obcaecati cum, quia similique ut deserunt nam. Nemo
+        voluptatum hic blanditiis alias mollitia vel? Quia, nulla qui!
+        Voluptatum, labore.
+        Earum molestias dolores obcaecati cum, quia similique ut deserunt nam. Nemo
+        voluptatum hic blanditiis alias mollitia vel? Quia, nulla qui!
+      `;
+
+      function openSpeaker() {
+        speaker.style.display = "block";
+      }
+
+      function openSpeakerWithMessage(header) {
+        const nameArr = header.split(" ");
+        const [, ...rest] = nameArr;
+        const restName = rest.join(" ");
+        header = `<span>${nameArr[0]}</span> ${restName}`;
+        document.getElementById("speakerHeader").innerHTML = header;
+        document.getElementById("speakerBody").innerHTML = body;
+        speaker.style.display = "block";
+      }
+
+      function closeSpeaker() {
+        document.getElementById("speakerHeader").innerHTML = "";
+        document.getElementById("speakerBody").innerHTML = "";
+        speaker.style.display = "none";
+      }
+    </script>
+  </body>
+</html>

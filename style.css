@@ -980,6 +980,7 @@ nav ul li > a:hover {
   margin: 8px 0;
   text-shadow: 2px 2px 3px #000;
 }
+/* new CSS */
 
 @media (max-width: 960px) {
   .speakersContainer hr {
@@ -1003,6 +1004,7 @@ nav ul li > a:hover {
     height: 360px;
   }
 }
+/* end */
 
 /* .speakersRow {
   display: flex;
@@ -1025,15 +1027,6 @@ nav ul li > a:hover {
   background: #222;
   display: flex;
   flex-direction: column;
-}
-
-.speaker {
-    height: 450px;
-    width: 320px;
-    margin: 4px 2px;
-    filter: grayscale(1);
-    transition: .3s;
-    position: relative;
 }
 
 /* .speakerTint {
@@ -1135,7 +1128,7 @@ nav ul li > a:hover {
   font-size: 18px;
 }
 
-@media (max-width: 980px) {
+/* @media (max-width: 980px) {
   .speakerCard {
     min-height: 150px;
   }
@@ -1231,7 +1224,7 @@ nav ul li > a:hover {
   .speakerBox p {
     font-size: 12px;
   }
-}
+} */
 
 /* Highlights */
 

@@ -17,7 +17,6 @@ const navChangeOnScroll = (scroll) => {
 };
 
 // Navbar dropdown
-
 const dropdownAppear = (e) => {
   const content = e.nextSibling.nextSibling;
   if (window.innerWidth < 960) {
@@ -191,22 +190,22 @@ const openModal = () => {
   modal.style.display = "block";
 };
 
-const openModalWithMessage = (header, body, topic, speakers) => {
-  const nameArr = header.split(" ");
-  const [, ...rest] = nameArr;
-  const restName = rest.join(" ");
-  header = `<span>${nameArr[0]}</span> ${restName}`;
-  const fullBody = `
-  ${topic !== "undefined" ? `<h5><span>Topic:</span> ${topic}</h5>` : ""}
-  ${
-    speakers !== "undefined"
-      ? `<h5><span>Speaker(s):</span> ${speakers}</h5>`
-      : ""
-  }
-  ${body}
-  `;
+const openModalWithMessage = (header, body) => {
+  // const nameArr = header.split(" ");
+  // const [, ...rest] = nameArr;
+  // const restName = rest.join(" ");
+  // header = `<span>${nameArr[0]}</span> ${restName}`;
+  // const body = `
+  // ${topic !== "undefined" ? `<h5><span>Topic:</span> ${topic}</h5>` : ""}
+  // ${
+  //   speakers !== "undefined"
+  //     ? `<h5><span>Speaker(s):</span> ${speakers}</h5>`
+  //     : ""
+  // }
+  // ${body}
+  // `;
   document.getElementById("modalHeader").innerHTML = header;
-  document.getElementById("modalBody").innerHTML = fullBody;
+  document.getElementById("modalBody").innerHTML = body;
   modal.style.display = "block";
 };
 
@@ -215,6 +214,24 @@ const closeModal = () => {
   document.getElementById("modalBody").innerHTML = "";
   modal.style.display = "none";
 };
+window.onclick = function (event) {
+  if (event.target === modal) {
+    closeModal();
+  }
+};
+
+// function animateStaticElements() {
+//   window.sr = ScrollReveal({ reset: true });
+//   sr.reveal(".right", { duration: 500, origin: "right", scale: 0.5 });
+//   sr.reveal(".left", { duration: 500, origin: "left", scale: 0.5 });
+
+//   sr.reveal(".revealFromBottom", {
+//     duration: 500,
+//     origin: "bottom",
+//     scale: 0.5,
+//   });
+// }
+
 
 // Window functions
 

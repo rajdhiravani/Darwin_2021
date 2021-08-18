@@ -1,5 +1,6 @@
 let Airtable = require("airtable");
 
+// Airtable credentials
 const metaData = {
   baseID: "appRcXPwopPZ85HbJ",
   baseName: "Darwin 2021",
@@ -89,21 +90,39 @@ const updateConference = async () => {
 const updateSpeakers = async () => {
   speakerProfiles = await getRecords("Speaker profiles");
   speakerProfiles = sortByOrder(speakerProfiles);
-  let template = "";
+  console.log(speakerProfiles);
+  let template1 = "";
+
   speakerProfiles.forEach((speaker, index) => {
-    template += `
-    <div
-      class="speakerCard"
-      style="background: url(${speaker.ProfilePic[0].url}) center/cover;"
-      onclick="openSpeakerWithMessage(speakerProfiles[${index}].Name, speakerProfiles[${index}].ProfileDescription, speakerProfiles[${index}].Designation)"
-    >
-      <div class="speakerTint">
-        <h3>${speaker.Name}</h3>
+    console.log(speaker);
+    template1 += `
+      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null}') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription, speakerProfiles[${index}].Designation)">
+        <div class="speakerTint">
+          <h3>${speaker.Name}</h3>
+          <p>${speaker.Designation}</p>
+        </div>
       </div>
-    </div>  
-    `;
+      `;
+    const speakers = document.getElementById("speakers");
+    console.log(speakers);
+    const [speakersRow] = speakers.getElementsByClassName("speakersRow");
+    speakersRow.innerHTML = template1;
+    // animateDynamicElements();
+
+    // template += `
+    // <div
+    //   class="speakerCard"
+    //   style="background: url(${speaker.ProfilePic[0].url}) center/cover;"
+    //   onclick="openSpeakerWithMessage(speakerProfiles[${index}].Name, speakerProfiles[${index}].ProfileDescription, speakerProfiles[${index}].Designation)"
+    // >
+    //   <div class="speakerTint">
+    //     <h3>${speaker.Name}</h3>
+    //   </div>
+    // </div>  
+    // `;
+
   });
-  document.getElementsByClassName("speakersRow")[0].innerHTML = template;
+  // document.getElementsByClassName("speakersRow")[0].innerHTML = template1;
 
   // animateDynamicElements();
 };

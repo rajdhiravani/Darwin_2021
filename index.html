@@ -428,25 +428,25 @@
 
       //   Speaker Details
 
-      const firstSpeakerDisplay = () => {
-        const speakers = document.getElementsByClassName("speakersRow")[0];
-        setTimeout(() => {
-          speakers.childNodes[0].nextSibling.click();
-        }, 2000);
-      };
+      // const firstSpeakerDisplay = () => {
+      //   const speakers = document.getElementsByClassName("speakersRow")[0];
+      //   setTimeout(() => {
+      //     speakers.childNodes[0].nextSibling.click();
+      //   }, 2000);
+      // };
 
-      const openSpeakerWithMessage = (header, body, designation) => {
-        const nameArr = header.split(" ");
-        const [, , ...rest] = nameArr;
-        const restName = rest.join(" ");
-        header = `<span>${nameArr[0]} ${nameArr[1]}</span> ${restName}`;
-        const fullBody = `
-        ${designation !== "undefined" ? `<span>${designation}</span>` : ""}
-        ${body}
-        `;
-        document.getElementById("speakerHeader").innerHTML = header;
-        document.getElementById("speakerBody").innerHTML = fullBody;
-      };
+      // const openSpeakerWithMessage = (header, body, designation) => {
+      //   const nameArr = header.split(" ");
+      //   const [, , ...rest] = nameArr;
+      //   const restName = rest.join(" ");
+      //   header = `<span>${nameArr[0]} ${nameArr[1]}</span> ${restName}`;
+      //   const fullBody = `
+      //   ${designation !== "undefined" ? `<span>${designation}</span>` : ""}
+      //   ${body}
+      //   `;
+      //   document.getElementById("speakerHeader").innerHTML = header;
+      //   document.getElementById("speakerBody").innerHTML = fullBody;
+      // };
 
       // Window functions
 

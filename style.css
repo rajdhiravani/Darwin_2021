@@ -543,7 +543,7 @@ nav ul li > a:hover {
   .countdown {
     width: 90%;
     right: 5%;
-    bottom: 16vh;
+    bottom: 13.999vh;
   }
 
   .time h3 {
@@ -574,7 +574,7 @@ nav ul li > a:hover {
   }
 
   .countdown {
-    bottom: 14vh;
+    bottom: 6.6vh;
   }
 
   .time h3 {
@@ -598,6 +598,7 @@ nav ul li > a:hover {
 .bodyContainer {
   background: linear-gradient(to bottom, #000, #2c061a);
   display: flex;
+  margin-top: 100px;
   flex-direction: column;
 }
 
@@ -912,10 +913,10 @@ nav ul li > a:hover {
 } */
 
 .speakersContainer {
-    min-height: 100vh;
-    background: url(img/speakersBG.png);
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  background: url(img/speakersBG.png);
+  display: flex;
+  flex-direction: column;
 }
 
 .speakersContainer h2 {

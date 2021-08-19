@@ -302,16 +302,6 @@ nav ul li > a:hover {
   }
 }
 
-/* Hero Image */
-
-/* Earlier Styling */
-/* .landingContainer {
-  height: 100vh;
-  background: url(img/background.jpg) center/cover fixed;
-  position: relative;
-} */
-
-/* Changed Styling */
 .landingContainer {
   background: url(img/background.jpg) center/cover fixed;
   display: flex;
@@ -361,13 +351,13 @@ nav ul li > a:hover {
 }
 
 .countdown {
+  margin: 0 auto;
+  margin-top: 3vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40%;
+  flex-wrap: wrap;
   position: absolute;
-  right: 5%;
-  bottom: 18vh;
+  right: 20px;
+  bottom: 120px;
 }
 
 .time {
@@ -375,6 +365,8 @@ nav ul li > a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 10px;
+  width: 120px;
 }
 
 .time h3 {
@@ -392,6 +384,50 @@ nav ul li > a:hover {
   text-shadow: 1px 1px 4px #000;
 }
 
+@media (max-width: 960px) {
+  .time {
+    margin: 0;
+  }
+  .time h3 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 760px) {
+  .time {
+    width: 100px;
+  }
+  .time h3 {
+    font-size: 48px;
+  }
+  .time p {
+    font-size: 16px;
+  }
+}
+@media (max-width: 560px) {
+  .countdown {
+    position: static;
+    margin: 0 auto;
+    margin-top: 5vh;
+  }
+  .time {
+    width: 80px;
+  }
+  .time h3 {
+    font-size: 7vw;
+  }
+  .time p {
+    font-size: 16px;
+  }
+}
+@media (max-width: 380px) {
+  .time {
+    width: 65px;
+  }
+  .time p {
+    font-size: 12px;
+  }
+}
+
 .landingContainer svg {
   position: absolute;
   bottom: 2vh;
@@ -407,44 +443,15 @@ nav ul li > a:hover {
   display: none;
 }
 
-/* Earlier styles */
-/* .logoStrip {
-  position: absolute;
-  bottom: 20px;
-  left: 25px;
-  background: #fff;
-  padding: 8px 10px;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-*/
-
-/* Current styling */
 .logoStrip {
   margin: 0 auto;
   background: white;
   position: absolute;
-  /* bottom: 0;
-  left: 0;
-  right: 20%;
-  width: 50%; */
   padding: 10px;
   border-radius: 8px;
   display: flex;
+  margin-top: 25px;
 }
-
-/* .logoStrip {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
-  padding: 8px 10px;
-  width: 50%;
-  margin-bottom: 20px;
-  border-radius: 3px;
-} */
 
 .logoStrip img {
   height: 40px;
@@ -452,11 +459,6 @@ nav ul li > a:hover {
   margin: 0 15px;
   animation: none;
 }
-
-/* .logoStrip img {
-  height: 40px;
-  margin: 0 15px;
-} */
 
 .logoStrip img:first-child {
   margin-left: 0;
@@ -484,17 +486,13 @@ nav ul li > a:hover {
   }
 
   .countdown {
-    width: 50%;
+    width: 80%;
     right: 2%;
     bottom: 20vh;
   }
 }
 
 @media (max-width: 980px) {
-  .time h3 {
-    font-size: 60px;
-  }
-
   .time p {
     font-size: 16px;
   }
@@ -514,9 +512,6 @@ nav ul li > a:hover {
     font-size: 16px;
   }
 
-  .countdown {
-    width: 70%;
-  }
   .logoStrip img {
     height: 30px;
     margin: 0 8px;
@@ -540,20 +535,6 @@ nav ul li > a:hover {
     font-size: 14px;
   }
 
-  .countdown {
-    width: 90%;
-    right: 5%;
-    bottom: 13.999vh;
-  }
-
-  .time h3 {
-    font-size: 48px;
-  }
-
-  .time p {
-    margin-top: 0;
-    font-size: 14px;
-  }
   .logoStrip img {
     height: 25px;
     margin: 0 7px;
@@ -573,18 +554,6 @@ nav ul li > a:hover {
     font-size: 14px;
   }
 
-  .countdown {
-    bottom: 6.6vh;
-  }
-
-  .time h3 {
-    font-size: 42px;
-  }
-
-  .time p {
-    font-size: 12px;
-    margin-top: 0;
-  }
   .logoStrip img {
     height: 20px;
     margin: 0 5px;
@@ -598,7 +567,7 @@ nav ul li > a:hover {
 .bodyContainer {
   background: linear-gradient(to bottom, #000, #2c061a);
   display: flex;
-  margin-top: 100px;
+  margin-top: 50px;
   flex-direction: column;
 }
 
@@ -907,16 +876,9 @@ nav ul li > a:hover {
 
 /* Speakers */
 
-/* .speakersContainer {
+.speakersContainer {
   margin: 0 auto;
   background: url(./img/background.jpg) center/cover;
-} */
-
-.speakersContainer {
-  min-height: 100vh;
-  background: url(img/speakersBG.png);
-  display: flex;
-  flex-direction: column;
 }
 
 .speakersContainer h2 {
@@ -928,109 +890,36 @@ nav ul li > a:hover {
   font-weight: 400;
   text-align: center;
 }
-.speakersContainer hr {
-  width: 15%;
-  margin: 10px auto;
-  border: none;
-  height: 3px;
-  border-radius: 5px;
-  background: #c8247c;
+
+.speakerDivTint {
+  height: 100%;
+  padding: 0;
+  display: flex;
+  background: linear-gradient(
+    to top right,
+    rgba(80, 0, 80, 0.9),
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 100, 40, 0.9)
+  );
 }
 
 .speakersRow {
-  display: flex;
-  width: 90%;
-  margin: 6vh auto;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.speaker {
-  height: 450px;
-  width: 320px;
-  margin: 4px 2px;
-  filter: grayscale(1);
-  transition: 0.3s;
-  position: relative;
-}
-.speaker:hover {
-  filter: none;
-}
-.speakerTint {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  cursor: pointer;
-}
-.speaker:hover .speakerTint {
-  background: linear-gradient(
-    to top right,
-    rgba(200, 40, 120, 0.5),
-    rgba(80, 200, 50, 0.5)
-  );
-}
-.speakerTint h3 {
-  font-size: 24px;
-  color: #fff;
-  text-shadow: 2px 2px 5px #000;
-  margin-top: auto;
-  margin-bottom: 15px;
-}
-.speakerTint p {
-  font-size: 18px;
-  margin: 8px 0;
-  text-shadow: 2px 2px 3px #000;
-}
-/* new CSS */
-
-@media (max-width: 960px) {
-  .speakersContainer hr {
-    width: 20%;
-  }
-}
-@media (max-width: 760px) {
-  .speakersContainer hr {
-    width: 30%;
-  }
-}
-@media (max-width: 560px) {
-  .speakersRow {
-    width: 95%;
-    margin: 4vh auto;
-  }
-}
-@media (max-width: 380px) {
-  .speaker {
-    width: 260px;
-    height: 360px;
-  }
-}
-/* end */
-
-/* .speakersRow {
   display: flex;
   flex-direction: column;
   height: calc(100vh - var(--nav-height));
   overflow-x: hidden;
   overflow-y: auto;
   width: 25%;
-} */
+}
 
-/* .speakerCard {
+.speakerCard {
   width: 100%;
   margin: 1px;
   min-height: 220px;
   cursor: pointer;
-} */
-.eventCard {
-  width: 30%;
-  margin: 6px;
-  background: #222;
-  display: flex;
-  flex-direction: column;
 }
 
-/* .speakerTint {
+.speakerTint {
   background: linear-gradient(
     to top right,
     rgba(0, 0, 0, 0.8),
@@ -1039,14 +928,6 @@ nav ul li > a:hover {
   height: 100%;
   position: relative;
   transition: 0.2s;
-} */
-
-.speakerTint {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  cursor: pointer;
 }
 
 .speakerCard:nth-child(even) .speakerTint {
@@ -1065,7 +946,7 @@ nav ul li > a:hover {
   );
 }
 
-/* .speakerTint h3 {
+.speakerTint h3 {
   position: absolute;
   font-size: 18px;
   bottom: 10px;
@@ -1073,17 +954,17 @@ nav ul li > a:hover {
   font-family: Poppins;
   font-weight: normal;
   text-shadow: 1px 1px 4px #000;
-} */
-/* 
+}
+
 .speakerTint h3 span {
   font-family: PoppinsBold;
-} */
-/* 
+}
+
 .speaker {
   width: 75%;
   flex-direction: column;
   animation: animatetop 0.2s ease-out;
-} */
+}
 
 .speakerBox {
   display: flex;
@@ -1129,7 +1010,7 @@ nav ul li > a:hover {
   font-size: 18px;
 }
 
-/* @media (max-width: 980px) {
+@media (max-width: 980px) {
   .speakerCard {
     min-height: 150px;
   }
@@ -1225,7 +1106,7 @@ nav ul li > a:hover {
   .speakerBox p {
     font-size: 12px;
   }
-} */
+}
 
 /* Highlights */
 
@@ -2113,32 +1994,3 @@ rect {
     font-size: 32px;
   }
 }
-
-/* Previous code ignore! */
-/* .iframe-container {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  padding-bottom: 56.25%;
-  height: 0;
-}
-
-.i {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  height: 100%;
-}
-
-.videoContainer {
-  text-align: center;
-}
-
-.iframe-container h2 {
-  text-align: center;
-  margin-top: var(--nav-height);
-  font-size: 48px;
-  font-family: PoppinsBold;
-  font-weight: 400;
-} */

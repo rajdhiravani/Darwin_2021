@@ -429,26 +429,80 @@ nav ul li > a:hover {
   }
 }
 
-/* Button styling */
-
-.ctaBtn button {
-  border: none;
-  width: 20%;
-  border-radius: 2px;
-  height: 45px;
+/* Hero section Button styling */
+.flexbox {
+  display: flex;
+  width: 500px;
+  /* flex-direction: column; */
+  align-content: space-between;
   padding: 5px;
-  margin: 0 auto;
-  cursor: pointer;
-  transition: 0.1s;
+   margin-bottom: 25px;
+   margin-top: 30px;
 }
 
-.btn-purple {
-  background: linear-gradient(to top right, #c8247c, #f82e9a);
+.flexbox>div {
+  text-align: center;
+  padding: 20px 0;
+   margin-bottom: 12px;
+  /* margin: 5px; */
+ 
 }
 
-.btn-green {
+.flexbox>.btn-pink {
+  width: 50%;
+  margin-right: 10px;
+  border-radius: 2px;
+ background: linear-gradient(to top right, #c8247c, #f82e9a);
+}
+
+.flexbox>.btn-green {
+  width: 50%;
+  border-radius: 2px;
   background: linear-gradient(to top, #00f260, #0f9b0f);
 }
+
+@media(max-width:576px) {
+  .flexbox {
+    flex-flow: row wrap;
+    justify-content: center;
+      flex-direction: column;
+      margin-left: 7%;
+
+  }
+  .flexbox>.btn-pink {
+    order: 1;
+    /* flex: 0.5;  */
+  }
+  .flexbox>.btn-green {
+    order: 2;
+    /* flex: 0.5;    */
+ 
+  }
+}
+
+@media(max-width:768px) {
+  .flexbox {
+    flex-flow: row nowrap;
+    justify-content: center;
+     flex-direction: column;
+     margin-left: 13%;
+  }
+  .flexbox>div {
+    width: 50% !important;
+  }
+  .flexbox>.btn-pink {
+    order: 1;
+  }
+  .flexbox>.btn-green {
+    order: 2;
+  }
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+/* end  */
+
 
 .ctaBtn button a {
   text-decoration: none;
@@ -478,7 +532,7 @@ nav ul li > a:hover {
   padding: 10px;
   border-radius: 8px;
   display: flex;
-  margin-top: 25px;
+  margin-top: 32px;
 }
 
 .logoStrip img {

@@ -1,211 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="international conference, biology conference, covid19 conference, biohacking, diy biology"
+    />
+    <meta
+      name="description"
+      content="An International Conference brought to you in the comfort of your portable devices. Darwin provides an endless drive to encourage innovation and connect bio-enthusiasts from across the globe. With the ongoing pandemic, we have decided to go virtual this year!"
+    />
+    <meta name="robots" content="index, follow" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="icon" type="image/png" href="./img/favico.png" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Darwin 2021</title>
+    <script src="./world-map/mapdata.js"></script>
+    <script src="./world-map/worldmap.js"></script>
+    <script src="./js/airtable.browser.js"></script>
+    <script src="./js/scrollreveal.min.js"></script>
+    <script src="./js/fetchData.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="keywords"
-    content="international conference, biology conference, covid19 conference, biohacking, diy biology" />
-  <meta name="description"
-    content="An International Conference brought to you in the comfort of your portable devices. Darwin provides an endless drive to encourage innovation and connect bio-enthusiasts from across the globe. With the ongoing pandemic, we have decided to go virtual this year!" />
-  <meta name="robots" content="index, follow" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="icon" type="image/png" href="./img/favico.png" />
-  <link rel="stylesheet" href="./style.css" />
-  <title>Darwin 2021</title>
-  <script src="./world-map/mapdata.js"></script>
-  <script src="./world-map/worldmap.js"></script>
-  <script src="./js/airtable.browser.js"></script>
-  <script src="./js/scrollreveal.min.js"></script>
-  <script src="./js/fetchData.js"></script>
-</head>
+  <body>
+    <nav class="home">
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkBtn"><i class="fa fa-bars"></i></label>
+      <div class="navbarLogos">
+        <a href="">
+          <img src="./img/darwin.png" alt="Darwin" />
+        </a>
+      </div>
 
-<body>
-  <nav class="home">
-    <input type="checkbox" id="check" />
-    <label for="check" class="checkBtn"><i class="fa fa-bars"></i></label>
-    <div class="navbarLogos">
-      <a href="">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li>
+          <a href="#conferenceOverview">Overview</a>
+        </li>
+        <li>
+          <a href="#speakers">Speakers</a>
+        </li>
+        <li class="dropdown">
+          <a onclick="dropdownAppear(this)">Collaborate</a>
+          <ul class="dropdown-content">
+            <li>
+              <a href="https://thedarwin.in" target="_blank">Sponsor us</a>
+            </li>
+            <li>
+              <a href="https://thedarwin.in" target="_blank">Partner with us</a>
+            </li>
+            <li>
+              <a href="https://thedarwin.in" target="_blank">
+                Conduct a workshop
+              </a>
+            </li>
+            <li>
+              <a href="https://thedarwin.in" target="_blank">Conduct a tour</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="./blogs.html">Blogs</a>
+        </li>
+        <li class="dropdown">
+          <a onclick="dropdownAppear(this)">Previous Conferences</a>
+          <ul class="dropdown-content">
+            <li>
+              <a href="https://thedarwin.in" target="_blank">Darwin 2020</a>
+            </li>
+            <li>
+              <a
+                href="https://www.riidl.org/thedarwin.in/darwin2019.html"
+                target="_blank"
+                >Darwin 2019</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#footer">Contact Us</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="landingContainer">
+      <div class="landingTint">
         <img src="./img/darwin.png" alt="Darwin" />
-      </a>
-    </div>
-
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li>
-        <a href="#conferenceOverview">Overview</a>
-      </li>
-      <li>
-        <a href="#speakers">Speakers</a>
-      </li>
-      <li class="dropdown">
-        <a onclick="dropdownAppear(this)">Collaborate</a>
-        <ul class="dropdown-content">
-          <li>
-            <a href="https://thedarwin.in" target="_blank">Sponsor us</a>
-          </li>
-          <li>
-            <a href="https://thedarwin.in" target="_blank">Partner with us</a>
-          </li>
-          <li>
-            <a href="https://thedarwin.in" target="_blank">
-              Conduct a workshop
-            </a>
-          </li>
-          <li>
-            <a href="https://thedarwin.in" target="_blank">Conduct a tour</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="./blogs.html">Blogs</a>
-      </li>
-      <li class="dropdown">
-        <a onclick="dropdownAppear(this)">Previous Conferences</a>
-        <ul class="dropdown-content">
-          <li>
-            <a href="https://thedarwin.in" target="_blank">Darwin 2020</a>
-          </li>
-          <li>
-            <a href="https://www.riidl.org/thedarwin.in/darwin2019.html" target="_blank">Darwin 2019</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="#footer">Contact Us</a>
-      </li>
-    </ul>
-  </nav>
-
-  <div class="landingContainer">
-    <div class="landingTint">
-      <img src="./img/darwin.png" alt="Darwin" />
-      <h1>One of India's Biggest Evolutionary Movements in Biology</h1>
-      <p>
-        <i class="fa fa-map-marker" id="location-marker"></i> Virtual
-        Conference
-      </p>
-      <p><i class="fa fa-calendar"></i> December 2 to 5, 2021</p>
-      <p><i class="fa fa-flask"></i> Cutting Edge Biology</p>
-
-      <div class="countdown">
-        <div class="time">
-          <h3 id="days">00</h3>
-          <p>Days</p>
-        </div>
-        <div class="time">
-          <h3 id="hrs">00</h3>
-          <p>Hours</p>
-        </div>
-        <div class="time">
-          <h3 id="mins">00</h3>
-          <p>Minutes</p>
-        </div>
-        <div class="time">
-          <h3 id="secs">00</h3>
-          <p>Seconds</p>
-        </div>
-      </div>
-
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#000" fill-opacity="1"
-          d="M0,32L40,58.7C80,85,160,139,240,133.3C320,128,400,64,480,58.7C560,53,640,107,720,160C800,213,880,267,960,272C1040,277,1120,235,1200,224C1280,213,1360,235,1400,245.3L1440,256L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
-        </path>
-      </svg>
-      <div id="svgFiller"></div>
-
-      <div class="flexbox">
-        <div class="btn-pink"><a href="https://thedarwin.in/Attend-Conference">Attend Conference</a></div>
-        <div class="btn-green"><a href="https://thedarwin.in/ResearchSymposium">Present Research Paper</a></div>
-      </div>
-
-      <div class="logoStrip">
-        <img src="./img/svv_logo.png" alt="SVV" />
-        <img src="./img/STrust.png" alt="STrust" />
-        <img src="./img/birac.png" alt="BIRAC" />
-        <img src="./img/riidl.png" alt="riidl" />
-        <img src="./img/bioriidl.png" alt="Bioriidl" />
-      </div>
-    </div>
-  </div>
-
-  <br />
-  <br />
-  <div class="bodyContainer">
-    <div class="ctaContainer">
-      <div class="ctaCard">
+        <h1>One of India's Biggest Evolutionary Movements in Biology</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-          quam ul
+          <i class="fa fa-map-marker" id="location-marker"></i> Virtual
+          Conference
         </p>
-        <hr />
-        <button>Attendee Registration</button>
-      </div>
-      <div class="ctaCard">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-          quam
-        </p>
-        <hr />
-        <button>Research Symposium</button>
+        <p><i class="fa fa-calendar"></i> December 2 to 5, 2021</p>
+        <p><i class="fa fa-flask"></i> Cutting Edge Biology</p>
+
+        <div class="countdown">
+          <div class="time">
+            <h3 id="days">00</h3>
+            <p>Days</p>
+          </div>
+          <div class="time">
+            <h3 id="hrs">00</h3>
+            <p>Hours</p>
+          </div>
+          <div class="time">
+            <h3 id="mins">00</h3>
+            <p>Minutes</p>
+          </div>
+          <div class="time">
+            <h3 id="secs">00</h3>
+            <p>Seconds</p>
+          </div>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill="#000"
+            fill-opacity="1"
+            d="M0,32L40,58.7C80,85,160,139,240,133.3C320,128,400,64,480,58.7C560,53,640,107,720,160C800,213,880,267,960,272C1040,277,1120,235,1200,224C1280,213,1360,235,1400,245.3L1440,256L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
+          ></path>
+        </svg>
+        <div id="svgFiller"></div>
+
+        <div class="flexbox">
+          <div class="btn-pink">
+            <a href="https://thedarwin.in/Attend-Conference"
+              >Attend Conference</a
+            >
+          </div>
+          <div class="btn-green">
+            <a href="https://thedarwin.in/ResearchSymposium"
+              >Present Research Paper</a
+            >
+          </div>
+        </div>
+
+        <div class="logoStrip">
+          <img src="./img/svv_logo.png" alt="SVV" />
+          <img src="./img/STrust.png" alt="STrust" />
+          <img src="./img/birac.png" alt="BIRAC" />
+          <img src="./img/riidl.png" alt="riidl" />
+          <img src="./img/bioriidl.png" alt="Bioriidl" />
+        </div>
       </div>
     </div>
 
-    <div class="aboutContainer" id="about">
-      <div class="leftContent">
-        <h2>About Us</h2>
-        <p>
-          Darwin, an International Conference brought to you in the comfort of
-          your portable devices. With the ongoing pandemic, we have decided to
-          go virtual this year!
-        </p>
-        <p>
-          Darwin 2020 just got bigger and better with established biologists,
-          a panel of experts talking about global research topics, virtual
-          workshops & tours and Research Symposium - a paper presentation
-          competition. Darwin provides an endless drive to encourage
-          innovation and connect bio-enthusiasts from across the globe.
-        </p>
+    <br />
+    <div class="bodyContainer">
+      <div class="ctaContainer">
+        <div class="ctaCard">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+            quam ul
+          </p>
+          <hr />
+          <button>Attendee Registration</button>
+        </div>
+        <div class="ctaCard">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+            quam
+          </p>
+          <hr />
+          <button>Research Symposium</button>
+        </div>
       </div>
-      <div class="rightPic">
-        <img src="./img/about.jpg" alt="About" />
+
+      <div class="aboutContainer" id="about">
+        <div class="leftContent">
+          <h2>About Us</h2>
+          <p>
+            Darwin, an International Conference brought to you in the comfort of
+            your portable devices. With the ongoing pandemic, we have decided to
+            go virtual this year!
+          </p>
+          <p>
+            Darwin 2020 just got bigger and better with established biologists,
+            a panel of experts talking about global research topics, virtual
+            workshops & tours and Research Symposium - a paper presentation
+            competition. Darwin provides an endless drive to encourage
+            innovation and connect bio-enthusiasts from across the globe.
+          </p>
+        </div>
+        <div class="rightPic">
+          <img src="./img/about.jpg" alt="About" />
+        </div>
+      </div>
+
+      <div class="statsContainer" id="stats">
+        <div class="statsTint">
+          <div class="statsBox">
+            <h2>101+</h2>
+            <p>Darwinians</p>
+          </div>
+          <div class="statsBox">
+            <h2>200+</h2>
+            <p>Bio Hackers</p>
+          </div>
+          <div class="statsBox">
+            <h2>5+</h2>
+            <p>Global Speakers</p>
+          </div>
+          <div class="statsBox">
+            <h2>40+</h2>
+            <p>Projects</p>
+          </div>
+          <div class="statsBox">
+            <h2>10+</h2>
+            <p>Workshops</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="statsContainer" id="stats">
-      <div class="statsTint">
-        <div class="statsBox">
-          <h2>101+</h2>
-          <p>Darwinians</p>
-        </div>
-        <div class="statsBox">
-          <h2>200+</h2>
-          <p>Bio Hackers</p>
-        </div>
-        <div class="statsBox">
-          <h2>5+</h2>
-          <p>Global Speakers</p>
-        </div>
-        <div class="statsBox">
-          <h2>40+</h2>
-          <p>Projects</p>
-        </div>
-        <div class="statsBox">
-          <h2>10+</h2>
-          <p>Workshops</p>
-        </div>
-      </div>
+    <div class="blogsContainer conferenceContainer" id="conferenceOverview">
+      <h2>Conference Overview</h2>
+      <div class="blogsRow"></div>
     </div>
-  </div>
 
-  <div class="blogsContainer conferenceContainer" id="conferenceOverview">
-    <h2>Conference Overview</h2>
-    <div class="blogsRow"></div>
-  </div>
-
-  <!-- Speakers -->
-  <!-- <div class="speakersContainer" id="speakers">
+    <!-- Speakers -->
+    <!-- <div class="speakersContainer" id="speakers">
       <h2>Our Speakers</h2>
       <div class="speakerDivTint">
         <div class="speakersRow"></div>
@@ -220,212 +239,236 @@
       </div>
     </div> -->
 
-  <!-- new -->
-  <div class="speakersContainer" id="speakers">
-    <h2>Our Speakers</h2>
-    <hr />
-    <div class="speakersRow"></div>
-  </div>
-
-  <div class="bodyContainer reverseGradientBody">
-    <div class="mapContainer">
-      <h2>Participation from 29+ Countries</h2>
-      <div id="map"></div>
-    </div>
-
-    <div class="blogsContainer conferenceContainer">
-      <h2>Pre Events</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, quasi
-        nesciunt animi et incidunt rem atque iste facilis quo eius. Lorem
-        ipsum dolor sit amet consectetur adipisicing elit. Fuga, quasi
-        nesciunt animi et incidunt rem atque iste facilis quo eius.
-      </p>
-      <div class="blogsRow" id="preEvents"></div>
-    </div>
-
-    <div class="highlightsContainer">
-      <h2>Highlights</h2>
-      <div class="slider">
-        <div class="slider-inner" id="highlights">
-          <div class="slide" data-slide="1">
-            <div class="content" style="background: url(./img/laser1.jpg) center/cover"></div>
-          </div>
-
-          <div class="slide" data-slide="2">
-            <div class="content" style="background: url(./img/laser2.jpg) center/cover"></div>
-          </div>
-
-          <div class="slide" data-slide="3">
-            <div class="content" style="background: url(./img/laser3.jpg) center/cover"></div>
-          </div>
-
-          <div class="slide" data-slide="4">
-            <div class="content" style="background: url(./img/laser4.jpg) center/cover"></div>
-          </div>
-        </div>
-
-        <div class="indicators">
-          <div class="indicator" data-slide="1" active></div>
-          <div class="indicator" data-slide="2"></div>
-          <div class="indicator" data-slide="3"></div>
-          <div class="indicator" data-slide="4"></div>
-        </div>
-
-        <div class="arrows">
-          <div class="arrow-prev">
-            <i class="fa fa-angle-left"></i>
-          </div>
-          <div class="arrow-next">
-            <i class="fa fa-angle-right"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Embed Video -->
-    <div class="videoContainer" style="text-align: center">
-      <h2 class="vid">After Movie</h2>
-      <div class="iframe-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/bQbUm_KtLKY" title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <div class="publicationsContainer">
-      <h2>Our Collaborators</h2>
-      <div class="publicationsRow" id="collaborators"></div>
-    </div>
-
-    <div class="publicationsContainer">
-      <h2>Publications</h2>
-      <div class="publicationsRow" id="publications"></div>
-    </div>
-
-    <div class="testimonialsContainer">
-      <h2>Testimonials</h2>
-      <div class="testimonialsRow" id="testimonials"></div>
-    </div>
-  </div>
-
-  <div class="footerContainer" id="footer">
-    <img src="./img/darwin.png" alt="Darwin logo" />
-    <div class="footerContact">
-      <p>Contact us:</p>
-      <div class="contactDetails">
-        <a target="_blank"
-          href="whatsapp://send?phone=+917666478569&?text=Hello! I have a query regarding the Darwin Conference. Could you please help me out">
-          <i class="fa fa-phone"></i> +91 76664 78569
-        </a>
-        <a target="_blank" href="mailto:darwin@somaiya.edu">
-          <i class="fa fa-envelope"></i> darwin@somaiya.edu
-        </a>
-      </div>
-    </div>
-    <div class="socialMedia">
-      <p>Follow us:</p>
-      <div class="socialMediaLogos">
-        <a target="_blank" href="https://instagram.com/darwinindia">
-          <i class="fa fa-instagram"></i>
-        </a>
-        <a target="_blank" href="https://twitter.com/darwin_india">
-          <i class="fa fa-twitter"></i>
-        </a>
-        <a target="_blank" href="https://facebook.com/darwin.bioriidl/">
-          <i class="fa fa-facebook"></i>
-        </a>
-        <a target="_blank" href="https://www.linkedin.com/company/darwin-india">
-          <i class="fa fa-linkedin"></i>
-        </a>
-      </div>
-    </div>
-    <a target="_blank" href="https://www.facebook.com/groups/1496081137211146">
-      Join our Facebook Community
-    </a>
-  </div>
-
-  <!-- Modal -->
-
-  <div class="modal" id="modal">
-    <div class="modalBox">
-      <i class="fa fa-close" onclick="closeModal()"></i>
-      <h3 id="modalHeader"></h3>
+    <!-- new -->
+    <div class="speakersContainer" id="speakers">
+      <h2>Our Speakers</h2>
       <hr />
-      <p id="modalBody"></p>
+      <div class="speakersRow"></div>
     </div>
-  </div>
 
-  <script src="./main.js"></script>
-  <script>
-    getAirtableData();
+    <div class="bodyContainer reverseGradientBody">
+      <div class="mapContainer">
+        <h2>Participation from 29+ Countries</h2>
+        <div id="map"></div>
+      </div>
 
-    // Countdown
+      <div class="blogsContainer conferenceContainer">
+        <h2>Pre Events</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, quasi
+          nesciunt animi et incidunt rem atque iste facilis quo eius. Lorem
+          ipsum dolor sit amet consectetur adipisicing elit. Fuga, quasi
+          nesciunt animi et incidunt rem atque iste facilis quo eius.
+        </p>
+        <div class="blogsRow" id="preEvents"></div>
+      </div>
 
-    const darwinDate = new Date("December 2, 2021, 10:00:00").getTime();
+      <div class="highlightsContainer">
+        <h2>Highlights</h2>
+        <div class="slider">
+          <div class="slider-inner" id="highlights">
+            <div class="slide" data-slide="1">
+              <div
+                class="content"
+                style="background: url(./img/laser1.jpg) center/cover"
+              ></div>
+            </div>
 
-    const countdown = setInterval(() => {
-      let currentDate = Date.now();
-      let diff = darwinDate - currentDate;
+            <div class="slide" data-slide="2">
+              <div
+                class="content"
+                style="background: url(./img/laser2.jpg) center/cover"
+              ></div>
+            </div>
 
-      let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      let hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      let secs = Math.floor((diff % (1000 * 60)) / 1000);
+            <div class="slide" data-slide="3">
+              <div
+                class="content"
+                style="background: url(./img/laser3.jpg) center/cover"
+              ></div>
+            </div>
 
-      document.getElementById("days").innerHTML =
-        days < 10 ? "0" + days : days;
-      document.getElementById("hrs").innerHTML = hrs < 10 ? "0" + hrs : hrs;
-      document.getElementById("mins").innerHTML =
-        mins < 10 ? "0" + mins : mins;
-      document.getElementById("secs").innerHTML =
-        secs < 10 ? "0" + secs : secs;
+            <div class="slide" data-slide="4">
+              <div
+                class="content"
+                style="background: url(./img/laser4.jpg) center/cover"
+              ></div>
+            </div>
+          </div>
 
-      if (diff < 0) clearInterval(countdown);
-    }, 1000);
+          <div class="indicators">
+            <div class="indicator" data-slide="1" active></div>
+            <div class="indicator" data-slide="2"></div>
+            <div class="indicator" data-slide="3"></div>
+            <div class="indicator" data-slide="4"></div>
+          </div>
 
-    // Map
+          <div class="arrows">
+            <div class="arrow-prev">
+              <i class="fa fa-angle-left"></i>
+            </div>
+            <div class="arrow-next">
+              <i class="fa fa-angle-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Embed Video -->
+      <div class="videoContainer" style="text-align: center">
+        <h2 class="vid">After Movie</h2>
+        <div class="iframe-container">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/bQbUm_KtLKY"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
 
-    const hideMap = () => {
-      setTimeout(() => {
-        const map = document.querySelectorAll(
-          '[href="https://simplemaps.com"]'
-        );
-        for (let i = 0; i < map.length; i++) {
-          map[i].style.display = "none";
-        }
-      }, 3000);
-    };
+      <div class="publicationsContainer">
+        <h2>Our Collaborators</h2>
+        <div class="publicationsRow" id="collaborators"></div>
+      </div>
 
-    //   Speaker Details
+      <div class="publicationsContainer">
+        <h2>Publications</h2>
+        <div class="publicationsRow" id="publications"></div>
+      </div>
 
-    // const firstSpeakerDisplay = () => {
-    //   const speakers = document.getElementsByClassName("speakersRow")[0];
-    //   setTimeout(() => {
-    //     speakers.childNodes[0].nextSibling.click();
-    //   }, 2000);
-    // };
+      <div class="testimonialsContainer">
+        <h2>Testimonials</h2>
+        <div class="testimonialsRow" id="testimonials"></div>
+      </div>
+    </div>
 
-    // const openSpeakerWithMessage = (header, body, designation) => {
-    //   const nameArr = header.split(" ");
-    //   const [, , ...rest] = nameArr;
-    //   const restName = rest.join(" ");
-    //   header = `<span>${nameArr[0]} ${nameArr[1]}</span> ${restName}`;
-    //   const fullBody = `
-    //   ${designation !== "undefined" ? `<span>${designation}</span>` : ""}
-    //   ${body}
-    //   `;
-    //   document.getElementById("speakerHeader").innerHTML = header;
-    //   document.getElementById("speakerBody").innerHTML = fullBody;
-    // };
+    <div class="footerContainer" id="footer">
+      <img src="./img/darwin.png" alt="Darwin logo" />
+      <div class="footerContact">
+        <p>Contact us:</p>
+        <div class="contactDetails">
+          <a
+            target="_blank"
+            href="whatsapp://send?phone=+917666478569&?text=Hello! I have a query regarding the Darwin Conference. Could you please help me out"
+          >
+            <i class="fa fa-phone"></i> +91 76664 78569
+          </a>
+          <a target="_blank" href="mailto:darwin@somaiya.edu">
+            <i class="fa fa-envelope"></i> darwin@somaiya.edu
+          </a>
+        </div>
+      </div>
+      <div class="socialMedia">
+        <p>Follow us:</p>
+        <div class="socialMediaLogos">
+          <a target="_blank" href="https://instagram.com/darwinindia">
+            <i class="fa fa-instagram"></i>
+          </a>
+          <a target="_blank" href="https://twitter.com/darwin_india">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://facebook.com/darwin.bioriidl/">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/company/darwin-india"
+          >
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+      <a
+        target="_blank"
+        href="https://www.facebook.com/groups/1496081137211146"
+      >
+        Join our Facebook Community
+      </a>
+    </div>
 
-    // Window functions
+    <!-- Modal -->
 
-    window.onload = function () {
-      hideMap();
-      firstSpeakerDisplay();
-    };
-  </script>
-</body>
+    <div class="modal" id="modal">
+      <div class="modalBox">
+        <i class="fa fa-close" onclick="closeModal()"></i>
+        <h3 id="modalHeader"></h3>
+        <hr />
+        <p id="modalBody"></p>
+      </div>
+    </div>
 
+    <script src="./main.js"></script>
+    <script>
+      getAirtableData();
+
+      // Countdown
+
+      const darwinDate = new Date("December 2, 2021, 10:00:00").getTime();
+
+      const countdown = setInterval(() => {
+        let currentDate = Date.now();
+        let diff = darwinDate - currentDate;
+
+        let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        let hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        let secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerHTML =
+          days < 10 ? "0" + days : days;
+        document.getElementById("hrs").innerHTML = hrs < 10 ? "0" + hrs : hrs;
+        document.getElementById("mins").innerHTML =
+          mins < 10 ? "0" + mins : mins;
+        document.getElementById("secs").innerHTML =
+          secs < 10 ? "0" + secs : secs;
+
+        if (diff < 0) clearInterval(countdown);
+      }, 1000);
+
+      // Map
+
+      const hideMap = () => {
+        setTimeout(() => {
+          const map = document.querySelectorAll(
+            '[href="https://simplemaps.com"]'
+          );
+          for (let i = 0; i < map.length; i++) {
+            map[i].style.display = "none";
+          }
+        }, 3000);
+      };
+
+      //   Speaker Details
+
+      // const firstSpeakerDisplay = () => {
+      //   const speakers = document.getElementsByClassName("speakersRow")[0];
+      //   setTimeout(() => {
+      //     speakers.childNodes[0].nextSibling.click();
+      //   }, 2000);
+      // };
+
+      // const openSpeakerWithMessage = (header, body, designation) => {
+      //   const nameArr = header.split(" ");
+      //   const [, , ...rest] = nameArr;
+      //   const restName = rest.join(" ");
+      //   header = `<span>${nameArr[0]} ${nameArr[1]}</span> ${restName}`;
+      //   const fullBody = `
+      //   ${designation !== "undefined" ? `<span>${designation}</span>` : ""}
+      //   ${body}
+      //   `;
+      //   document.getElementById("speakerHeader").innerHTML = header;
+      //   document.getElementById("speakerBody").innerHTML = fullBody;
+      // };
+
+      // Window functions
+
+      window.onload = function () {
+        hideMap();
+        firstSpeakerDisplay();
+      };
+    </script>
+  </body>
 </html>

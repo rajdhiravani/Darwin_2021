@@ -4,7 +4,7 @@ let Airtable = require("airtable");
 const metaData = {
   baseID: "appRcXPwopPZ85HbJ",
   baseName: "Darwin 2021",
-  tablesCount: 10,
+  tablesCount: 11,
   tables: [
     "Conference overview",
     "Speaker profiles",
@@ -16,6 +16,7 @@ const metaData = {
     "FAQs",
     "Darwin 2019",
     "Benefits",
+    "Highlights",
   ],
 };
 
@@ -29,6 +30,7 @@ let publications = [];
 let faqs = [];
 let darwin2019 = [];
 let benefits = [];
+let highlights=[];
 
 const getAirtableData = async () => {
   updateConference();
@@ -37,6 +39,7 @@ const getAirtableData = async () => {
   updateTestimonials();
   updatePublications();
   updateCollaborators();
+  getHighlights();
   // updateFAQs();
   // updateBenefits();
 };
@@ -90,11 +93,9 @@ const updateConference = async () => {
 const updateSpeakers = async () => {
   speakerProfiles = await getRecords("Speaker profiles");
   speakerProfiles = sortByOrder(speakerProfiles);
-  console.log(speakerProfiles);
   let template1 = "";
 
   speakerProfiles.forEach((speaker, index) => {
-    console.log(speaker);
     template1 += `
       <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null}') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription, speakerProfiles[${index}].Designation)">
         <div class="speakerTint">
@@ -104,7 +105,7 @@ const updateSpeakers = async () => {
       </div>
       `;
     const speakers = document.getElementById("speakers");
-    console.log(speakers);
+
     const [speakersRow] = speakers.getElementsByClassName("speakersRow");
     speakersRow.innerHTML = template1;
     // animateDynamicElements();
@@ -249,6 +250,33 @@ const updateBlogs = async () => {
 
   // animateDynamicElements();
 };
+
+const getHighlights = async ()=> {
+  highlights = await getRecords("Highlights");
+  console.log(highlights);
+  // highlights = sortByOrder(highlights);
+  let template = "";
+  let template1= "";
+
+  highlights.forEach((highlight, index) => {
+  
+    console.log(index);
+    console.log(highlight.Image[0].url);
+    template += `
+    <div class="slide" data-slide="${index}">
+              <div
+                class="content"
+                style="background: url(${highlight.Image[0].url}) center/cover"
+              ></div>
+    </div>          
+    `;
+    template1+= `
+       <div class="indicator" data-slide="${index}"></div>
+    ` 
+  });
+  document.getElementById("highlights").innerHTML = template;
+  document.getElementById("indicators").innerHTML =  template1;
+}
 
 // const updateFAQs = async () => {
 //   faqs = await getRecords("FAQs");

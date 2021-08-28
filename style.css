@@ -453,7 +453,7 @@ nav ul li > a:hover {
 .flexbox > .btn-green {
   width: 50%;
   border-radius: 2px;
-  background: linear-gradient(to top, #00f260, #0f9b0f);
+  background: linear-gradient(to top, #47bb43, #23801f);
 }
 
 @media (max-width: 576px) {

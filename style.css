@@ -745,7 +745,7 @@ a {
 .aboutContainer {
   width: 70%;
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 120px;
   margin-bottom: 15vh;
   display: flex;
   align-items: center;
@@ -956,7 +956,7 @@ a {
 }
 /* Speaker's section */
 .speakersContainer {
-  min-height: 100vh;
+  min-height: 70vh;
   /* background: url(img/speakersBG.png); */
   display: flex;
   flex-direction: column;
@@ -1616,7 +1616,7 @@ rect {
 }
 
 .blogPic {
-  background: url(./img/blogPic.jpeg) center/cover;
+  /* background: url(./img/blogPic.jpeg) center/cover; */
   height: 12vw;
 }
 

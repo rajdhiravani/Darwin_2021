@@ -71,10 +71,11 @@ const updateConference = async () => {
   conferenceOverview = await getRecords("Conference overview");
   conferenceOverview = sortByOrder(conferenceOverview);
   let template = "";
+
   conferenceOverview.forEach((conference, index) => {
     template += `
     <div class="blogCard">
-      <div class="blogPic">
+      <div class="blogPic" style="background: url('${conference.Image[0].url}') center/cover" >
         <div class="blogPicTint"></div>
       </div>
       <div class="blogContent">
@@ -94,8 +95,13 @@ const updateSpeakers = async () => {
   speakerProfiles = await getRecords("Speaker profiles");
   speakerProfiles = sortByOrder(speakerProfiles);
   let template1 = "";
+  let template2 = "";
+  let template3 = "";
+  let template4 = "";
 
   speakerProfiles.forEach((speaker, index) => {
+
+    if(speaker.SessionType === "Talk")
     template1 += `
       <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null}') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription, speakerProfiles[${index}].Designation)">
         <div class="speakerTint">
@@ -104,10 +110,50 @@ const updateSpeakers = async () => {
         </div>
       </div>
       `;
-    const speakers = document.getElementById("speakers");
+    else if (speaker.SessionType === "BioArt")
+      template2 += `
+      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null}') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
+        <div class="speakerTint">
+          <h3>${speaker.Name}</h3>
+          <p>${speaker.Designation}</p>
+        </div>
+      </div>
+      `;
+    else if (speaker.SessionType === "Medical Biology")
+      template3 += `
+      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null}') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
+        <div class="speakerTint">
+          <h3>${speaker.Name}</h3>
+          <p>${speaker.Designation}</p>
+        </div>
+      </div>
+      `;
+    else if (speaker.SessionType === "Cell Biology")
+      template4 += `
+      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null}') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
+        <div class="speakerTint">
+          <h3>${speaker.Name}</h3>
+          <p>${speaker.Designation}</p>
+        </div>
+      </div>
+      `;
 
+    const speakers = document.getElementById("speakers");
     const [speakersRow] = speakers.getElementsByClassName("speakersRow");
     speakersRow.innerHTML = template1;
+
+    const panel1 = document.getElementById("panel1");
+    const [panel1Row] = panel1.getElementsByClassName("speakersRow");
+    panel1Row.innerHTML = template2;
+
+    const panel2 = document.getElementById("panel2");
+    const [panel2Row] = panel2.getElementsByClassName("speakersRow");
+    panel2Row.innerHTML = template3;
+
+    // const panel3 = document.getElementById("panel3");
+    // const [panel3Row] = panel3.getElementsByClassName("speakersRow");
+    // panel3Row.innerHTML = template4;
+
     // animateDynamicElements();
 
     // template += `

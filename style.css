@@ -429,7 +429,7 @@ nav ul li > a:hover {
 }
 
 /* Hero section Button styling */
-/* .flexbox {
+.flexbox {
   display: flex;
   width: 500px;
   align-content: space-between;
@@ -454,9 +454,9 @@ nav ul li > a:hover {
   width: 50%;
   border-radius: 2px;
   background: linear-gradient(to top, #47bb43, #23801f);
-} */
+} 
 
-/* @media (max-width: 576px) {
+@media (max-width: 576px) {
   .flexbox {
     flex-flow: row wrap;
     justify-content: center;
@@ -491,7 +491,8 @@ nav ul li > a:hover {
 a {
   text-decoration: none;
   color: white;
-} */
+}
+
 /* end  */
 
 .ctaBtn button a {

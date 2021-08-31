@@ -83,104 +83,136 @@ const incAllNos = (statNo1, statNo2, statNo3, statNo4, statNo5) => {
 
 // Carousel
 
-const indicators = document.querySelectorAll(".slider .indicators .indicator");
-const arrowPrev = document.querySelector(".slider .arrows .arrow-prev");
-const arrowNext = document.querySelector(".slider .arrows .arrow-next");
+const getHighlights = async () => {
+  highlights = await getRecords("Highlights");
+  console.log(highlights);
+  // highlights = sortByOrder(highlights);
+  let template = "";
+  let template1 = "";
 
-const handleIndicatorClick = (event) => {
-  const indicator = event.target;
-  if (!isActive(indicator)) {
-    removeActive();
-    addActive(indicator);
-    showSlide(indicator.dataset.slide);
-  }
-};
+  highlights.forEach((highlight, index) => {
+    index1 = index + 1;
+    console.log(index);
+    console.log(highlight.Image[0].url);
+    template += `
+    <div class="slide" data-slide="${index1}">
+              <div
+                class="content"
+                style="background: url(${highlight.Image[0].url}) center/cover"
+              ></div>
+    </div>          
+    `;
+    template1 += `
+       <div class="indicator" data-slide="${index1}"></div>
+    `;
+  });
+  document.getElementById("highlights").innerHTML = template;
+  document.getElementById("indicators").innerHTML = template1;
+  const indicators = document.querySelectorAll(
+    ".slider .indicators .indicator"
+  );
+  const arrowPrev = document.querySelector(".slider .arrows .arrow-prev");
+  const arrowNext = document.querySelector(".slider .arrows .arrow-next");
 
-const handlePrevArrowClick = (event) => {
-  let activeSlide = 0;
-  let newActiveSlide = indicators.length;
-  let ready = false;
+  const handleIndicatorClick = (event) => {
+    const indicator = event.target;
+    if (!isActive(indicator)) {
+      removeActive();
+      addActive(indicator);
+      showSlide(indicator.dataset.slide);
+    }
+  };
+
+  const handlePrevArrowClick = (event) => {
+    let activeSlide = 0;
+    let newActiveSlide = indicators.length;
+    let ready = false;
+
+    indicators.forEach((indicator) => {
+      if (isActive(indicator) && !ready) {
+        activeSlide = indicator.dataset.slide;
+        if (activeSlide !== "1") {
+          newActiveSlide = parseInt(activeSlide) - 1;
+        }
+        removeActive();
+        addActive(
+          document.querySelector(
+            `.slider .indicators [data-slide='${newActiveSlide}']`
+          )
+        );
+        showSlide(newActiveSlide);
+        ready = true;
+      }
+    });
+  };
+
+  const handleNextArrowClick = (event) => {
+    let activeSlide = 0;
+    let newActiveSlide = 1;
+    let ready = false;
+
+    indicators.forEach((indicator) => {
+      if (isActive(indicator) && !ready) {
+        activeSlide = indicator.dataset.slide;
+        if (activeSlide !== indicators.length.toString()) {
+          newActiveSlide = parseInt(activeSlide) + 1;
+        }
+        removeActive();
+        addActive(
+          document.querySelector(
+            `.slider .indicators [data-slide='${newActiveSlide}']`
+          )
+        );
+        showSlide(newActiveSlide);
+        ready = true;
+      }
+    });
+  };
+
+  const isActive = (indicator) => {
+    return indicator.hasAttribute("active");
+  };
+
+  const removeActive = () => {
+    document
+      .querySelectorAll(".slider .indicators [active]")
+      .forEach((item) => {
+        item.removeAttribute("active");
+      });
+  };
+
+  const addActive = (indicator) => {
+    indicator.setAttribute("active", "");
+  };
+
+  const showSlide = (newActiveSlide) => {
+    const newPosition = (100 * (newActiveSlide - 1)).toString();
+    document.querySelector(
+      ".slider-inner"
+    ).style.marginLeft = `-${newPosition}%`;
+  };
 
   indicators.forEach((indicator) => {
-    if (isActive(indicator) && !ready) {
-      activeSlide = indicator.dataset.slide;
-      if (activeSlide !== "1") {
-        newActiveSlide = parseInt(activeSlide) - 1;
-      }
+    indicator.addEventListener("click", handleIndicatorClick);
+  });
+
+  arrowPrev.addEventListener("click", handlePrevArrowClick);
+  arrowNext.addEventListener("click", handleNextArrowClick);
+
+  const carouselAnimateOnScroll = () => {
+    let i = 1;
+    setInterval(() => {
+      if (i > indicators.length - 1) i = 1;
+      else i++;
+
       removeActive();
-      addActive(
-        document.querySelector(
-          `.slider .indicators [data-slide='${newActiveSlide}']`
-        )
-      );
-      showSlide(newActiveSlide);
-      ready = true;
-    }
-  });
+      addActive(indicators[i - 1]);
+      showSlide(i);
+    }, 3000);
+  };
+
+  carouselAnimateOnScroll();
 };
-
-const handleNextArrowClick = (event) => {
-  let activeSlide = 0;
-  let newActiveSlide = 1;
-  let ready = false;
-
-  indicators.forEach((indicator) => {
-    if (isActive(indicator) && !ready) {
-      activeSlide = indicator.dataset.slide;
-      if (activeSlide !== indicators.length.toString()) {
-        newActiveSlide = parseInt(activeSlide) + 1;
-      }
-      removeActive();
-      addActive(
-        document.querySelector(
-          `.slider .indicators [data-slide='${newActiveSlide}']`
-        )
-      );
-      showSlide(newActiveSlide);
-      ready = true;
-    }
-  });
-};
-
-indicators.forEach((indicator) => {
-  indicator.addEventListener("click", handleIndicatorClick);
-});
-
-arrowPrev.addEventListener("click", handlePrevArrowClick);
-arrowNext.addEventListener("click", handleNextArrowClick);
-
-const isActive = (indicator) => {
-  return indicator.hasAttribute("active");
-};
-
-const removeActive = () => {
-  document.querySelectorAll(".slider .indicators [active]").forEach((item) => {
-    item.removeAttribute("active");
-  });
-};
-
-const addActive = (indicator) => {
-  indicator.setAttribute("active", "");
-};
-
-const showSlide = (newActiveSlide) => {
-  const newPosition = (100 * (newActiveSlide - 1)).toString();
-  document.querySelector(".slider-inner").style.marginLeft = `-${newPosition}%`;
-};
-
-const carouselAnimateOnScroll = () => {
-  let i = 1;
-  setInterval(() => {
-    if (i > indicators.length - 1) i = 1;
-    else i++;
-
-    removeActive();
-    addActive(indicators[i - 1]);
-    showSlide(i);
-  }, 3000);
-};
-
-carouselAnimateOnScroll();
 
 // Modal
 
@@ -231,7 +263,6 @@ window.onclick = function (event) {
 //     scale: 0.5,
 //   });
 // }
-
 
 // Window functions
 

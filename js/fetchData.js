@@ -297,32 +297,32 @@ const updateBlogs = async () => {
   // animateDynamicElements();
 };
 
-const getHighlights = async ()=> {
-  highlights = await getRecords("Highlights");
-  console.log(highlights);
-  // highlights = sortByOrder(highlights);
-  let template = "";
-  let template1= "";
+// const getHighlights = async ()=> {
+//   highlights = await getRecords("Highlights");
+//   console.log(highlights);
+//   // highlights = sortByOrder(highlights);
+//   let template = "";
+//   let template1= "";
 
-  highlights.forEach((highlight, index) => {
+//   highlights.forEach((highlight, index) => {
   
-    console.log(index);
-    console.log(highlight.Image[0].url);
-    template += `
-    <div class="slide" data-slide="${index}">
-              <div
-                class="content"
-                style="background: url(${highlight.Image[0].url}) center/cover"
-              ></div>
-    </div>          
-    `;
-    template1+= `
-       <div class="indicator" data-slide="${index}"></div>
-    ` 
-  });
-  document.getElementById("highlights").innerHTML = template;
-  document.getElementById("indicators").innerHTML =  template1;
-}
+//     console.log(index);
+//     console.log(highlight.Image[0].url);
+//     template += `
+//     <div class="slide" data-slide="${index}">
+//               <div
+//                 class="content"
+//                 style="background: url(${highlight.Image[0].url}) center/cover"
+//               ></div>
+//     </div>          
+//     `;
+//     template1+= `
+//       <div class="indicator" data-slide="${index}"></div>
+//     ` 
+//   });
+//   document.getElementById("highlights").innerHTML = template;
+//   document.getElementById("indicators").innerHTML =  template1;
+// }
 
 // const updateFAQs = async () => {
 //   faqs = await getRecords("FAQs");

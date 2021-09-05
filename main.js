@@ -36,50 +36,50 @@ if (window.innerWidth <= 760) {
 
 // Stats animation
 
-const statsAnimateOnScroll = (scroll) => {
-  const stats = document.getElementById("stats");
-  let stat = stats.childNodes[0].nextSibling;
-  let statNo1 = stat.childNodes[0].nextSibling;
-  let statNo2 = stat.childNodes[2].nextSibling;
-  let statNo3 = stat.childNodes[4].nextSibling;
-  let statNo4 = stat.childNodes[6].nextSibling;
-  let statNo5 = stat.childNodes[8].nextSibling;
+// const statsAnimateOnScroll = (scroll) => {
+//   const stats = document.getElementById("stats");
+//   let stat = stats.childNodes[0].nextSibling;
+//   let statNo1 = stat.childNodes[0].nextSibling;
+//   let statNo2 = stat.childNodes[2].nextSibling;
+//   let statNo3 = stat.childNodes[4].nextSibling;
+//   let statNo4 = stat.childNodes[6].nextSibling;
+//   let statNo5 = stat.childNodes[8].nextSibling;
 
-  if (
-    !incNoDone &&
-    scroll >= stats.offsetTop - 600 &&
-    window.innerWidth > 450
-  ) {
-    incAllNos(statNo1, statNo2, statNo3, statNo4, statNo5);
-  } else if (
-    !incNoDone &&
-    scroll >= stats.offsetTop - 750 &&
-    window.innerWidth <= 450
-  ) {
-    console.log(stats.offsetTop);
-    incAllNos(statNo1, statNo2, statNo3, statNo4, statNo5);
-  }
-};
+//   if (
+//     !incNoDone &&
+//     scroll >= stats.offsetTop - 600 &&
+//     window.innerWidth > 450
+//   ) {
+//     incAllNos(statNo1, statNo2, statNo3, statNo4, statNo5);
+//   } else if (
+//     !incNoDone &&
+//     scroll >= stats.offsetTop - 750 &&
+//     window.innerWidth <= 450
+//   ) {
+//     console.log(stats.offsetTop);
+//     incAllNos(statNo1, statNo2, statNo3, statNo4, statNo5);
+//   }
+// };
 
-const incNo = (i, last, elem, speed) => {
-  if (i <= last) {
-    elem.innerHTML = i;
-    setTimeout(() => {
-      incNo(i + 1, last, elem);
-    }, 10);
-  } else if (i > last) {
-    elem.innerHTML += "+";
-  }
-};
+// const incNo = (i, last, elem, speed) => {
+//   if (i <= last) {
+//     elem.innerHTML = i;
+//     setTimeout(() => {
+//       incNo(i + 1, last, elem);
+//     }, 10);
+//   } else if (i > last) {
+//     elem.innerHTML += "+";
+//   }
+// };
 
-const incAllNos = (statNo1, statNo2, statNo3, statNo4, statNo5) => {
-  incNoDone = true;
-  incNo(0, 101, statNo1.childNodes[0].nextSibling);
-  incNo(0, 200, statNo2.childNodes[0].nextSibling);
-  incNo(0, 5, statNo3.childNodes[0].nextSibling);
-  incNo(0, 40, statNo4.childNodes[0].nextSibling);
-  incNo(0, 10, statNo5.childNodes[0].nextSibling);
-};
+// const incAllNos = (statNo1, statNo2, statNo3, statNo4, statNo5) => {
+//   incNoDone = true;
+//   incNo(0, 101, statNo1.childNodes[0].nextSibling);
+//   incNo(0, 200, statNo2.childNodes[0].nextSibling);
+//   incNo(0, 5, statNo3.childNodes[0].nextSibling);
+//   incNo(0, 40, statNo4.childNodes[0].nextSibling);
+//   incNo(0, 10, statNo5.childNodes[0].nextSibling);
+// };
 
 // Carousel
 

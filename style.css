@@ -454,7 +454,7 @@ nav ul li > a:hover {
   width: 50%;
   border-radius: 2px;
   background: linear-gradient(to top, #47bb43, #23801f);
-} 
+}
 
 @media (max-width: 576px) {
   .flexbox {
@@ -836,7 +836,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 10%;
+  padding: 0 4%;
 }
 
 .statsBox {
@@ -861,6 +861,7 @@ a {
 
 .statsBox p {
   text-shadow: 1px 1px 4px #000;
+  text-align: center;
 }
 
 @media (max-width: 980px) {

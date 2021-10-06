@@ -985,10 +985,13 @@ a {
   height: 450px;
   width: 320px;
   margin: 4px 2px;
-  filter: grayscale(1);
+  filter: grayscale(5.1);
   transition: 0.3s;
+  background-image: linear-gradient(0, 0, 2, 0.3);
+  /* background-color: black; */
   position: relative;
 }
+
 .speaker:hover {
   filter: none;
 }
@@ -999,22 +1002,52 @@ a {
   padding: 15px;
   cursor: pointer;
 }
+.speaker::after {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.2)
+  );
+
+  background-image: linear-gradient(to top, #2d3436 4%, #d3d3d3 20%);
+  background-color: #5b6467;
+  background-image: linear-gradient(to top, #0e0f0f 0%, #d7e2ec 74%);
+
+  /* background-image: linear-gradient(to top, #000000 0%, #7f8c8d 74%); */
+
+  mix-blend-mode: multiply;
+}
 .speaker:hover .speakerTint {
   background: linear-gradient(
-    to top right,
+    to bottom,
     rgba(200, 40, 120, 0.5),
-    rgba(80, 200, 50, 0.5)
+    rgba(80, 200, 50, 0.2),
+    rgba(0, 0, 0, 0.2),
+    black 98%
   );
 }
+
 .speakerTint h3 {
   font-size: 24px;
+  font-size: 18px;
   color: #fff;
+  z-index: 1;
   text-shadow: 2px 2px 5px #000;
   margin-top: auto;
 }
 .speakerTint p {
   font-size: 18px;
+  font-size: 14px;
   margin: 8px 0;
+  z-index: 1;
   text-shadow: 2px 2px 3px #000;
 }
 @media (max-width: 960px) {

@@ -30,7 +30,7 @@ let publications = [];
 let faqs = [];
 let darwin2019 = [];
 let benefits = [];
-let highlights=[];
+let highlights = [];
 
 const getAirtableData = async () => {
   updateConference();
@@ -100,10 +100,11 @@ const updateSpeakers = async () => {
   let template4 = "";
 
   speakerProfiles.forEach((speaker, index) => {
-
-    if(speaker.SessionType === "Talk")
-    template1 += `
-      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null}') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription, speakerProfiles[${index}].Designation)">
+    if (speaker.SessionType === "Talk")
+      template1 += `
+      <div class="speaker revealFromBottom" style="background: url('${
+        speaker.ProfilePic ? speaker.ProfilePic[0].url : null
+      }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription, speakerProfiles[${index}].Designation)">
         <div class="speakerTint">
           <h3>${speaker.Name}</h3>
           <p>${speaker.Designation}</p>
@@ -112,7 +113,9 @@ const updateSpeakers = async () => {
       `;
     else if (speaker.SessionType === "BioArt")
       template2 += `
-      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null}') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
+      <div class="speaker revealFromBottom" style="background: url('${
+        speaker.ProfilePic ? speaker.ProfilePic[0].url : null
+      }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
         <div class="speakerTint">
           <h3>${speaker.Name}</h3>
           <p>${speaker.Designation}</p>
@@ -121,7 +124,9 @@ const updateSpeakers = async () => {
       `;
     else if (speaker.SessionType === "Medical Biology")
       template3 += `
-      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null}') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
+      <div class="speaker revealFromBottom" style="background: url('${
+        speaker.ProfilePic ? speaker.ProfilePic[0].url : null
+      }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
         <div class="speakerTint">
           <h3>${speaker.Name}</h3>
           <p>${speaker.Designation}</p>
@@ -130,7 +135,9 @@ const updateSpeakers = async () => {
       `;
     else if (speaker.SessionType === "Cell Biology")
       template4 += `
-      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null}') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
+      <div class="speaker revealFromBottom" style="background: url('${
+        speaker.ProfilePic ? speaker.ProfilePic[0].url : null
+      }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
         <div class="speakerTint">
           <h3>${speaker.Name}</h3>
           <p>${speaker.Designation}</p>
@@ -165,9 +172,8 @@ const updateSpeakers = async () => {
     //   <div class="speakerTint">
     //     <h3>${speaker.Name}</h3>
     //   </div>
-    // </div>  
+    // </div>
     // `;
-
   });
   // document.getElementsByClassName("speakersRow")[0].innerHTML = template1;
 
@@ -258,7 +264,7 @@ const updatePublications = async () => {
   let template = "";
   publications.forEach((publication, index) => {
     template += `
-    <img src="${publication.Logo[0].url}" alt="Publication" />
+    <img src="${publication.invertedLogo[0].url}" alt="Publication" class="pubimg" />
     `;
   });
   document.getElementById("publications").innerHTML = template;
@@ -305,7 +311,7 @@ const updateBlogs = async () => {
 //   let template1= "";
 
 //   highlights.forEach((highlight, index) => {
-  
+
 //     console.log(index);
 //     console.log(highlight.Image[0].url);
 //     template += `
@@ -314,11 +320,11 @@ const updateBlogs = async () => {
 //                 class="content"
 //                 style="background: url(${highlight.Image[0].url}) center/cover"
 //               ></div>
-//     </div>          
+//     </div>
 //     `;
 //     template1+= `
 //       <div class="indicator" data-slide="${index}"></div>
-//     ` 
+//     `
 //   });
 //   document.getElementById("highlights").innerHTML = template;
 //   document.getElementById("indicators").innerHTML =  template1;

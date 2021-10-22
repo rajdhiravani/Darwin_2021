@@ -1265,8 +1265,22 @@ a {
 
 .publicationsRow img {
   height: 60px;
+  filter: grayscale(1);
+  /* background: #fff; */
+  margin: 30px;
+}
+
+.pubimg {
+  height: 60px;
   background: #fff;
   margin: 30px;
+}
+
+.pubimg:hover {
+  background: linear-gradient(to top right, #c8247c, #47bb43);
+}
+.publicationsRow img:hover {
+  filter: none;
 }
 
 @media (max-width: 760px) {

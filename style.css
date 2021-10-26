@@ -750,6 +750,14 @@ a {
   align-items: center;
 }
 
+.rcAbout {
+  width: 80%;
+}
+
+.sub-heading {
+  font-size: 36px;
+}
+
 .leftContent {
   width: 60%;
 }

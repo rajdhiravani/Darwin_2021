@@ -1,0 +1,73 @@
+DirectoryIndex index.html
+
+ErrorDocument 404 /404.html
+
+
+
+Options -Indexes -MultiViews
+
+RewriteEngine on
+
+
+
+RewriteCond %{THE_REQUEST} \.php [NC]
+
+RewriteRule ^(?!404\.php)$ - [L,NC,R=404]
+
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+
+RewriteRule ^([^/]+)/?(.*)$ ./$1.php [L]
+
+
+
+Options +FollowSymlinks -MultiViews
+
+RewriteEngine On
+
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^thedarwin\.in  [NC]
+
+# RewriteRule ^pre-event-1 https://www.google.com$1 [R=301,NC,L]
+
+RewriteRule ^pre-event-3 https://airtable.com/shrpQ820EskX1ftyo$1 [R=301,NC,L]
+
+RewriteRule ^Ask-Me-Anything-8 https://airtable.com/shrQbmTc8MdddpA6V$1 [R=301,NC,L]
+
+RewriteRule ^Ask-Me-Anything-9 https://airtable.com/shrouoqQgCLrVmANL$1 [R=301,NC,L]
+
+RewriteRule ^Ask-Me-Anything-10 https://airtable.com/shraGfy4r86S76B6A$1 [R=301,NC,L]
+
+RewriteRule ^Ask-Me-Anything-11 https://airtable.com/shryOlfbv0Y3U3nf9$1 [R=301,NC,L]
+
+RewriteRule ^Ask-Me-Anything-12 https://airtable.com/shrCIxWSXJHOHS5wm$1 [R=301,NC,L]
+
+RewriteRule ^Ask-Me-Anything-13 https://airtable.com/shraL9s3w4VPmLdxG$1 [R=301,NC,L]
+
+# RewriteRule ^Ask-Me-Anything-14 https://airtable.com/shr6ojDAMQRq8DS9j$1 [R=301,NC,L]
+
+RewriteRule ^Ask-Me-Anything-14 https://airtable.com/shrEElZbKaOgxH3PV [R=301,NC,L]
+
+RewriteRule ^Ask-Me-Anything-15 https://airtable.com/shr6ojDAMQRq8DS9j [R=301,NC,L]
+
+RewriteRule ^ResearchSymposium https://airtable.com/shrJtbhoT3n9dlhOm [R=301,NC,L]
+
+RewriteRule ^ScientificWritingMasterclass https://airtable.com/shrKysjM3ZRGk4DwL [R=301,NC,L]
+
+RewriteRule ^Attend-Conference https://airtable.com/shrYXlBxmZXEgihUB$1 [R=301,NC,L]
+
+RewriteRule ^AmbassadorProgram https://airtable.com/shraT5WvW1RZQIwYx$1 [R=301,NC,L]
+
+
+
+
+
+RewriteEngine On
+
+RewriteCond %{SERVER_PORT} 80
+
+RewriteRule ^(.*)$ https://www.thedarwin.in/$1 [R,L]

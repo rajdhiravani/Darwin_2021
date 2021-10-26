@@ -19,14 +19,13 @@
     />
     <link rel="icon" type="image/png" href="./img/favico.png" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Darwin 2021</title>
+    <title>Darwin rc</title>
     <script src="./world-map/mapdata.js"></script>
     <script src="./world-map/worldmap.js"></script>
     <script src="./js/airtable.browser.js"></script>
     <script src="./js/scrollreveal.min.js"></script>
     <script src="./js/fetchData.js"></script>
   </head>
-
   <body>
     <nav class="home">
       <input type="checkbox" id="check" />
@@ -38,14 +37,13 @@
       </div>
 
       <ul>
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">About us</a></li>
         <li>
-          <a href="#conferenceOverview">Overview</a>
+          <a href="https://thedarwin.in/" target="_blank">Main Conference</a>
         </li>
         <li>
           <a href="#speakers">Speakers</a>
         </li>
-
         <li class="dropdown">
           <a onclick="dropdownAppear(this)">Collaborate</a>
           <ul class="dropdown-content">
@@ -61,28 +59,6 @@
             </li>
           </ul>
         </li>
-        <!-- <li>
-          <a href="./blogs.html">Blogs</a>
-        </li> -->
-        <li class="dropdown">
-          <a onclick="dropdownAppear(this)">Previous Conferences</a>
-          <ul class="dropdown-content">
-            <li>
-              <a
-                href="https://www.riidl.org/thedarwin.in/2020/index.html"
-                target="_blank"
-                >Darwin 2020</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.riidl.org/thedarwin.in/darwin2019.html"
-                target="_blank"
-                >Darwin 2019</a
-              >
-            </li>
-          </ul>
-        </li>
         <li>
           <a href="#footer">Contact Us</a>
         </li>
@@ -91,33 +67,13 @@
 
     <div class="landingContainer">
       <div class="landingTint">
-        <img src="./img/darwin.png" alt="Darwin" />
-        <h1>One of India's Biggest Evolutionary Movements in Biology</h1>
-        <p>
-          <i class="fa fa-map-marker" id="location-marker"></i> Virtual
-          Conference
-        </p>
-        <p><i class="fa fa-calendar"></i> December 2 to 5, 2021</p>
-        <p><i class="fa fa-flask"></i> Cutting Edge Biology</p>
-
-        <div class="countdown">
-          <div class="time">
-            <h3 id="days">00</h3>
-            <p>Days</p>
-          </div>
-          <div class="time">
-            <h3 id="hrs">00</h3>
-            <p>Hours</p>
-          </div>
-          <div class="time">
-            <h3 id="mins">00</h3>
-            <p>Minutes</p>
-          </div>
-          <div class="time">
-            <h3 id="secs">00</h3>
-            <p>Seconds</p>
-          </div>
-        </div>
+        <!-- IMG ADDED RESIZE REMAINING -->
+        <img src="./img/Regional Darwin.png" alt="Regional Darwin" />
+        <h1>South African Stemi Makers</h1>
+        <!-- DATE TIMELINE LOCATION DETAILS DONE AS PER AIRTABLE -->
+        <p><i class="fa fa-calendar"></i>December 2, 2021</p>
+        <p><i class="fa fa-clock-o"></i> 10 AM to 5 PM WAT</p>
+        <p><i class="fa fa-language"></i>English</p>
 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
@@ -129,14 +85,15 @@
         <div id="svgFiller"></div>
 
         <div class="flexbox">
-          <div class="btn-pink">
+          <!-- <div class="btn-pink">
             <a href="https://thedarwin.in/Attend-Conference"
               >Attend Conference</a
             >
-          </div>
+          </div> -->
           <div class="btn-green">
-            <a href="https://thedarwin.in/ResearchSymposium"
-              >Present Research Paper</a
+            <i class="fa fa-sign-in" style="padding-right: 1px"></i>
+            <a href="https://airtable.com/shrf1mM3ktsH7fX7f" target="_blank"
+              >Register Now</a
             >
           </div>
         </div>
@@ -151,9 +108,11 @@
       </div>
     </div>
 
+    <!-- ABOUT PAGE -->
     <br />
+
     <div class="bodyContainer">
-      <div class="aboutContainer" id="about">
+      <div class="aboutContainer rcAbout" id="about">
         <div class="leftContent">
           <h2>About Us</h2>
           <p>
@@ -174,170 +133,66 @@
             working groups initiated several research causes to work upon for a
             year and later get them published as Conference Proceedings.
           </p>
+          <h3 class="sub-heading">Lab Details</h3>
+          <p>
+            Building Africa’s Workforce to be more equipped with future-focused
+            options and becoming more experienced in STEM for our continent.
+          </p>
+          <h3 class="sub-heading">About Stemi Makers Africa</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
+            soluta.
+          </p>
+          <!-- TO BE DECIDED AND STYLE CHECK {SEEMS VERY WEIRD NOW}-->
+          <h3 class="sub-heading">Organising Team</h3>
+          <span>Raj Head</span>
         </div>
         <div class="rightPic">
           <img src="./img/about.jpg" alt="About" />
         </div>
       </div>
 
-      <div class="statsContainer" id="stats">
-        <div class="statsTint">
-          <div class="statsBox">
-            <h2>1500+</h2>
-            <p>Attendees</p>
-          </div>
-          <div class="statsBox">
-            <h2>5</h2>
-            <p>Projects funded</p>
-          </div>
-          <div class="statsBox">
-            <h2>29+</h2>
-            <p>Countries</p>
-          </div>
-          <div class="statsBox">
-            <h2>24</h2>
-            <p>Workshops</p>
-          </div>
-          <div class="statsBox">
-            <h2>9</h2>
-            <p>Research Papers published</p>
-          </div>
-        </div>
-      </div>
+      <!-- End of body container -->
     </div>
+    <!-- END OF ABOUT PAGE -->
 
+    <!-- Conference Overview -->
     <div class="blogsContainer conferenceContainer" id="conferenceOverview">
       <h2>Conference Overview</h2>
       <div class="blogsRow"></div>
     </div>
+    <!-- END onference Overview -->
 
-    <!-- Speakers -->
-    <!-- <div class="speakersContainer" id="speakers">
-      <h2>Our Speakers</h2>
-      <div class="speakerDivTint">
-        <div class="speakersRow"></div>
-  
-        <div class="speaker" id="speaker">
-          <div class="speakerBox">
-            <h3 id="speakerHeader"></h3>
-            <hr />
-            <p id="speakerBody"></p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- new -->
+    <!-- SPEAKER SECTION -->
+    <!-- UNABLE TO FETCH SPEAKERS SOME ISSUE -->
     <div class="speakersContainer" id="speakers">
       <h2>Our Speakers</h2>
       <hr />
       <div class="speakersRow"></div>
     </div>
+    <!-- SPEAKER SECTION END -->
 
-    <div class="speakersContainer" id="panel1">
-      <h2>
-        Panel Discussion on 'Redesigning the Future of Science with BioArt'
-      </h2>
-      <hr />
-      <div class="speakersRow"></div>
-    </div>
-
-    <div class="speakersContainer" id="panel2">
-      <h2>
-        Panel Discussion on 'Aging: A curable disease or an inevitable process'
-      </h2>
-      <hr />
-      <div class="speakersRow"></div>
-    </div>
-
-    <div class="speakersContainer" id="panel3">
-      <h2>
-        Panel Discussion on 'Cell and Developmental Biology: Perspectives from
-        around the world'
-      </h2>
-      <hr />
-      <div class="speakersRow"></div>
-    </div>
-    <!-- <div class="speakersContainer" id="panel3">
-      <h2>Panel Discussion on Cell Biology</h2>
-      <hr />
-      <div class="speakersRow"></div>
-    </div> -->
-    <!-- 
-    <div class="bodyContainer reverseGradientBody">
-      <div class="mapContainer">
-        <h2>Participation from 29+ Countries</h2>
-        <div id="map"></div>
-      </div> -->
-
+    <!-- WORKSHOP -->
     <div class="blogsContainer conferenceContainer">
-      <h2>Pre Events</h2>
+      <h2>Workshops</h2>
 
       <div class="blogsRow" id="preEvents"></div>
     </div>
+    <!-- END OF WORKSHOPS -->
 
-    <!-- highlights -->
-    <div class="highlightsContainer">
-      <h2>Highlights</h2>
-      <div class="slider">
-        <div class="slider-inner" id="highlights"></div>
-
-        <div class="indicators" id="indicators"></div>
-
-        <div class="arrows">
-          <div class="arrow-prev">
-            <i class="fa fa-angle-left"></i>
-          </div>
-          <div class="arrow-next">
-            <i class="fa fa-angle-right"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Embed Video -->
-    <div class="videoContainer" style="text-align: center">
-      <h2 class="vid">After Movie</h2>
-      <div class="iframe-container">
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/bQbUm_KtLKY"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
-
+    <!-- PARTNER LOGOS -->
     <div class="publicationsContainer" id="collaborator">
       <h2>Our Collaborators</h2>
       <div class="publicationsRow" id="collaborators"></div>
     </div>
+    <!-- END OF PARTNER LOGO -->
 
-    <div class="publicationsContainer">
-      <h2>Publications</h2>
-      <div class="publicationsRow" id="publications"></div>
-    </div>
-
-    <div class="testimonialsContainer">
-      <h2>Testimonials</h2>
-      <div class="testimonialsRow" id="testimonials"></div>
-    </div>
-    <!-- </div> -->
-
+    <!-- FOOTER -->
     <div class="footerContainer" id="footer">
       <img src="./img/darwin.png" alt="Darwin logo" />
       <div class="footerContact">
         <p>Contact us:</p>
         <div class="contactDetails">
-          <!-- <a
-            target="_blank"
-            href="whatsapp://send?phone=+917666478569&?text=Hello! I have a query regarding the Darwin Conference. Could you please help me out"
-          >
-            <i class="fa fa-phone"></i> +91 76664 78569
-          </a> -->
           <a target="_blank" href="mailto:darwin@somaiya.edu">
             <i class="fa fa-envelope"></i> darwin@somaiya.edu
           </a>
@@ -370,18 +225,9 @@
         Join our Facebook Community
       </a>
     </div>
+    <!-- END OF FOOTER -->
 
-    <!-- Modal -->
-
-    <div class="modal" id="modal">
-      <div class="modalBox">
-        <i class="fa fa-close" onclick="closeModal()"></i>
-        <h3 id="modalHeader"></h3>
-        <hr />
-        <p id="modalBody"></p>
-      </div>
-    </div>
-
+    <!-- JAVASCRIPT -->
     <script src="./main.js"></script>
     <script>
       getAirtableData();

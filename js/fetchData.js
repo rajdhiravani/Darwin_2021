@@ -157,6 +157,10 @@ const updateSpeakers = async () => {
     const [panel2Row] = panel2.getElementsByClassName("speakersRow");
     panel2Row.innerHTML = template3;
 
+    const panel3 = document.getElementById("panel3");
+    const [panel3Row] = panel3.getElementsByClassName("speakersRow");
+    panel3Row.innerHTML = template4;
+
     // const panel3 = document.getElementById("panel3");
     // const [panel3Row] = panel3.getElementsByClassName("speakersRow");
     // panel3Row.innerHTML = template4;
@@ -250,7 +254,9 @@ const updateCollaborators = async () => {
   let template = "";
   collaborators.forEach((collaborator, index) => {
     template += `
+    <a href="${collaborator.Link}" target="_blank">
     <img src="${collaborator.Logo[0].url}" alt="Collaborator" />
+    </a>
     `;
   });
   document.getElementById("collaborators").innerHTML = template;
@@ -264,7 +270,9 @@ const updatePublications = async () => {
   let template = "";
   publications.forEach((publication, index) => {
     template += `
+    <a href="${publication.Link}" target="_blank">
     <img src="${publication.invertedLogo[0].url}" alt="Publication" class="pubimg" />
+    </s>
     `;
   });
   document.getElementById("publications").innerHTML = template;

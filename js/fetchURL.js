@@ -9,3 +9,5 @@ function getQueryParam(name, url ) {
 var conferenceName = getQueryParam('rc', currentURL);
 console.log(conferenceName);
 
+//eg: https://thedarwin.in/?rc=stemi
+//op: conferenceName= stemi

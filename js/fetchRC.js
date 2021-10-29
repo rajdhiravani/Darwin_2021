@@ -81,6 +81,7 @@ const getAirtableData = async () => {
     // updateTestimonials();
     // updatePublications();
     updateCollaborators();
+  updateDetails();
     // getHighlights();
     // updateFAQs();
     // updateBenefits();
@@ -108,28 +109,68 @@ const sortByOrder = (arr) => {
 };
 
 const updateDetails = async () => {
-  websiteDetails = await getRecords("Website Details");
+  websiteDetails = await getRecords("WebsiteDetails");
+  websiteDetails = sortByOrder(websiteDetails);
   let template1 = "";
   let template2="";
+  let template3="";
+  let template4 = "";
 
-  websiteDetails.forEach((conference, index=3) => {
-    template1 += `
-    <p><i class="fa fa-calendar"></i>websiteDetails[${index}].Information</p>
-    `;
-});
+  //RC name
+  websiteDetails.forEach((detail, index) => {
+    if (detail.Name === "RC Name") {
+      template4 += `
+        <h1>${websiteDetails[index].Information}</h1>
+        `;
+    }
+  });
+
+  //date time and timezone
+  websiteDetails.forEach((detail, index) => {
+    if (detail.Name === "Date Time & Timezone"){
+      template1 += `
+        <p><i class="fa fa-calendar"></i>${websiteDetails[index].Information}</p>
+        `;
+    }
+  });
+
+  //language
+    websiteDetails.forEach((detail, index) => {
+      if (detail.Name === "Language") {
+        template2 += `
+         <p><i class="fa fa-language"></i>${websiteDetails[index].Information}</p>
+         `;
+      }
+
+  });
+
+
+//register now link
+  websiteDetails.forEach((detail, index) => {
+    if (detail.Name === "Register Link") {
+      template3 += `
+       <div class="btn-green">
+            <i class="fa fa-sign-in" style="padding-right: 1px"></i>
+            <a href=${websiteDetails[index].Information} target="_blank"
+              >Register Now</a
+            >
+          </div>
+         `;
+    }
+  });
+  
+  document.querySelector("#RCName").innerHTML =
+    template4;
+
   document.querySelector("#conferenceDate").innerHTML =
     template1;
 
-
-
-  websiteDetails.forEach((conference, index = 4) => {
-    template2 += `
-        <p><i class="fa fa-language"></i>websiteDetails[${index}]</p>
-    `;
-  });
   document.querySelector("#conferenceLanguage").innerHTML =
   template2;
-  
+
+  document.querySelector("#regLink").innerHTML =
+  template3;
+
 };
 
 

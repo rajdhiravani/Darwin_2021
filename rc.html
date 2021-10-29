@@ -24,8 +24,8 @@
     <script src="./world-map/worldmap.js"></script>
     <script src="./js/airtable.browser.js"></script>
     <script src="./js/scrollreveal.min.js"></script>
-    <script src="./js/fetchData.js"></script>
-      <script src="./js/fetchURL.js"></script>
+    <!-- <script src="./js/fetchData.js"></script> -->
+      <script src="./js/fetchRC.js"></script>
   </head>
   <body>
     <nav class="home">
@@ -72,9 +72,13 @@
         <img src="./img/Regional Darwin.png" alt="Regional Darwin" />
         <h1>South African Stemi Makers</h1>
         <!-- DATE TIMELINE LOCATION DETAILS DONE AS PER AIRTABLE -->
-        <p><i class="fa fa-calendar"></i>December 2, 2021</p>
-        <p><i class="fa fa-clock-o"></i> 10 AM to 5 PM WAT</p>
-        <p><i class="fa fa-language"></i>English</p>
+        <div id="conferenceDate"></div>
+        <div id="conferenceLanguage"></div>
+
+
+        <!-- <p><i class="fa fa-calendar"></i>December 2, 2021</p> -->
+        <!-- <p><i class="fa fa-clock-o"></i> 10 AM to 5 PM WAT</p> -->
+        <!-- <p><i class="fa fa-language"></i>English</p> -->
 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
@@ -166,18 +170,18 @@
 
     <!-- SPEAKER SECTION -->
     <!-- UNABLE TO FETCH SPEAKERS SOME ISSUE -->
-    <div class="speakersContainer" id="speakers">
+    <!-- <div class="speakersContainer" id="speakers">
       <h2>Our Speakers</h2>
       <hr />
       <div class="speakersRow"></div>
-    </div>
+    </div> -->
     <!-- SPEAKER SECTION END -->
 
     <!-- WORKSHOP -->
     <div class="blogsContainer conferenceContainer">
       <h2>Workshops</h2>
 
-      <div class="blogsRow" id="preEvents"></div>
+      <div class="blogsRow" id="workshop"></div>
     </div>
     <!-- END OF WORKSHOPS -->
 
@@ -235,40 +239,40 @@
 
       // Countdown
 
-      const darwinDate = new Date("December 2, 2021, 10:00:00").getTime();
+      // const darwinDate = new Date("December 2, 2021, 10:00:00").getTime();
 
-      const countdown = setInterval(() => {
-        let currentDate = Date.now();
-        let diff = darwinDate - currentDate;
+      // const countdown = setInterval(() => {
+      //   let currentDate = Date.now();
+      //   let diff = darwinDate - currentDate;
 
-        let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        let hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        let secs = Math.floor((diff % (1000 * 60)) / 1000);
+      //   let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      //   let hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      //   let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      //   let secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.getElementById("days").innerHTML =
-          days < 10 ? "0" + days : days;
-        document.getElementById("hrs").innerHTML = hrs < 10 ? "0" + hrs : hrs;
-        document.getElementById("mins").innerHTML =
-          mins < 10 ? "0" + mins : mins;
-        document.getElementById("secs").innerHTML =
-          secs < 10 ? "0" + secs : secs;
+      //   document.getElementById("days").innerHTML =
+      //     days < 10 ? "0" + days : days;
+      //   document.getElementById("hrs").innerHTML = hrs < 10 ? "0" + hrs : hrs;
+      //   document.getElementById("mins").innerHTML =
+      //     mins < 10 ? "0" + mins : mins;
+      //   document.getElementById("secs").innerHTML =
+      //     secs < 10 ? "0" + secs : secs;
 
-        if (diff < 0) clearInterval(countdown);
-      }, 1000);
+      //   if (diff < 0) clearInterval(countdown);
+      // }, 1000);
 
-      // Map
+      // // Map
 
-      const hideMap = () => {
-        setTimeout(() => {
-          const map = document.querySelectorAll(
-            '[href="https://simplemaps.com"]'
-          );
-          for (let i = 0; i < map.length; i++) {
-            map[i].style.display = "none";
-          }
-        }, 3000);
-      };
+      // const hideMap = () => {
+      //   setTimeout(() => {
+      //     const map = document.querySelectorAll(
+      //       '[href="https://simplemaps.com"]'
+      //     );
+      //     for (let i = 0; i < map.length; i++) {
+      //       map[i].style.display = "none";
+      //     }
+      //   }, 3000);
+      // };
 
       //   Speaker Details
 
@@ -294,10 +298,10 @@
 
       // Window functions
 
-      window.onload = function () {
-        hideMap();
-        firstSpeakerDisplay();
-      };
+      // window.onload = function () {
+      //   // hideMap();
+      //   firstSpeakerDisplay();
+      // };
     </script>
   </body>
 </html>

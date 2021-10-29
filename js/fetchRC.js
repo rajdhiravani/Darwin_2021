@@ -1,62 +1,64 @@
 //////////////////////////////////////////////////////TO FETCH AIRTABLE DATA OF EACH RC////////////////////////////////////////////////////////////////////////
 
-
 let Airtable = require("airtable");
-const { base } = require("./airtable.browser");
+// const { base } = require("./airtable.browser");
 
 ////////////////////////////get URL param///////////////////////////
-currentURL = window.location.href;
+// currentURL = window.location.href;
 // console.log(currentURL);
 
-function getQueryParam(name, url) {
-  var q = url.match(new RegExp('[?&]' + name + '=([^&#]*)'));
-  return q && q[1];
-}
-var urlName = getQueryParam('rc', currentURL);
+// function getQueryParam(name, url) {
+//   var q = url.match(new RegExp('[?&]' + name + '=([^&#]*)'));
+//   return q && q[1];
+// }
+// var urlName = getQueryParam('rc', currentURL);
 //eg url: https://thedarwin.in/?rc=stemi
 //output: conferenceName= stemi
 
-
-var conferenceName;
-var conferenceID;
+// console.log(urlName);
+// var conferenceName; //base name
+// var conferenceID; //base id
 //////////////convert RC name to Conference name (base name) and assign base id to each RC base///////////////
 
 //put url param name as case
-switch (urlName) {
-  case "stemi":
-    conferenceName = "Darwin 2021 RC - STEMi Makers Africa";
-    conferenceID = "appV8InzyT6tEQHtP";
-    break;
+// switch (urlName) {
+//   case "stemi":
+//     conferenceName = "Darwin 2021 RC - STEMi Makers Africa";
+//     conferenceID = "appV8InzyT6tEQHtP";
+//     break;
     // keep adding here on addition of more bases
-  case "xyz":
-    conferenceName= "xyz RC";
-    conferenceID= "";
+  // case "xyz":
+  //   conferenceName= "xyz RC";
+  //   conferenceID= "";
 
 
 
-  default:
-    // defaults to original Darwin base
-    conferenceName = "Darwin 2021"
-    conferenceID = "appRcXPwopPZ85HbJ";
-}
+//   default:
+//     // defaults to original Darwin base
+//     conferenceName = "Darwin 2021"
+//     conferenceID = "appRcXPwopPZ85HbJ";
+// }
 
 // Airtable credentials
 const metaData = {
-    baseID: conferenceID,
-    baseName: conferenceName,
-    tablesCount: 11,
+    baseID: "appV8InzyT6tEQHtP",
+    baseName: "Darwin 2021 RC - STEMi Makers Africa",
+    tablesCount: 3,
     tables: [
         "Conference overview",
-        "Speaker profiles",
-        "Pre-Event",
+        // "Speaker profiles",
+        // "Workshop Details",
+        // "Schedule",
+        "Website Details",
+        // "Pre-Event",
         "Collaborators",
-        "Testimonials",
-        "Schedule calendar",
-        "Publications",
-        "FAQs",
-        "Darwin 2019",
-        "Benefits",
-        "Highlights",
+        // "Testimonials",
+        // "Schedule calendar",
+        // "Publications",
+        // "FAQs",
+        // "Darwin 2019",
+        // "Benefits",
+        // "Highlights",
     ],
 };
 
@@ -74,20 +76,18 @@ let highlights = [];
 
 const getAirtableData = async () => {
     updateConference();
-    updateSpeakers();
-    updatePreevents();
-    updateTestimonials();
-    updatePublications();
+    // updateSpeakers();
+    updateWorkshops();
+    // updateTestimonials();
+    // updatePublications();
     updateCollaborators();
-    getHighlights();
+    // getHighlights();
     // updateFAQs();
     // updateBenefits();
 };
 
 const getRecords = async (tableName) => {
-    let base = new Airtable({ apiKey: "keyiZXGBC4056oZ5W" }).base(
-        "appRcXPwopPZ85HbJ"
-    );
+  let base = new Airtable({ apiKey: "key2otdbHDz4DE64m" }).base( "appV8InzyT6tEQHtP" );
     const fields = [];
     const records = await base(tableName)
         .select({
@@ -107,20 +107,49 @@ const sortByOrder = (arr) => {
     return temp;
 };
 
+const updateDetails = async () => {
+  websiteDetails = await getRecords("Website Details");
+  let template1 = "";
+  let template2="";
+
+  websiteDetails.forEach((conference, index=3) => {
+    template1 += `
+    <p><i class="fa fa-calendar"></i>websiteDetails[${index}].Information</p>
+    `;
+});
+  document.querySelector("#conferenceDate").innerHTML =
+    template1;
+
+
+
+  websiteDetails.forEach((conference, index = 4) => {
+    template2 += `
+        <p><i class="fa fa-language"></i>websiteDetails[${index}]</p>
+    `;
+  });
+  document.querySelector("#conferenceLanguage").innerHTML =
+  template2;
+  
+};
+
+
 const updateConference = async () => {
     conferenceOverview = await getRecords("Conference overview");
     conferenceOverview = sortByOrder(conferenceOverview);
     let template = "";
+    let template2 = "";
+    let template3= "";
 
     conferenceOverview.forEach((conference, index) => {
+      if (conference.Type === "Talk")
         template += `
     <div class="blogCard">
-      <div class="blogPic" style="background: url('${conference.Image[0].url}') center/cover" >
+      <div class="blogPic" style="background: url('${conference.Speakers[0].url}') center/cover" >
         <div class="blogPicTint"></div>
       </div>
       <div class="blogContent">
         <h3>${conference.Name}</h3>
-        <button onclick="openModalWithMessage('${conference.Name}', '${conference.Description}', '${conference.Topic}', '${conference.Speakers}')">Read More</button>
+        <button onclick="openModalWithMessage('${conference.Name}','${conference.Topic}', '${conference.Description}', '${conference.Name}')">Read More</button>
       </div>
     </div>
     `;
@@ -201,66 +230,24 @@ const updateSpeakers = async () => {
     });
 };
 
-const updatePreevents = async () => {
-    preEvents = await getRecords("Pre-Event");
-    preEvents = sortByOrder(preEvents);
+const updateWorkshops = async () => {
+    workshops = await getRecords("Workshops");
+    workshops = sortByOrder(workshops);
     let template = "";
-    preEvents.forEach((event, index) => {
+    workshops.forEach((workshop, index) => {
         template += `
     <div class="blogCard">
-      <div class="blogPic" style="background: url(${event.Poster[0].url}) center/cover;">
+      <div class="blogPic" style="background: url(${workshop.Poster[0].url}) center/cover;">
         <div class="blogPicTint"></div>
       </div>
       <div class="blogContent">
-        <h3>${event.Name}</h3>
-        <button onclick="openModalWithMessage('${event.Name}', '${event.Description}', '${event.Topic}', '${event.Speakers}')">Read More</button>
+        <h3>${workshop.Name}</h3>
+        <button onclick="openModalWithMessage('${workshop.Name}', '${workshop.Description}', '${workshop.Conducted}')">Read More</button>
       </div>
     </div>
     `;
     });
-    document.getElementById("preEvents").innerHTML = template;
-
-    // animateDynamicElements();
-};
-
-const updateTestimonials = async () => {
-    testimonials = await getRecords("Testimonials");
-    testimonials = sortByOrder(testimonials);
-    let template = "";
-    testimonials.forEach((testimonial, index) => {
-        template += `
-    <div class="testimonialCard">
-      <img src="./img/quotes.png" alt="Quotes" />
-      <h3>${testimonial.Description}</h3>
-      <div class="testimonialBy">
-        <h4>${testimonial.Name}</h4>
-        <p>${testimonial.Designation}</p>
-      </div>
-    </div>
-    `;
-    });
-    document.getElementById("testimonials").innerHTML = template;
-
-    const testimonialsScroll = () => {
-        const testimonialsSection = document.getElementById("testimonials");
-        const testCard =
-            document.getElementsByClassName("testimonialCard")[0].clientWidth;
-
-        let i = 0;
-        setInterval(() => {
-            if (i > (testCard * testimonials.length) / testimonialsSection.scrollLeft)
-                i = 0;
-            else i = testimonialsSection.scrollLeft + testCard;
-
-            testimonialsSection.scroll({
-                top: 0,
-                left: i,
-                behavior: "smooth",
-            });
-        }, 2000);
-    };
-
-    testimonialsScroll();
+  document.getElementById("workshop").innerHTML = template;
 
     // animateDynamicElements();
 };
@@ -274,6 +261,9 @@ const updateCollaborators = async () => {
     <a href="${collaborator.Link}" target="_blank">
     <img src="${collaborator.Logo[0].url}" alt="Collaborator" />
     </a>
+    <br>
+    <h3>${collaborator.Name}</h3>
+    <p>${collaborator.Description}</p>
     `;
     });
     document.getElementById("collaborators").innerHTML = template;
@@ -293,37 +283,6 @@ const updatePublications = async () => {
     `;
     });
     document.getElementById("publications").innerHTML = template;
-
-    // animateDynamicElements();
-};
-
-const updateBlogs = async () => {
-    blogs = await getRecords("Blogs");
-    blogs = sortByOrder(blogs);
-    let template = "";
-    blogs.forEach((blog, index) => {
-        template += `
-    <div
-      class="blogCard"
-      onclick="window.open('${blog.Link}')"
-    >
-      <div class="blogPic" style="background: url(${blog.Image[0].url}) center/cover">
-        <div class="blogPicTint"></div>
-      </div>
-      <div class="blogContent">
-        <h3>${blog.Title}</h3>
-        <div class="blogAuthor">
-          <div class="blogAuthorPic" style="background: url(${blog["Author Pic"][0].url}) center/cover"></div>
-          <div class="blogAuthorDetails">
-            <h4>${blog.Author}</h4>
-            <p>Posted on: ${blog.Date}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    `;
-    });
-    document.querySelector("#blogs").innerHTML = template;
 
     // animateDynamicElements();
 };

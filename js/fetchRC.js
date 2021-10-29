@@ -275,10 +275,12 @@ const updatePublications = async () => {
     publications = await getRecords("Publications");
     publications = sortByOrder(publications);
     let template = "";
+
+    //////////////////////////////////////// change css styling (display)///////////////////////////////////////
     publications.forEach((publication, index) => {
         template += `
     <a href="${publication.Link}" target="_blank">
-    <img src="${publication.invertedLogo[0].url}" alt="Publication" class="pubimg" />
+    <img src="${publication.invertedLogo[0].url}" alt="Publication" class="pubimg" style="display: block" />
     </s>
     `;
     });

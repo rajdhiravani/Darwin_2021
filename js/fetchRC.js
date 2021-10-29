@@ -1,9 +1,49 @@
+//////////////////////////////////////////////////////TO FETCH AIRTABLE DATA OF EACH RC////////////////////////////////////////////////////////////////////////
+
+
 let Airtable = require("airtable");
+const { base } = require("./airtable.browser");
+
+////////////////////////////get URL param///////////////////////////
+currentURL = window.location.href;
+// console.log(currentURL);
+
+function getQueryParam(name, url) {
+  var q = url.match(new RegExp('[?&]' + name + '=([^&#]*)'));
+  return q && q[1];
+}
+var urlName = getQueryParam('rc', currentURL);
+//eg url: https://thedarwin.in/?rc=stemi
+//output: conferenceName= stemi
+
+
+var conferenceName;
+var conferenceID;
+//////////////convert RC name to Conference name (base name) and assign base id to each RC base///////////////
+
+//put url param name as case
+switch (urlName) {
+  case "stemi":
+    conferenceName = "Darwin 2021 RC - STEMi Makers Africa";
+    conferenceID = "appV8InzyT6tEQHtP";
+    break;
+    // keep adding here on addition of more bases
+  case "xyz":
+    conferenceName= "xyz RC";
+    conferenceID= "";
+
+
+
+  default:
+    // defaults to original Darwin base
+    conferenceName = "Darwin 2021"
+    conferenceID = "appRcXPwopPZ85HbJ";
+}
 
 // Airtable credentials
 const metaData = {
-    baseID: "appRcXPwopPZ85HbJ",
-    baseName: "Darwin 2021",
+    baseID: conferenceID,
+    baseName: conferenceName,
     tablesCount: 11,
     tables: [
         "Conference overview",

@@ -26,12 +26,10 @@ let Airtable = require("airtable");
 //     conferenceName = "Darwin 2021 RC - STEMi Makers Africa";
 //     conferenceID = "appV8InzyT6tEQHtP";
 //     break;
-    // keep adding here on addition of more bases
-  // case "xyz":
-  //   conferenceName= "xyz RC";
-  //   conferenceID= "";
-
-
+// keep adding here on addition of more bases
+// case "xyz":
+//   conferenceName= "xyz RC";
+//   conferenceID= "";
 
 //   default:
 //     // defaults to original Darwin base
@@ -41,25 +39,26 @@ let Airtable = require("airtable");
 
 // Airtable credentials
 const metaData = {
-    baseID: "appV8InzyT6tEQHtP",
-    baseName: "Darwin 2021 RC - STEMi Makers Africa",
-    tablesCount: 3,
-    tables: [
-        "Conference overview",
-        // "Speaker profiles",
-        // "Workshop Details",
-        // "Schedule",
-        "Website Details",
-        // "Pre-Event",
-        "Collaborators",
-        // "Testimonials",
-        // "Schedule calendar",
-        // "Publications",
-        // "FAQs",
-        // "Darwin 2019",
-        // "Benefits",
-        // "Highlights",
-    ],
+  baseID: "appV8InzyT6tEQHtP",
+  baseName: "Darwin 2021 RC - STEMi Makers Africa",
+  tablesCount: 3,
+  tables: [
+    "Conference overview",
+    "Speakers&Panelist",
+    // "Speaker profiles",
+    // "Workshop Details",
+    // "Schedule",
+    "Website Details",
+    // "Pre-Event",
+    "Collaborators",
+    // "Testimonials",
+    // "Schedule calendar",
+    // "Publications",
+    // "FAQs",
+    // "Darwin 2019",
+    // "Benefits",
+    // "Highlights",
+  ],
 };
 
 let conferenceOverview = [];
@@ -75,61 +74,62 @@ let benefits = [];
 let highlights = [];
 
 const getAirtableData = async () => {
-    updateConference();
-    // updateSpeakers();
-    updateWorkshops();
-    // updateTestimonials();
-    // updatePublications();
-    updateCollaborators();
+  updateConference();
+  updateSpeakers();
+  updateWorkshops();
+  // updateTestimonials();
+  // updatePublications();
+  updateCollaborators();
   updateDetails();
-    // getHighlights();
-    // updateFAQs();
-    // updateBenefits();
+  // getHighlights();
+  // updateFAQs();
+  // updateBenefits();
 };
 
 const getRecords = async (tableName) => {
-  let base = new Airtable({ apiKey: "key2otdbHDz4DE64m" }).base( "appV8InzyT6tEQHtP" );
-    const fields = [];
-    const records = await base(tableName)
-        .select({
-            filterByFormula: "( visible = TRUE() )",
-        })
-        .all();
-    records.forEach(function (record) {
-        fields.push(record.fields);
-    });
-    return fields;
+  let base = new Airtable({ apiKey: "key2otdbHDz4DE64m" }).base(
+    "appV8InzyT6tEQHtP"
+  );
+  const fields = [];
+  const records = await base(tableName)
+    .select({
+      filterByFormula: "( visible = TRUE() )",
+    })
+    .all();
+  records.forEach(function (record) {
+    fields.push(record.fields);
+  });
+  return fields;
 };
 
 const sortByOrder = (arr) => {
-    const temp = arr.sort((a, b) => {
-        return a.order > b.order ? 1 : -1;
-    });
-    return temp;
+  const temp = arr.sort((a, b) => {
+    return a.order > b.order ? 1 : -1;
+  });
+  return temp;
 };
 
 const updateDetails = async () => {
   websiteDetails = await getRecords("WebsiteDetails");
   websiteDetails = sortByOrder(websiteDetails);
   let template1 = "";
-  let template2="";
-  let template3="";
+  let template2 = "";
+  let template3 = "";
   let template4 = "";
-  let template5="";
+  let template5 = "";
   let template6 = "";
   let template7 = "";
   let template8 = "";
   let template9 = "";
 
-
-    // // RC logo
-    websiteDetails.forEach((detail, index) => {
-      if (detail.Name === "RCLogo") {
-        template5 += `
+  // // RC logo
+  websiteDetails.forEach((detail, index) => {
+    if (detail.Name === "RCLogo") {
+      template5 += `
         <img src= "${websiteDetails[index].Attachments[0].url}" alt="darwin RC logo" />
         `;
-      }
-    });
+    }
+  });
 
   //RC name
   websiteDetails.forEach((detail, index) => {
@@ -142,7 +142,7 @@ const updateDetails = async () => {
 
   //date time and timezone
   websiteDetails.forEach((detail, index) => {
-    if (detail.Name === "DateTime&Timezone"){
+    if (detail.Name === "DateTime&Timezone") {
       template1 += `
         <p><i class="fa fa-calendar"></i>${websiteDetails[index].Information}</p>
         `;
@@ -150,17 +150,15 @@ const updateDetails = async () => {
   });
 
   //language
-    websiteDetails.forEach((detail, index) => {
-      if (detail.Name === "Language") {
-        template2 += `
+  websiteDetails.forEach((detail, index) => {
+    if (detail.Name === "Language") {
+      template2 += `
          <p><i class="fa fa-language"></i>${websiteDetails[index].Information}</p>
          `;
-      }
-
+    }
   });
 
-
-//register now link
+  //register now link
   websiteDetails.forEach((detail, index) => {
     if (detail.Name === "RegisterLink") {
       template3 += `
@@ -174,50 +172,66 @@ const updateDetails = async () => {
     }
   });
 
-    //lab details
-    websiteDetails.forEach((detail, index) => {
-      if (detail.Name === "LabDetails") {
-        template6 += `
+  //lab details
+  websiteDetails.forEach((detail, index) => {
+    if (detail.Name === "LabDetails") {
+      template6 += `
+        <div>
+        <h3 class="sub-heading">Lab Details</h3>
          <p>${websiteDetails[index].Information}</p>
+         </div>
          `;
-      }
-    });
+    }
+  });
 
+  // About Organizing Team
+  websiteDetails.forEach((detail, index) => {
+    if (detail.Name === "OrganizingTeam") {
+      template7 += `
+        <div>
+        <h3 class="sub-heading">Lab Details</h3>
+         <p>${websiteDetails[index].Information}</p>
+         </div>
+         `;
+    }
+  });
 
+  // Lab logo
+  websiteDetails.forEach((detail, index) => {
+    if (detail.Name === "LabLogo") {
+      template8 += `
+      <img src= "${websiteDetails[index].Attachments[0].url}" alt="darwin RC logo" />
+        `;
+    }
+  });
 
- 
-    document.querySelector("#labLogo").innerHTML =
-    template5;
+  document.querySelector("#labLogo").innerHTML = template5;
 
-  document.querySelector("#RCName").innerHTML =
-    template4;
+  document.querySelector("#RCName").innerHTML = template4;
 
-  document.querySelector("#conferenceDate").innerHTML =
-    template1;
+  document.querySelector("#conferenceDate").innerHTML = template1;
 
-  document.querySelector("#conferenceLanguage").innerHTML =
-  template2;
+  document.querySelector("#conferenceLanguage").innerHTML = template2;
 
-  document.querySelector("#regLink").innerHTML =
-  template3;
+  document.querySelector("#regLink").innerHTML = template3;
 
-  document.querySelector("#labDetails").innerHTML =
-    template6;
+  document.querySelector("#labDetails").innerHTML = template6;
 
+  document.querySelector("#LabOrganizingTeam").innerHTML = template7;
 
+  document.querySelector("#aboutPicLab").innerHTML = template8;
 };
 
-
 const updateConference = async () => {
-    conferenceOverview = await getRecords("Conference overview");
-    conferenceOverview = sortByOrder(conferenceOverview);
-    let template = "";
-    let template2 = "";
-    let template3= "";
+  conferenceOverview = await getRecords("Conference overview");
+  conferenceOverview = sortByOrder(conferenceOverview);
+  let template = "";
+  let template2 = "";
+  let template3 = "";
 
-    conferenceOverview.forEach((conference, index) => {
-      if (conference.Type === "Talk")
-        template += `
+  conferenceOverview.forEach((conference, index) => {
+    if (conference.Type === "Talk")
+      template += `
     <div class="blogCard">
       <div class="blogPic" style="background: url('${conference.Speakers[0].url}') center/cover" >
         <div class="blogPicTint"></div>
@@ -228,111 +242,113 @@ const updateConference = async () => {
       </div>
     </div>
     `;
-    });
-    document.querySelector("#conferenceOverview > .blogsRow").innerHTML =
-        template;
+  });
+  document.querySelector("#conferenceOverview > .blogsRow").innerHTML =
+    template;
 
-    // animateDynamicElements();
+  // animateDynamicElements();
 };
 
 const updateSpeakers = async () => {
-    speakerProfiles = await getRecords("Speaker profiles");
-    speakerProfiles = sortByOrder(speakerProfiles);
-    let template1 = "";
-    let template2 = "";
-    let template3 = "";
-    let template4 = "";
+  speakerProfiles = await getRecords("Speakers&Panelist");
+  speakerProfiles = sortByOrder(speakerProfiles);
+  let template1 = "";
+  let template2 = "";
+  // let template3 = "";
+  // let template4 = "";
 
-    speakerProfiles.forEach((speaker, index) => {
-        if (speaker.SessionType === "Talk")
-            template1 += `
-      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null
-                }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription, speakerProfiles[${index}].Designation)">
+  speakerProfiles.forEach((speaker, index) => {
+    if (speaker.SessionType === "Talk")
+      template1 += `
+      <div class="speaker revealFromBottom" style="background: url('${
+        speaker.ProfilePic ? speaker.ProfilePic[0].url : null
+      }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription, speakerProfiles[${index}].Designation)">
         <div class="speakerTint">
           <h3>${speaker.Name}</h3>
           <p>${speaker.Designation}</p>
         </div>
       </div>
       `;
-        else if (speaker.SessionType === "BioArt")
-            template2 += `
-      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null
-                }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
+    else if (speaker.SessionType === "Conference Overview")
+      template2 += `
+      <div class="speaker revealFromBottom" style="background: url('${
+        speaker.Images ? speaker.Images[0].url : null
+      }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
         <div class="speakerTint">
           <h3>${speaker.Name}</h3>
           <p>${speaker.Designation}</p>
         </div>
       </div>
       `;
-        else if (speaker.SessionType === "Medical Biology")
-            template3 += `
-      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null
-                }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
-        <div class="speakerTint">
-          <h3>${speaker.Name}</h3>
-          <p>${speaker.Designation}</p>
-        </div>
-      </div>
-      `;
-        else if (speaker.SessionType === "Cell Biology")
-            template4 += `
-      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null
-                }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
-        <div class="speakerTint">
-          <h3>${speaker.Name}</h3>
-          <p>${speaker.Designation}</p>
-        </div>
-      </div>
-      `;
+    // else if (speaker.SessionType === "Medical Biology")
+    //   template3 += `
+    //   <div class="speaker revealFromBottom" style="background: url('${
+    //     speaker.ProfilePic ? speaker.ProfilePic[0].url : null
+    //   }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
+    //     <div class="speakerTint">
+    //       <h3>${speaker.Name}</h3>
+    //       <p>${speaker.Designation}</p>
+    //     </div>
+    //   </div>
+    //   `;
+    // else if (speaker.SessionType === "Cell Biology")
+    //   template4 += `
+    //   <div class="speaker revealFromBottom" style="background: url('${
+    //     speaker.ProfilePic ? speaker.ProfilePic[0].url : null
+    //   }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
+    //     <div class="speakerTint">
+    //       <h3>${speaker.Name}</h3>
+    //       <p>${speaker.Designation}</p>
+    //     </div>
+    //   </div>
+    //   `;
 
-        const speakers = document.getElementById("speakers");
-        const [speakersRow] = speakers.getElementsByClassName("speakersRow");
-        speakersRow.innerHTML = template1;
+    const speakers = document.getElementById("speakers");
+    const [speakersRow] = speakers.getElementsByClassName("speakersRow");
+    speakersRow.innerHTML = template1;
 
-        const panel1 = document.getElementById("panel1");
-        const [panel1Row] = panel1.getElementsByClassName("speakersRow");
-        panel1Row.innerHTML = template2;
+    const panel1 = document.getElementById("cf");
+    const [panel1Row] = panel1.getElementsByClassName("speakersRow");
+    panel1Row.innerHTML = template2;
 
-        const panel2 = document.getElementById("panel2");
-        const [panel2Row] = panel2.getElementsByClassName("speakersRow");
-        panel2Row.innerHTML = template3;
+    // const panel2 = document.getElementById("panel2");
+    // const [panel2Row] = panel2.getElementsByClassName("speakersRow");
+    // panel2Row.innerHTML = template3;
 
-        const panel3 = document.getElementById("panel3");
-        const [panel3Row] = panel3.getElementsByClassName("speakersRow");
-        panel3Row.innerHTML = template4;
-
-   
-    });
+    // const panel3 = document.getElementById("panel3");
+    // const [panel3Row] = panel3.getElementsByClassName("speakersRow");
+    // panel3Row.innerHTML = template4;
+  });
 };
 
 const updateWorkshops = async () => {
-    workshops = await getRecords("Workshops");
-    workshops = sortByOrder(workshops);
-    let template = "";
-    workshops.forEach((workshop, index) => {
-        template += `
+  workshops = await getRecords("Workshops");
+  workshops = sortByOrder(workshops);
+  let template = "";
+  workshops.forEach((workshop, index) => {
+    template += `
     <div class="blogCard">
       <div class="blogPic" style="background: url(${workshop.Poster[0].url}) center/cover;">
         <div class="blogPicTint"></div>
       </div>
       <div class="blogContent">
-        <h3>${workshop.Name}</h3>
-        <button onclick="openModalWithMessage('${workshop.Name}', '${workshop.Description}', '${workshop.Conducted}')">Read More</button>
+        <h3>${workshop.Title}</h3>
+        <button onclick="openModalWithMessage('${workshop.Title}', '${workshop.Description}', '${workshop.Conductedby}')">Read More</button>
       </div>
     </div>
     `;
-    });
+  });
   document.getElementById("workshop").innerHTML = template;
 
-    // animateDynamicElements();
+  // animateDynamicElements();
 };
 
 const updateCollaborators = async () => {
-    collaborators = await getRecords("Collaborators");
-    collaborators = sortByOrder(collaborators);
-    let template = "";
-    collaborators.forEach((collaborator, index) => {
-        template += `
+  collaborators = await getRecords("Collaborators");
+  collaborators = sortByOrder(collaborators);
+  let template = "";
+  collaborators.forEach((collaborator, index) => {
+    template += `
     <a href="${collaborator.Link}" target="_blank">
     <img src="${collaborator.Logo[0].url}" alt="Collaborator" />
     </a>
@@ -340,26 +356,26 @@ const updateCollaborators = async () => {
     <h3>${collaborator.Name}</h3>
     <p>${collaborator.Description}</p>
     `;
-    });
-    document.getElementById("collaborators").innerHTML = template;
+  });
+  document.getElementById("collaborators").innerHTML = template;
 
-    // animateDynamicElements();
+  // animateDynamicElements();
 };
 
 const updatePublications = async () => {
-    publications = await getRecords("Publications");
-    publications = sortByOrder(publications);
-    let template = "";
+  publications = await getRecords("Publications");
+  publications = sortByOrder(publications);
+  let template = "";
 
-    //////////////////////////////////////// change css styling (display)///////////////////////////////////////
-    publications.forEach((publication, index) => {
-        template += `
+  //////////////////////////////////////// change css styling (display)///////////////////////////////////////
+  publications.forEach((publication, index) => {
+    template += `
     <a href="${publication.Link}" target="_blank">
     <img src="${publication.invertedLogo[0].url}" alt="Publication" class="pubimg" style="display: block" />
     </s>
     `;
-    });
-    document.getElementById("publications").innerHTML = template;
+  });
+  document.getElementById("publications").innerHTML = template;
 
-    // animateDynamicElements();
+  // animateDynamicElements();
 };

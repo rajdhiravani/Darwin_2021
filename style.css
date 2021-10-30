@@ -785,6 +785,7 @@ a {
 
 .rightPic img {
   width: 400px;
+  background-color: white;
 }
 
 @media (max-width: 1080px) {
@@ -1271,8 +1272,26 @@ a {
   margin-top: 3vh;
 }
 
+.publicationsRowRC {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 3vh;
+  flex-direction: column;
+  margin-bottom: 10%;
+}
+
 .publicationsRow img {
   height: 60px;
+  filter: grayscale(1);
+  /* background: #fff; */
+  margin: 30px;
+}
+.publicationsRowRC img {
+  height: 80px;
   filter: grayscale(1);
   /* background: #fff; */
   margin: 30px;
@@ -1287,7 +1306,8 @@ a {
 .pubimg:hover {
   background: linear-gradient(to top right, #c8247c, #47bb43);
 }
-.publicationsRow img:hover {
+.publicationsRow img:hover,
+.publicationsRowRC img:hover {
   filter: none;
 }
 

@@ -25,16 +25,17 @@
     <script src="./js/airtable.browser.js"></script>
     <script src="./js/scrollreveal.min.js"></script>
     <!-- <script src="./js/fetchData.js"></script> -->
-      <script src="./js/fetchRC.js"></script>
+    <script src="./js/fetchRC.js"></script>
   </head>
   <body>
     <nav class="home">
       <input type="checkbox" id="check" />
       <label for="check" class="checkBtn"><i class="fa fa-bars"></i></label>
       <div class="navbarLogos">
-        <!-- <a href="">
-         <img src="./img/darwin.png" alt="Darwin" />
-        </a> -->
+        <a href="https://thedarwin.in/">
+          <img src="./img/darwin.png" alt="Darwin" />
+        </a>
+        <!-- <div id="labLogo"> -->
       </div>
 
       <ul>
@@ -70,15 +71,13 @@
       <div class="landingTint">
         <!-- IMG ADDED RESIZE REMAINING -->
         <!-- <img src="./img/Regional Darwin.png" alt="Regional Darwin" /> -->
-        
-        <div id="labLogo">
-        </div> 
+
+        <div id="labLogo"></div>
 
         <div id="RCName"></div>
         <!-- DATE TIMELINE LOCATION DETAILS DONE AS PER AIRTABLE -->
         <div id="conferenceDate"></div>
         <div id="conferenceLanguage"></div>
-
 
         <!-- <p><i class="fa fa-calendar"></i>December 2, 2021</p> -->
         <!-- <p><i class="fa fa-clock-o"></i> 10 AM to 5 PM WAT</p> -->
@@ -100,7 +99,6 @@
             >
           </div> -->
           <div class="btngreen" id="regLink"></div>
-         
         </div>
 
         <div class="logoStrip">
@@ -138,7 +136,7 @@
             working groups initiated several research causes to work upon for a
             year and later get them published as Conference Proceedings.
           </p>
-          <h3 class="sub-heading">Lab Details</h3>
+
           <div id="labDetails"></div>
           <!-- <p>
             Building Africa’s Workforce to be more equipped with future-focused
@@ -153,7 +151,8 @@
           <h3 class="sub-heading" id="LabOrganizingTeam">Organising Team</h3>
           <!-- <span>Raj Head</span> -->
         </div>
-        <div class="rightPic" id="labLogo">
+        <div class="rightPic">
+          <div id="aboutPicLab"></div>
           <!-- <img src="./img/about.jpg" alt="About" /> -->
         </div>
       </div>
@@ -171,11 +170,16 @@
 
     <!-- SPEAKER SECTION -->
     <!-- UNABLE TO FETCH SPEAKERS SOME ISSUE -->
-    <!-- <div class="speakersContainer" id="speakers">
+    <div class="speakersContainer" id="speakers">
       <h2>Our Speakers</h2>
       <hr />
       <div class="speakersRow"></div>
-    </div> -->
+    </div>
+    <div class="speakersContainer" id="cf">
+      <h2>Conference Speaker</h2>
+      <hr />
+      <div class="speakersRow"></div>
+    </div>
     <!-- SPEAKER SECTION END -->
 
     <!-- WORKSHOP -->
@@ -189,7 +193,7 @@
     <!-- PARTNER LOGOS -->
     <div class="publicationsContainer" id="collaborator">
       <h2>Our Collaborators</h2>
-      <div class="publicationsRow" id="collaborators"></div>
+      <div class="publicationsRowRC" id="collaborators"></div>
     </div>
     <!-- END OF PARTNER LOGO -->
 

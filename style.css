@@ -450,7 +450,7 @@ nav ul li > a:hover {
   background: linear-gradient(to top right, #c8247c, #f82e9a);
 }
 
-.flexbox > .btn-green {
+.flexbox > .btngreen {
   width: 50%;
   border-radius: 2px;
   background: linear-gradient(to top, #47bb43, #23801f);

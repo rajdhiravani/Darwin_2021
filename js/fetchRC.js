@@ -115,10 +115,25 @@ const updateDetails = async () => {
   let template2="";
   let template3="";
   let template4 = "";
+  let template5="";
+  let template6 = "";
+  let template7 = "";
+  let template8 = "";
+  let template9 = "";
+
+
+    // // RC logo
+    websiteDetails.forEach((detail, index) => {
+      if (detail.Name === "RCLogo") {
+        template5 += `
+        <img src= "${websiteDetails[index].Attachments[0].url}" alt="darwin RC logo" />
+        `;
+      }
+    });
 
   //RC name
   websiteDetails.forEach((detail, index) => {
-    if (detail.Name === "RC Name") {
+    if (detail.Name === "RCName") {
       template4 += `
         <h1>${websiteDetails[index].Information}</h1>
         `;
@@ -127,7 +142,7 @@ const updateDetails = async () => {
 
   //date time and timezone
   websiteDetails.forEach((detail, index) => {
-    if (detail.Name === "Date Time & Timezone"){
+    if (detail.Name === "DateTime&Timezone"){
       template1 += `
         <p><i class="fa fa-calendar"></i>${websiteDetails[index].Information}</p>
         `;
@@ -147,9 +162,9 @@ const updateDetails = async () => {
 
 //register now link
   websiteDetails.forEach((detail, index) => {
-    if (detail.Name === "Register Link") {
+    if (detail.Name === "RegisterLink") {
       template3 += `
-       <div class="btn-green">
+       <div class="btngreen">
             <i class="fa fa-sign-in" style="padding-right: 1px"></i>
             <a href=${websiteDetails[index].Information} target="_blank"
               >Register Now</a
@@ -158,7 +173,22 @@ const updateDetails = async () => {
          `;
     }
   });
-  
+
+    //lab details
+    websiteDetails.forEach((detail, index) => {
+      if (detail.Name === "LabDetails") {
+        template6 += `
+         <p>${websiteDetails[index].Information}</p>
+         `;
+      }
+    });
+
+
+
+ 
+    document.querySelector("#labLogo").innerHTML =
+    template5;
+
   document.querySelector("#RCName").innerHTML =
     template4;
 
@@ -170,6 +200,10 @@ const updateDetails = async () => {
 
   document.querySelector("#regLink").innerHTML =
   template3;
+
+  document.querySelector("#labDetails").innerHTML =
+    template6;
+
 
 };
 

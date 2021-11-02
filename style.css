@@ -81,7 +81,29 @@ nav .navbarLogos a img {
   display: none;
 }
 
+nav .navbarLogo {
+  display: flex;
+  position: absolute;
+  height: var(--nav-height);
+  align-items: center;
+}
+
+nav .navbarLogo a img {
+  filter: drop-shadow(1px 1px 4px #111);
+  display: none;
+}
+/* 
+#rcLogo {
+  filter: drop-shadow(1px 1px 4px #111);
+  display: none;
+} */
+
 nav .navbarLogos a:nth-child(2) img {
+  height: 40px;
+  margin-top: 6px;
+}
+
+nav .navbarLogo a:nth-child(2) img {
   height: 40px;
   margin-top: 6px;
 }
@@ -130,6 +152,9 @@ nav ul li > a:hover {
 }
 
 .navBGChange .navbarLogos a img {
+  display: block;
+}
+.navBGChange .navbarLogo a img {
   display: block;
 }
 
@@ -348,6 +373,10 @@ nav ul li > a:hover {
 
 #location-marker {
   font-size: 28px;
+}
+
+#labLogo {
+  margin-top: 8%;
 }
 
 .countdown {
@@ -1692,7 +1721,7 @@ rect {
 }
 
 .blogPic {
-  /* background: url(./img/blogPic.jpeg) center/cover; */
+  background: url(./img/blogPic.jpeg) center/cover;
   height: 12vw;
 }
 

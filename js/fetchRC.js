@@ -120,7 +120,6 @@ const updateDetails = async () => {
   let template6 = "";
   let template7 = "";
   let template8 = "";
-  let template9 = "";
 
   // // RC logo
   websiteDetails.forEach((detail, index) => {

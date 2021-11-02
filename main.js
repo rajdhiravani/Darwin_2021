@@ -85,15 +85,13 @@ if (window.innerWidth <= 760) {
 
 const getHighlights = async () => {
   highlights = await getRecords("Highlights");
-  console.log(highlights);
   // highlights = sortByOrder(highlights);
   let template = "";
   let template1 = "";
 
   highlights.forEach((highlight, index) => {
     index1 = index + 1;
-    console.log(index);
-    console.log(highlight.Image[0].url);
+
     template += `
     <div class="slide" data-slide="${index1}">
               <div

@@ -17,6 +17,7 @@ const metaData = {
     "Darwin 2019",
     "Benefits",
     "Highlights",
+    "RC Partners Easy Access",
   ],
 };
 
@@ -31,6 +32,7 @@ let faqs = [];
 let darwin2019 = [];
 let benefits = [];
 let highlights = [];
+let RCPartner = [];
 
 const getAirtableData = async () => {
   updateConference();
@@ -40,6 +42,7 @@ const getAirtableData = async () => {
   updatePublications();
   updateCollaborators();
   getHighlights();
+  getRCInfo();
   // updateFAQs();
   // updateBenefits();
 };
@@ -183,6 +186,28 @@ const updateSpeakers = async () => {
 
   // animateDynamicElements();
 };
+
+// RC
+const getRCInfo = async () => {
+  RCPartner = await getRecords("RC Partners Easy Access");
+  RCPartner = sortByOrder(RCPartner);
+  let template = "";
+  RCPartner.forEach((event, index) => {
+    template += `
+    <div class="blogCard">
+        <img src="./img/blogPic.jpeg" />
+      <div class="blogContent">
+        <h3>${event.Name}</h3>
+        <button onclick="openModalWithMessage('${event.Region}')">View</button>
+      </div>
+  </div>
+    `;
+  });
+  document.getElementById("rcInfo").innerHTML = template;
+
+  // animateDynamicElements();
+};
+// END OF RC
 
 const updatePreevents = async () => {
   preEvents = await getRecords("Pre-Event");

@@ -9,37 +9,39 @@ function getConferenceName(id){
 
     switch(buttonID){
 
-        case "stemi":
+        case "darWin-0100-Rc":
             ConferenceName = "Darwin 2021 RC - STEMi Makers Africa";
             ConferenceID ="appV8InzyT6tEQHtP";
            break;
+
+        //add cases when bases are ready
+
             //defaults to null
         default:
             ConferenceName= null;
             ConferenceID= null;
-
     }
 
     param={
         baseID: ConferenceID,
         baseName: ConferenceName,
     };
-    alert(param.baseName);
-}
+  
 
-var buttonClass = document.getElementsByClassName("RCBtn");
+    //set storage
+    sessionStorage.setItem("ConferenceID", param.baseID);
+    sessionStorage.setItem("ConferenceName", param.baseName);
 
-for (var i = 0; i < buttonClass.length; i++) {
+  alert(param.baseName);
 
-    buttonClass[i].addEventListener('click', function() {
-
-        console.log("this button onclick is working");
-        // alert("this onclick is working");
-        //set storage
-        sessionStorage.setItem("ConferenceID", param.baseID);
-        sessionStorage.setItem("ConferenceName", param.baseName);
-
+    if (param.baseName === null) {
+        window.location.replace("https://thedarwin.in/");
+    }
+    else{
         //redirect to rc.html page
         window.location.replace("http://127.0.0.1:5500/rc.html");
-    }); 
+
+    }
+
+   
 }

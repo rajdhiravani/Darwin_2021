@@ -191,13 +191,15 @@ const getRCInfo = async () => {
   RCPartner = await getRecords("RC Partners Easy Access");
   RCPartner = sortByOrder(RCPartner);
   let template = "";
+  let rcID="";
   RCPartner.forEach((event, index) => {
+    rcID= event.RC_ID;
     template += `
     <div class="blogCard">
         <img src="./img/blogPic.jpeg" />
       <div class="blogContent">
         <h3>${event.Name}</h3>
-        <button class="RCBtn" onclick="getConferenceName('stemi')">View</button><br><br>
+        <button class="RCBtn" onclick="getConferenceName('${rcID}')">View</button><br><br>
       </div>
   </div>
     `;

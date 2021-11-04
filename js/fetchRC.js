@@ -91,6 +91,9 @@ const updateDetails = async () => {
   let template6 = "";
   let template7 = "";
   let template8 = "";
+  let template9 = "";
+
+  let RCname="";
 
   // // RC logo
   websiteDetails.forEach((detail, index) => {
@@ -104,6 +107,7 @@ const updateDetails = async () => {
   //RC name
   websiteDetails.forEach((detail, index) => {
     if (detail.Name === "RCName") {
+      RCname = websiteDetails[index].Information;
       template4 += `
         <h1>${websiteDetails[index].Information}</h1>
         `;
@@ -175,6 +179,18 @@ const updateDetails = async () => {
     }
   });
 
+  //About Lab
+  websiteDetails.forEach((detail, index) => {
+    if (detail.Name === "About") {
+      template9 += `
+        <div>
+        <h3>About ${RCname}</h3>
+         <p>${websiteDetails[index].Information}</p>
+         </div>
+         `;
+    }
+  });
+
   document.querySelector("#labLogo").innerHTML = template5;
 
   document.querySelector("#RCName").innerHTML = template4;
@@ -190,6 +206,8 @@ const updateDetails = async () => {
   document.querySelector("#LabOrganizingTeam").innerHTML = template7;
 
   document.querySelector("#aboutPicLab").innerHTML = template8;
+
+  document.querySelector("#aboutLab").innerHTML = template9;
 };
 
 const updateConference = async () => {
@@ -239,7 +257,7 @@ const updateSpeakers = async () => {
         </div>
       </div>
       `;
-    else if (speaker.SessionType === "Conference Overview")
+    else if (speaker.SessionType === "Panel")
       template2 += `
       <div class="speaker revealFromBottom" style="background: url('${
         speaker.Images ? speaker.Images[0].url : null

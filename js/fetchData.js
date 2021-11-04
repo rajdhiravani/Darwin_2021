@@ -1,5 +1,4 @@
 let Airtable = require("airtable");
-
 // Airtable credentials
 const metaData = {
   baseID: "appRcXPwopPZ85HbJ",
@@ -198,7 +197,7 @@ const getRCInfo = async () => {
         <img src="./img/blogPic.jpeg" />
       <div class="blogContent">
         <h3>${event.Name}</h3>
-        <button onclick="openModalWithMessage('${event.Region}')">View</button>
+        <button class="RCBtn" onclick="getConferenceName('stemi')">View</button><br><br>
       </div>
   </div>
     `;

@@ -35,6 +35,7 @@ function getConferenceName(id){
   alert(param.baseName);
 
     if (param.baseName === null) {
+        //if btn for a rc is clicked that doesn't have a base
         window.location.replace("https://thedarwin.in/");
     }
     else{

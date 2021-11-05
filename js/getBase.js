@@ -1,7 +1,5 @@
 let param={};
-// import './fetchData';
 
-console.log("Checking")
 function getConferenceName(id){
     let buttonID= id;
     let ConferenceName;
@@ -27,22 +25,17 @@ function getConferenceName(id){
         baseName: ConferenceName,
     };
   
-
     //set storage
     sessionStorage.setItem("ConferenceID", param.baseID);
     sessionStorage.setItem("ConferenceName", param.baseName);
 
-  alert(param.baseName);
-
     if (param.baseName === null) {
         //if btn for a rc is clicked that doesn't have a base
-        window.location.replace("https://thedarwin.in/");
+        window.location.reload();
     }
     else{
-        //redirect to rc.html page
-        window.location.replace("http://127.0.0.1:5500/rc.html");
-
+        //redirect to rc page
+        window.location.replace("http://127.0.0.1:5500/darwin.html");
     }
 
-   
 }

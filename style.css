@@ -89,6 +89,7 @@ nav .navbarLogo {
 }
 
 nav .navbarLogo a img {
+  height: 45px;
   filter: drop-shadow(1px 1px 4px #111);
   display: none;
 }

@@ -19,7 +19,7 @@
     />
     <link rel="icon" type="image/png" href="./img/favico.png" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Darwin Regional Conference</title>
+    <title>Darwin Regional Conference 2021</title>
     <script src="./world-map/mapdata.js"></script>
     <script src="./world-map/worldmap.js"></script>
     <script src="./js/airtable.browser.js"></script>
@@ -30,12 +30,12 @@
     <nav class="home">
       <input type="checkbox" id="check" />
       <label for="check" class="checkBtn"><i class="fa fa-bars"></i></label>
-      <div class="navbarLogo">
-        <a href="#">
-          <img id="rcLogo" src="./img/SmallRCLogo.png" alt="RCLGOG" />
-        </a>
-      </div>
 
+      <div class="navbarLogo" id="RCSmallLogo">
+        <!-- <a href="#"> -->
+          <!-- <img id="rcLogo" src="./img/SmallRCLogo.png" alt="RCLGOG" /> -->
+        <!-- </a> -->
+      </div>
       <ul>
         <li><a href="#about">About us</a></li>
         <li>
@@ -236,6 +236,17 @@
     </div>
     <!-- END OF FOOTER -->
 
+    <!-- Modal -->
+    
+    <div class="modal" id="modal">
+      <div class="modalBox">
+        <i class="fa fa-close" onclick="closeModal()"></i>
+        <h3 id="modalHeader"></h3>
+        <hr />
+        <p id="modalBody"></p>
+      </div>
+    </div>
+    
     <!-- JAVASCRIPT -->
     <script src="./main.js"></script>
     <script>

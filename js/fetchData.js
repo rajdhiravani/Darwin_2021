@@ -100,6 +100,7 @@ const updateSpeakers = async () => {
   let template2 = "";
   let template3 = "";
   let template4 = "";
+  let template5 = "";
 
   speakerProfiles.forEach((speaker, index) => {
     if (speaker.SessionType === "Talk")
@@ -146,7 +147,17 @@ const updateSpeakers = async () => {
         </div>
       </div>
       `;
-
+      
+    else if (speaker.SessionType === "Keynote")
+      template5 += `
+      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null
+        }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
+        <div class="speakerTint">
+          <h3>${speaker.Name}</h3>
+          <p>${speaker.Designation}</p>
+        </div>
+      </div>
+      `;
     const speakers = document.getElementById("speakers");
     const [speakersRow] = speakers.getElementsByClassName("speakersRow");
     speakersRow.innerHTML = template1;
@@ -162,6 +173,10 @@ const updateSpeakers = async () => {
     const panel3 = document.getElementById("panel3");
     const [panel3Row] = panel3.getElementsByClassName("speakersRow");
     panel3Row.innerHTML = template4;
+
+    const keynote = document.getElementById("keynote");
+    const [keynoteRow] = keynote.getElementsByClassName("speakersRow");
+    keynoteRow.innerHTML = template5;
 
     // const panel3 = document.getElementById("panel3");
     // const [panel3Row] = panel3.getElementsByClassName("speakersRow");

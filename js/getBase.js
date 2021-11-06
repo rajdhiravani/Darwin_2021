@@ -11,7 +11,7 @@ while (match = regex.exec(url)) {
     params[match[1]] = match[2];
 }
 
-//if its not a valid url, it will refresh the main website simply.
+//if its not a valid url, it will refresh the main website.
 if(params.rc !=null){
     let confName= params.rc;
     getConferenceName(confName);
@@ -57,8 +57,8 @@ function getConferenceName(id){
             break;
 
         case "darWin0106Rc":
-            ConferenceName ="";
-            ConferenceID ="";
+            ConferenceName ="Darwin 2021 RC - Socieda de Ingenieria Biologica - UTEC";
+            ConferenceID ="appUwZJpfkSrdno6a";
             break;
 
         case "darWin0107Rc":

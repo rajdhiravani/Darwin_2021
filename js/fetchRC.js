@@ -58,7 +58,7 @@ const getAirtableData = async () => {
 };
 
 const getRecords = async (tableName) => {
-  let base = new Airtable({ apiKey: "key2otdbHDz4DE64m" }).base(
+  let base = new Airtable({ apiKey: "key6ft2ZcKHUhULL5" }).base(
     AirtableBaseID
   );
   const fields = [];
@@ -92,17 +92,25 @@ const updateDetails = async () => {
   let template7 = "";
   let template8 = "";
   let template9 = "";
+  let temp1ate10="";
 
   let RCname="";
 
-  // // RC logo
+  // RC logo
   websiteDetails.forEach((detail, index) => {
     if (detail.Name === "RCLogo") {
       template5 += `
         <img src= "${websiteDetails[index].Attachments[0].url}" alt="darwin RC logo" />
         `;
+      temp1ate10 +=`
+        <a href="#">
+       <img src= "${websiteDetails[index].Attachments[0].url}" alt="darwin RC logo"  />
+        </a>
+      `
     }
   });
+
+
 
   //RC name
   websiteDetails.forEach((detail, index) => {
@@ -192,6 +200,8 @@ const updateDetails = async () => {
   });
 
   document.querySelector("#labLogo").innerHTML = template5;
+
+  document.querySelector("#RCSmallLogo").innerHTML = temp1ate10;
 
   document.querySelector("#RCName").innerHTML = template4;
 

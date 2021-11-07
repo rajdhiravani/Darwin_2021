@@ -25,7 +25,6 @@ if(currentURL)
 //    console.log(stringName);
 
 
-
 if (stringName !=null){
     let confName = stringName;
     getConferenceName(confName);

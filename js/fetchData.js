@@ -147,11 +147,11 @@ const updateSpeakers = async () => {
         </div>
       </div>
       `;
-      
     else if (speaker.SessionType === "Keynote")
       template5 += `
-      <div class="speaker revealFromBottom" style="background: url('${speaker.ProfilePic ? speaker.ProfilePic[0].url : null
-        }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
+      <div class="speaker revealFromBottom" style="background: url('${
+        speaker.ProfilePic ? speaker.ProfilePic[0].url : null
+      }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
         <div class="speakerTint">
           <h3>${speaker.Name}</h3>
           <p>${speaker.Designation}</p>
@@ -206,12 +206,15 @@ const getRCInfo = async () => {
   RCPartner = await getRecords("RC Partners Easy Access");
   RCPartner = sortByOrder(RCPartner);
   let template = "";
-  let rcID="";
+  let rcID = "";
   RCPartner.forEach((event, index) => {
-    rcID= event.RC_ID;
+    rcID = event.RC_ID;
     template += `
     <div class="blogCard">
-        <img src="./img/blogPic.jpeg" />
+      <div class="blogPic" style="background: url(${event.Poster[0].url})">
+      <div class="blogPicTint"></div>
+
+    </div>
       <div class="blogContent">
         <h3>${event.Name}</h3>
         <button class="RCBtn" onclick="getConferenceName('${rcID}')">View</button><br><br>

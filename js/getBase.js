@@ -1,19 +1,33 @@
-let param={};
+var param={};
+var UrlName="";
 
+//get current url
 let currentURL = window.location.href;
 
 if(currentURL)
-var regex = /[?&]([^=#]+)=([^&#]*)/g,
-    url = currentURL,
-    params = {},
-    match;
-while (match = regex.exec(url)) {
-    params[match[1]] = match[2];
-}
+    var paramString = currentURL.split('?')[1];
+    var queryString = new URLSearchParams(paramString);
 
-//if its not a valid url, it will refresh the main website.
-if(params.rc !=null){
-    let confName= params.rc;
+   for (let pair of queryString.entries()) {
+      //hyphenated name in url
+       urlName = pair[0];
+    }
+//    alert(urlName);
+//    console.log(urlName);
+
+//to concatenate hyphened words
+   var stringName = urlName;
+   stringName = stringName.split('-').map(function (s, i) {
+        return i && s.length ? s[0].toUpperCase() + s.substring(1) : s;
+    }).join('');
+
+//    alert(stringName);
+//    console.log(stringName);
+
+
+
+if (stringName !=null){
+    let confName = stringName;
     getConferenceName(confName);
 }
 
@@ -25,6 +39,10 @@ function getConferenceName(id){
 
     switch(buttonID){
 
+        case "StemiMakersAfrica":
+            ConferenceName = "Darwin 2021 RC - STEMi Makers Africa";
+            ConferenceID = "appV8InzyT6tEQHtP";
+            break;
 
         case "darWin0100Rc":
             ConferenceName= "Darwin 2021 RC - STEMi Makers Africa";
@@ -33,7 +51,7 @@ function getConferenceName(id){
 
         case "darWin0101Rc":
             ConferenceName= "Darwin 2021 RC - BioLilo Lab";
-            ConferenceID= "appozVt5YZeQiPMxm";
+            ConferenceID = "appozVt5YZeQiPMxm";
             break;
 
         case "darWin0102Rc":
@@ -118,7 +136,7 @@ function getConferenceName(id){
     }
     else{
         // //redirect to rc page
-        window.open("http://127.0.0.1:5500/darwin.html")
+        window.open("/darwin.html")
     }
 
 }

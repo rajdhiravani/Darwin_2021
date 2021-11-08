@@ -1,32 +1,39 @@
 var param={};
-var UrlName="";
+let stringName = "";
+let urlName = "";
 
 //get current url
 let currentURL = window.location.href;
 
-if(currentURL)
-    var paramString = currentURL.split('?')[1];
-    var queryString = new URLSearchParams(paramString);
+regexp = /^[a-z0-9_\-]+$/i;
 
-   for (let pair of queryString.entries()) {
-      //hyphenated name in url
-       urlName = pair[0];
-    }
-//    alert(urlName);
-//    console.log(urlName);
+//seperate the part after ? in url
+var paramString = currentURL.split('?')[1];
+var queryString = new URLSearchParams(paramString);
+for (let pair of queryString.entries()) {
+    //hyphenated name in url
+    urlName = pair[0];
+}
 
-//to concatenate hyphened words
-   var stringName = urlName;
-   stringName = stringName.split('-').map(function (s, i) {
+
+//contains dash
+if (regexp.test(urlName)) {
+    // to concatenate hyphened words
+    stringName = urlName;
+    stringName = stringName.split('-').map(function (s, i) {
         return i && s.length ? s[0].toUpperCase() + s.substring(1) : s;
     }).join('');
 
-//    alert(stringName);
-//    console.log(stringName);
-
-
-if (stringName !=null){
     let confName = stringName;
+    alert(confName);
+    getConferenceName(confName);
+
+}
+//no dash in url
+else {
+    stringName = urlName;
+    let confName = stringName;
+    alert(confName);
     getConferenceName(confName);
 }
 
@@ -43,72 +50,67 @@ function getConferenceName(id){
             ConferenceID = "appV8InzyT6tEQHtP";
             break;
 
-        case "darWin0100Rc":
-            ConferenceName= "Darwin 2021 RC - STEMi Makers Africa";
-            ConferenceID ="appV8InzyT6tEQHtP";
-           break;
-
-        case "darWin0101Rc":
+        case "BioLiloLab":
             ConferenceName= "Darwin 2021 RC - BioLilo Lab";
             ConferenceID = "appozVt5YZeQiPMxm";
             break;
 
-        case "darWin0102Rc":
+        case "CygnuScience":
             ConferenceName = "Darwin 2021 RC - Cygnu Science";
             ConferenceID = "appCJhPihteDq11yD";
             break;
 
-        case "darWin0103Rc":
+        case "Wizkit":
             ConferenceName = "Darwin 2021 RC - Wizkit";
             ConferenceID = "appUVoha73eRhs22b";
             break;
 
-        case "darWin0104Rc":
+        case "GeniaLab":
             ConferenceName ="Darwin 2021 RC - Genia Lab";
             ConferenceID ="appHYlPz2pbMqB4bw";
             break;
 
-        case "darWin0105Rc":
+        case "BGCI":
             ConferenceName = "Darwin 2021 RC - Biografos Colectivo de Ilustracion (BGCI)";
             ConferenceID ="appmyw0MA9QApWAfF";
             break;
 
-        case "darWin0106Rc":
+        case "SBEUTEC":
             ConferenceName ="Darwin 2021 RC - Socieda de Ingenieria Biologica - UTEC";
             ConferenceID ="appUwZJpfkSrdno6a";
             break;
 
-        case "darWin0107Rc":
+        case "CoevolutionResearch":
             ConferenceName ="Darwin 2021 RC - Coevolution Research Assembly";
             ConferenceID="appm1JXmPPHLXbfRu";
             break;
 
-        case "darWin0108Rc":
+        case "IndependenciaBiolab":
             ConferenceName = "Darwin 2021 RC - Independencia Lab";
             ConferenceID = "app7cRvuzBYvgR7Wv";
             break;
 
-        case "darWin0109Rc":
+        case "NextiaLab":
             ConferenceName = "Darwin 2021 RC - Nextia Lab";
             ConferenceID= "appTMqSkovNU87esi";
             break;
 
-        case "darWin0110Rc":
+        case "USBRI":
             ConferenceName = "Darwin 2021 RC - Udruga Studenata Biotechnologije Sveucilista u Rejeci (USBRi)";
             ConferenceID = "app5PGJKqdlpAU72p";
             break;
 
-        case "darWin0111Rc":
+        case "LightMicroscopyAustralia":
             ConferenceID = "apphCyYa72ztlQ82s";
             ConferenceName = "Darwin 2021 RC - Light Microscopy Australia";
             break;
 
-        case "darWin0112Rc":
+        case "LABVA":
             ConferenceID = "app0G6lINT57ZkrMC";
             ConferenceName = "Darwin 2021 RC - LABVA";
             break;
 
-        case "darWin0113Rc":
+        case "Playo":
             ConferenceID = "appBKz3IBZwayBwbE";
             ConferenceName = "Darwin 2021 RC - Playo";
             break;

@@ -192,7 +192,7 @@ const updateDetails = async () => {
     if (detail.Name === "About") {
       template9 += `
         <div>
-        <h3>About ${RCname}..</h3>
+        <h3>About ${RCname}</h3>
          <p>${websiteDetails[index].Information}</p>
          </div>
          `;

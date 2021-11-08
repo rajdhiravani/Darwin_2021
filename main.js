@@ -268,5 +268,5 @@ window.onscroll = function () {
   let scroll = window.scrollY;
 
   navChangeOnScroll(scroll);
-  statsAnimateOnScroll(scroll);
+  // statsAnimateOnScroll(scroll);
 };

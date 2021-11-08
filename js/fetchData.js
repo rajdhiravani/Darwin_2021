@@ -41,7 +41,7 @@ const getAirtableData = async () => {
   updatePublications();
   updateCollaborators();
   getHighlights();
-  getRCInfo();
+  // getRCInfo();
   // updateFAQs();
   // updateBenefits();
 };
@@ -202,30 +202,30 @@ const updateSpeakers = async () => {
 };
 
 // RC
-const getRCInfo = async () => {
-  RCPartner = await getRecords("RC Partners Easy Access");
-  RCPartner = sortByOrder(RCPartner);
-  let template = "";
-  let rcID = "";
-  RCPartner.forEach((event, index) => {
-    rcID = event.RC_ID;
-    template += `
-    <div class="blogCard">
-      <div class="blogPic" style="background: url(${event.Poster[0].url})">
-      <div class="blogPicTint"></div>
+// const getRCInfo = async () => {
+//   RCPartner = await getRecords("RC Partners Easy Access");
+//   RCPartner = sortByOrder(RCPartner);
+//   let template = "";
+//   let rcID = "";
+//   RCPartner.forEach((event, index) => {
+//     rcID = event.RC_ID;
+//     template += `
+//     <div class="blogCard">
+//       <div class="blogPic" style="background: url(${event.Poster[0].url})">
+//       <div class="blogPicTint"></div>
 
-    </div>
-      <div class="blogContent">
-        <h3>${event.Name}</h3>
-        <button class="RCBtn" onclick="getConferenceName('${rcID}')">View</button><br><br>
-      </div>
-  </div>
-    `;
-  });
-  document.getElementById("rcInfo").innerHTML = template;
+//     </div>
+//       <div class="blogContent">
+//         <h3>${event.Name}</h3>
+//         <button class="RCBtn" onclick="getConferenceName('${rcID}')">View</button><br><br>
+//       </div>
+//   </div>
+//     `;
+//   });
+//   document.getElementById("rcInfo").innerHTML = template;
 
-  // animateDynamicElements();
-};
+// animateDynamicElements();
+// };
 // END OF RC
 
 const updatePreevents = async () => {

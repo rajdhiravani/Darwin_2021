@@ -270,7 +270,7 @@ const updateSpeakers = async () => {
     else if (speaker.SessionType === "Panel")
       template2 += `
       <div class="speaker revealFromBottom" style="background: url('${
-        speaker.Images ? speaker.Images[0].url : null
+        speaker.ProfilePic ? speaker.ProfilePic[0].url : null
       }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
         <div class="speakerTint">
           <h3>${speaker.Name}</h3>

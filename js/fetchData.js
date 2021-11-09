@@ -240,12 +240,12 @@ const updatePreevents = async () => {
       </div>
       <div class="blogContent">
         <h3>${event.Name}</h3>
-        <button onclick="openModalWithMessage('${event.Name}', '${event.Description}', '${event.Topic}', '${event.Speakers}')">Read More</button>
+        <button onclick="openModalWithMessage('${event.Name}', '${event.Topic}')">Read More</button>
       </div>
     </div>
     `;
   });
-  document.getElementById("preEvents").innerHTML = template;
+  document.querySelector("#preEvents > .blogsRow").innerHTML = template;
 
   // animateDynamicElements();
 };

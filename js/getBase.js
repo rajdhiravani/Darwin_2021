@@ -25,7 +25,6 @@ if (regexp.test(urlName)) {
     }).join('');
 
     let confName = stringName;
-    alert(confName);
     getConferenceName(confName);
 
 }
@@ -33,7 +32,6 @@ if (regexp.test(urlName)) {
 else {
     stringName = urlName;
     let confName = stringName;
-    alert(confName);
     getConferenceName(confName);
 }
 

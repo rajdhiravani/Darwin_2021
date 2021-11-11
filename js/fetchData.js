@@ -240,7 +240,7 @@ const updatePreevents = async () => {
       </div>
       <div class="blogContent">
         <h3>${event.Name}</h3>
-        <button onclick="openModalWithMessage('${event.Name}', '${event.Topic}')">Read More</button>
+        <button onclick="openModalWithMessage('${event.Name}', '${event.Description}')">Read More</button>
       </div>
     </div>
     `;

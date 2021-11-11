@@ -32,6 +32,7 @@ if (regexp.test(urlName)) {
 else {
     stringName = urlName;
     let confName = stringName;
+    
     getConferenceName(confName);
 }
 
@@ -40,6 +41,8 @@ function getConferenceName(id){
     let buttonID= id;
     let ConferenceName;
     let ConferenceID;
+
+
 
     switch(buttonID){
 
@@ -135,7 +138,9 @@ function getConferenceName(id){
     }
     else{
         // //redirect to rc page
-        window.open("/darwin.html")
+        // window.open("/darwin.html")
+        let newTab = window.open();
+        newTab.location.href = "http://127.0.0.1:5500/darwin.html";
     }
 
 }

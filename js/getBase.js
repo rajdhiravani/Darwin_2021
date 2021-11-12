@@ -15,6 +15,7 @@ for (let pair of queryString.entries()) {
     urlName = pair[0];
 }
 
+if (urlName){
 
 //contains dash
 if (regexp.test(urlName)) {
@@ -35,7 +36,7 @@ else {
     
     getConferenceName(confName);
 }
-
+}
 
 function getConferenceName(id){
     let buttonID= id;
@@ -46,7 +47,7 @@ function getConferenceName(id){
 
     switch(buttonID){
 
-        case "StemiMakersAfrica":
+        case "STEMiMakersAfrica":
             ConferenceName = "Darwin 2021 RC - STEMi Makers Africa";
             ConferenceID = "appV8InzyT6tEQHtP";
             break;
@@ -133,14 +134,14 @@ function getConferenceName(id){
 
     if (param.baseName === null) {
         //if btn for a rc is clicked that doesn't have a base
-        // window.open("https://thedarwin.in/")
+
      
     }
     else{
         // //redirect to rc page
         // window.open("/darwin.html")
         let newTab = window.open();
-        newTab.location.href = "http://127.0.0.1:5500/darwin.html";
+        newTab.location.href = "https://thedarwin.in/darwin.html";
     }
 
 }

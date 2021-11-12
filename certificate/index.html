@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdn.bootcss.com/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="https://cdn.bootcss.com/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+    <title>Certificate | Darwin</title>
+    <style>
+      @font-face {
+        font-family: PoppinsBold;
+        src: url(../font/Poppins-ExtraBold.otf);
+      }
+
+      @font-face {
+        font-family: Poppins;
+        src: url(../font/Poppins-Light.otf);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Poppins;
+      }
+
+      .certificateContainer {
+        min-height: 960px;
+        width: 1540px;
+        background: url(./img/bg.jpg) bottom/cover;
+      }
+
+      .certificateTint {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .logoStrip {
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        margin: 3vh auto;
+      }
+
+      .logoStrip img {
+        height: 50px;
+        margin: 6px;
+      }
+
+      .darwinStrip {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .darwinStrip img {
+        height: 180px;
+      }
+
+      .darwinStrip h3 {
+        font-size: 25px;
+        margin-top: -10px;
+      }
+
+      .certificateSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        margin: 0 auto;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+      }
+
+      .certificateSection h1 {
+        text-align: center;
+        font-size: 45px;
+        border-bottom: 3px solid #7d1b54;
+        color: #7d1b54;
+      }
+
+      .certificateSection p {
+        font-size: 20px;
+        text-align: center;
+        margin-top: 3vh;
+        color: #444;
+      }
+
+      .bgImg {
+        height: 120px;
+        width: 340px;
+        margin: -5vh auto;
+        margin-top: 0;
+      }
+
+      .signatureStrip {
+        display: flex;
+        width: 80%;
+        margin: 0 auto;
+        justify-content: space-between;
+      }
+
+      .signBox {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .signBox img {
+        height: 80px;
+        margin-bottom: 15px;
+      }
+
+      .signBox hr {
+        width: 100%;
+        height: 2px;
+        background: #444;
+        border: none;
+      }
+
+      .signatureStrip h2 {
+        text-transform: uppercase;
+        font-size: 20px;
+        margin-top: 10px;
+      }
+
+      .partnerStrip {
+        display: flex;
+        justify-content: center;
+        margin-top: 3vh;
+        margin-bottom: 4vh;
+      }
+
+      .partnerStrip img {
+        height: 50px;
+        margin: 15px;
+      }
+
+      .designLinkSection {
+        display: none;
+      }
+
+      .designLinkSection p {
+        text-align: center;
+        font-size: 24px;
+        font-weight: 800;
+        margin-bottom: 4vh;
+      }
+
+      .signRow {
+        display: flex;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="certificateContainer" id="certificate">
+      <div class="certificateTint">
+        <div class="logoStrip">
+          <div class="leftLogos">
+            <img src="./img/svv_logo.png" alt="SVU" />
+            <img src="./img/riidl.png" alt="riidl" />
+            <img src="./img/bioriidl.png" alt="Bioriidl" />
+          </div>
+          <img src="./img/STrust.png" alt="Trust" />
+        </div>
+
+        <div class="darwinStrip">
+          <img src="./img/darwin.png" alt="Darwin" />
+          <h3>One of India's Biggest Evolutionary Movements in Biology</h3>
+        </div>
+
+        <div class="certificateSection">
+          <h1 id="nameOut" >Attendee Name</h1>
+          <p>
+            This is to certify that he/she has attended the Second Edition of
+            Darwin, an International Conference held from December 2 to 5, 2021,
+            virtually.
+          </p>
+        </div>
+
+        <img src="./img/bgImg.png" alt="BG" class="bgImg" />
+
+        <div class="signatureStrip">
+          <div class="signBox">
+            <div class="signRow">
+              <img src="./img/GS.jpeg" alt="GS" />
+              <!--<img src="./img/stamp.png" alt="Stamp" />-->
+            </div>
+            <hr />
+            <h2>mr. gaurang shetty</h2>
+            <p>CEO, riidl</p>
+          </div>
+
+          <div class="signBox">
+            <img src="./img/BP.jpeg" alt="BP" />
+            <hr />
+            <h2>ms. bhavna pandya</h2>
+            <p>Innovation Catalyst, riidl</p>
+            <p>Head, Bioriidl</p>
+          </div>
+        </div>
+
+        <div class="partnerStrip">
+          <img src="./img/SynBio Africa Logo.jpg" alt="Collaborator" />
+          <img src="./img/MM Black.png" alt="Collaborator" />
+          <img src="./img/Media Lab Nepal.png" alt="Collaborator" />
+          <img src="./img/COB.png" alt="Collaborator" />
+          <img src="./img/AFJBS.jpg" alt="Collaborator" />
+          <img src="./img/Hive Biolab logo.png" alt="Collaborator" />
+          <img src="./img/BSRI Logo.jpg" alt="Collaborator" />
+          <img src="./img/Biotalk.png" alt="Collaborator" />
+          <img src="./img/Novaplanta.jpeg" alt="Collaborator" />
+          <img src="./img/Biodesign.jpeg" alt="Collaborator" />
+          <img src="./img/matera.png" alt="Collaborator" />
+          <img src="./img/PSRC.png" alt="Collaborator" />
+        </div>
+
+        <div class="designLinkSection">
+          <p>thedarwin.in</p>
+        </div>
+      </div>
+    </div>
+    
+    <script defer>
+      const downloadTicket = () => {
+        domtoimage
+          .toBlob(document.getElementById("certificate"))
+          .then(function (blob) {
+            window.saveAs(blob, "darwin-certificate.png");
+            window.close();
+          });
+      };
+      window.onload = async function(){
+        const name = await localStorage.getItem("darwin-live-name");
+        document.getElementById("nameOut").innerHTML = name;
+        downloadTicket();
+      }
+    </script>
+    
+  </body>
+</html>

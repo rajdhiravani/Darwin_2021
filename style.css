@@ -1046,15 +1046,9 @@ a {
   font-size: 42px;
   text-align: center;
   margin-top: 90px;
+  margin-bottom: 10px;
 }
-.speakersContainer hr {
-  width: 15%;
-  margin: 10px auto;
-  border: none;
-  height: 3px;
-  border-radius: 5px;
-  background: #47bb43;
-}
+
 .speakersRow {
   display: flex;
   width: 90%;
@@ -2041,6 +2035,7 @@ rect {
   margin: auto;
   overflow: hidden;
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  margin-top: 30px;
 }
 
 .vid {

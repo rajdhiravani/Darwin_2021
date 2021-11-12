@@ -224,7 +224,7 @@ const updateSpeakers = async () => {
 //   });
 //   document.getElementById("rcInfo").innerHTML = template;
 
-// animateDynamicElements();
+//   animateDynamicElements();
 // };
 // END OF RC
 

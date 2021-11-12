@@ -134,13 +134,43 @@
         margin-top: 10px;
       }
 
+      /* .partnerStrip {
+        /* display: flex; */
+        /* text-align: center;
+        justify-content: center; */
+        /* margin-top: 3vh;
+        margin-bottom: 4vh; */
+        /* display: grid; */
+        /* grid-template-columns: repeat(4, 3fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+      } */ 
+
       .partnerStrip {
-        display: flex;
-        text-align: center;
-        justify-content: center;
-        margin-top: 3vh;
-        margin-bottom: 4vh;
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 3vh;
+  flex-direction: column;
+  margin-bottom: 10%;
       }
+    .logoChild {
+      display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 3vh;
+        }
+ 
+/* 
+      .logoChild{
+        height: 40px;
+        margin: 15px;
+      } */
 
       #certificateLogo img {
         height: 40px;
@@ -212,7 +242,7 @@
         </div>
 
         <div class="partnerStrip">
-          <div id="certificateLogo"></div>
+          <div class="logoChild" id="certificateLogo"></div>
         </div>
 
         <div class="designLinkSection">

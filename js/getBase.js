@@ -6,7 +6,6 @@ let urlName = "";
 let currentURL = window.location.href;
 
 regexp = /^[a-z0-9_\-]+$/i;
-
 //seperate the part after ? in url
 var paramString = currentURL.split('?')[1];
 var queryString = new URLSearchParams(paramString);
@@ -14,35 +13,39 @@ for (let pair of queryString.entries()) {
     //hyphenated name in url
     urlName = pair[0];
 }
+getConferenceName(urlName);
 
-if (urlName){
 
-//contains dash
-if (regexp.test(urlName)) {
-    // to concatenate hyphened words
-    stringName = urlName;
-    stringName = stringName.split('-').map(function (s, i) {
-        return i && s.length ? s[0].toUpperCase() + s.substring(1) : s;
-    }).join('');
+function getFinalName(url){
 
-    let confName = stringName;
-    getConferenceName(confName);
+    if (url) {
+        //contains dash
+        if (regexp.test(url)) {
+            // to concatenate hyphened words
+            stringName = url;
+            stringName = stringName.split('-').map(function (s, i) {
+                return i && s.length ? s[0].toUpperCase() + s.substring(1) : s;
+            }).join('');
+
+            let confName = stringName;
+            return confName;
+
+        }
+        //no dash 
+        else {
+            stringName = url;
+            let confName = stringName;
+            return confName;
+        }
+    }
 
 }
-//no dash in url
-else {
-    stringName = urlName;
-    let confName = stringName;
-    
-    getConferenceName(confName);
-}
-}
+
 
 function getConferenceName(id){
-    let buttonID= id;
+    let buttonID = getFinalName(id);
     let ConferenceName;
     let ConferenceID;
-
 
 
     switch(buttonID){
@@ -86,7 +89,7 @@ function getConferenceName(id){
             ConferenceName ="Darwin 2021 RC - Coevolution Research Assembly";
             ConferenceID="appm1JXmPPHLXbfRu";
             break;
-
+            
         case "IndependenciaBiolab":
             ConferenceName = "Darwin 2021 RC - Independencia Lab";
             ConferenceID = "app7cRvuzBYvgR7Wv";
@@ -141,7 +144,9 @@ function getConferenceName(id){
         // //redirect to rc page
         // window.open("/darwin.html")
         let newTab = window.open();
-        newTab.location.href = "https://thedarwin.in/darwin.html";
+
+        newTab.location.href = "http://127.0.0.1:5500/darwin.html";
+        // newTab.location.href = "https://thedarwin.in/darwin.html";
     }
 
 }

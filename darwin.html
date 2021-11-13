@@ -25,19 +25,13 @@
     <script src="./js/airtable.browser.js"></script>
     <script src="./js/scrollreveal.min.js"></script>
     <script src="./js/fetchRC.js"></script>
-
-
   </head>
   <body>
     <nav class="home">
       <input type="checkbox" id="check" />
       <label for="check" class="checkBtn"><i class="fa fa-bars"></i></label>
 
-      <div class="navbarLogo" id="RCSmallLogo">
-        <!-- <a href="#"> -->
-          <!-- <img id="rcLogo" src="./img/SmallRCLogo.png" alt="RCLGOG" /> -->
-        <!-- </a> -->
-      </div>
+      <div class="navbarLogo" id="RCSmallLogo"></div>
       <ul>
         <li><a href="#about">About us</a></li>
         <li>
@@ -69,20 +63,10 @@
 
     <div class="landingContainer">
       <div class="landingTint">
-        <!-- IMG ADDED RESIZE REMAINING -->
-        <!-- <img src="./img/Regional Darwin.png" alt="Regional Darwin" /> -->
-
         <div id="labLogo"></div>
-
         <div id="RCName"></div>
-        <!-- DATE TIMELINE LOCATION DETAILS DONE AS PER AIRTABLE -->
         <div id="conferenceDate"></div>
         <div id="conferenceLanguage"></div>
-
-        <!-- <p><i class="fa fa-calendar"></i>December 2, 2021</p> -->
-        <!-- <p><i class="fa fa-clock-o"></i> 10 AM to 5 PM WAT</p> -->
-        <!-- <p><i class="fa fa-language"></i>English</p> -->
-
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
             fill="#000"
@@ -97,9 +81,17 @@
         </div>
 
         <div class="flexbox">
-        <div class="btngreen" ><button  class="btnBack" onclick="function removeStorage(){ sessionStorage.clear(); }; removeStorage() "><a 
-              href="https://thedarwin.in/"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Go back to Main Conference</a></button>
-        </div>
+          <div class="btngreen">
+            <button
+              class="btnBack"
+              onclick="function removeStorage(){ sessionStorage.clear(); }; removeStorage() "
+            >
+              <a href="https://thedarwin.in/"
+                ><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Go
+                back to Main Conference</a
+              >
+            </button>
+          </div>
         </div>
 
         <div class="logoStrip">
@@ -139,26 +131,16 @@
           </p>
 
           <div id="labDetails"></div>
-          <!-- <p>
-            Building Africa’s Workforce to be more equipped with future-focused
-            options and becoming more experienced in STEM for our continent.
-          </p> -->
+
           <h3 class="sub-heading" id="aboutLab"></h3>
-          <!-- <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-            soluta.
-          </p> -->
+
           <!-- TO BE DECIDED AND STYLE CHECK {SEEMS VERY WEIRD NOW}-->
           <h3 class="sub-heading" id="LabOrganizingTeam"></h3>
-          <!-- <span>Raj Head</span> -->
         </div>
         <div class="rightPic">
           <div id="aboutPicLab"></div>
-          <!-- <img src="./img/about.jpg" alt="About" /> -->
         </div>
       </div>
-
-      <!-- End of body container -->
     </div>
     <!-- END OF ABOUT PAGE -->
 
@@ -170,15 +152,14 @@
     <!-- END onference Overview -->
 
     <!-- SPEAKER SECTION -->
-    <!-- UNABLE TO FETCH SPEAKERS SOME ISSUE -->
     <div class="speakersContainer" id="speakers">
       <h2>Our Speakers</h2>
-      <hr />
+      <!-- <hr /> -->
       <div class="speakersRow"></div>
     </div>
     <div class="speakersContainer" id="cf">
       <h2>Panel Speakers</h2>
-      <hr />
+      <!-- <hr /> -->
       <div class="speakersRow"></div>
     </div>
     <!-- SPEAKER SECTION END -->
@@ -186,7 +167,6 @@
     <!-- WORKSHOP -->
     <div class="blogsContainer conferenceContainer">
       <h2>Workshops</h2>
-
       <div class="blogsRow" id="workshop"></div>
     </div>
     <!-- END OF WORKSHOPS -->
@@ -239,7 +219,7 @@
     <!-- END OF FOOTER -->
 
     <!-- Modal -->
-    
+
     <div class="modal" id="modal">
       <div class="modalBox">
         <i class="fa fa-close" onclick="closeModal()"></i>
@@ -248,79 +228,11 @@
         <p id="modalBody"></p>
       </div>
     </div>
-    
+
     <!-- JAVASCRIPT -->
     <script src="./main.js"></script>
     <script>
       getAirtableData();
-
-      // Countdown
-
-      // const darwinDate = new Date("December 2, 2021, 10:00:00").getTime();
-
-      // const countdown = setInterval(() => {
-      //   let currentDate = Date.now();
-      //   let diff = darwinDate - currentDate;
-
-      //   let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      //   let hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      //   let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      //   let secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-      //   document.getElementById("days").innerHTML =
-      //     days < 10 ? "0" + days : days;
-      //   document.getElementById("hrs").innerHTML = hrs < 10 ? "0" + hrs : hrs;
-      //   document.getElementById("mins").innerHTML =
-      //     mins < 10 ? "0" + mins : mins;
-      //   document.getElementById("secs").innerHTML =
-      //     secs < 10 ? "0" + secs : secs;
-
-      //   if (diff < 0) clearInterval(countdown);
-      // }, 1000);
-
-      // // Map
-
-      // const hideMap = () => {
-      //   setTimeout(() => {
-      //     const map = document.querySelectorAll(
-      //       '[href="https://simplemaps.com"]'
-      //     );
-      //     for (let i = 0; i < map.length; i++) {
-      //       map[i].style.display = "none";
-      //     }
-      //   }, 3000);
-      // };
-
-      //   Speaker Details
-
-      // const firstSpeakerDisplay = () => {
-      //   const speakers = document.getElementsByClassName("speakersRow")[0];
-      //   setTimeout(() => {
-      //     speakers.childNodes[0].nextSibling.click();
-      //   }, 2000);
-      // };
-
-      // const openSpeakerWithMessage = (header, body, designation) => {
-      //   const nameArr = header.split(" ");
-      //   const [, , ...rest] = nameArr;
-      //   const restName = rest.join(" ");
-      //   header = `<span>${nameArr[0]} ${nameArr[1]}</span> ${restName}`;
-      //   const fullBody = `
-      //   ${designation !== "undefined" ? `<span>${designation}</span>` : ""}
-      //   ${body}
-      //   `;
-      //   document.getElementById("speakerHeader").innerHTML = header;
-      //   document.getElementById("speakerBody").innerHTML = fullBody;
-      // };
-
-      // Window functions
-
-      // window.onload = function () {
-      //   // hideMap();
-      //   firstSpeakerDisplay();
-      // };
     </script>
-
-
   </body>
 </html>

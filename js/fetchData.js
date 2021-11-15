@@ -295,15 +295,42 @@ const updateTestimonials = async () => {
 const updateCollaborators = async () => {
   collaborators = await getRecords("Collaborators");
   collaborators = sortByOrder(collaborators);
-  let template = "";
+  let template1 = "";
+  let template2 = "";
+  let template3 = "";
+  let template4 = "";
+
   collaborators.forEach((collaborator, index) => {
-    template += `
-    <a href="${collaborator.Link}" target="_blank">
-    <img src="${collaborator.Logo[0].url}" alt="Collaborator" />
-    </a>
-    `;
+    if (collaborator.Type == "RC Partner") {
+      template1 += `
+      <a href="${collaborator.Link}" target="_blank">
+      <img src="${collaborator.Logo[0].url}" alt="Collaborator" />
+      </a>
+      `;
+    } else if (collaborator.Type == "RS Partner") {
+      template2 += `
+      <a href="${collaborator.Link}" target="_blank">
+      <img src="${collaborator.Logo[0].url}" alt="Collaborator" />
+      </a>
+      `;
+    } else if (collaborator.Type == "Outreach Partner") {
+      template3 += `
+      <a href="${collaborator.Link}" target="_blank">
+      <img src="${collaborator.Logo[0].url}" alt="Collaborator" />
+      </a>
+      `;
+    } else if (collaborator.Type == "Institution Partner") {
+      template4 += `
+      <a href="${collaborator.Link}" target="_blank">
+      <img src="${collaborator.Logo[0].url}" alt="Collaborator" />
+      </a>
+      `;
+    }
   });
-  document.getElementById("collaborators").innerHTML = template;
+  document.getElementById("rccollaborators").innerHTML = template1;
+  document.getElementById("rscollaborators").innerHTML = template2;
+  document.getElementById("opcollaborators").innerHTML = template3;
+  document.getElementById("ipcollaborators").innerHTML = template4;
 
   // animateDynamicElements();
 };

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+
+      name="keywords"
+
+      content="international conference, biology conference, covid19 conference, biohacking, diy biology"
+
+    />
+
+    <meta
+
+      name="description"
+
+      content="An International Conference brought to you in the comfort of your portable devices. Darwin provides an endless drive to encourage innovation and connect bio-enthusiasts from across the globe. With the ongoing pandemic, we have decided to go virtual this year!"
+
+    />
+
+    <script
+
+      src="https://code.jquery.com/jquery-3.5.1.js"
+
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+
+      crossorigin="anonymous"
+
+    ></script>
+
+    <meta name="robots" content="index, follow" />
+
+    <link
+
+      rel="stylesheet"
+
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+
+    />
+
+    <link rel="icon" type="image/png" href="../img/favico.png" />
+
+    <link rel="stylesheet" href="./live.css" />
+
+    <script src="../js/airtable.browser.js"></script>
+
+    <script src="../js/fetchData.js"></script>
+
+    <script src="./live.js"></script>
+
+    <title>Live Events | Darwin</title>
+
+  </head>
+
+  <body>
+
+    <nav>
+
+      <input type="checkbox" id="check" checked />
+
+      <label for="check" class="checkBtn"><i class="fa fa-bars"></i></label>
+
+      <div class="navbarLogos">
+
+        <a href="#">
+
+          <img src="../img/darwin.png" alt="Darwin" />
+
+        </a>
+
+      </div>
+
+
+
+      <ul>
+
+        <!--<li><a href="../#about">About</a></li>-->
+
+        <!--<li>-->
+
+        <!--  <a href="../#eventsSection">Events</a>-->
+
+        <!--</li>-->
+
+        <!--<li>-->
+
+        <!--  <a href="../#register">Tickets</a>-->
+
+        <!--</li>-->
+
+        <!--<li>-->
+
+        <!--  <a href="../#speakers">Speakers</a>-->
+
+        <!--</li>-->
+
+        <!--<li>-->
+
+        <!--  <a href="../#contact">Contact</a>-->
+
+        <!--</li>-->
+
+        <!--<li>-->
+
+        <!--  <a-->
+
+        <!--    href=""-->
+
+        <!--    onclick="window.open('http://riidl.org/thedarwin.in/darwin2019.html')"-->
+
+        <!--    >Darwin 2019</a-->
+
+        <!--  >-->
+
+        <!--</li>-->
+
+        <li>
+
+          <a
+
+            href="http://thedarwin.in/login/index.html"
+
+            class="loginNavbar"
+
+            id="userName"
+
+            >Welcome</a
+
+          >
+
+        </li>
+
+      </ul>
+
+    </nav>
+
+
+
+    <div class="bannerContainer">
+
+      <div class="bannerTint">
+
+        <h1>One of India's Biggest Evolutionary Movements in Biology</h1>
+
+        <button id="certBtn" onclick="openCert()" >Download Certificate</button>
+
+        <div class="logoStrip">
+
+          <img src="../img/svv_white.png" alt="SVV" />
+
+          <img src="../img/trust_white.png" alt="STrust" />
+
+          <img src="../img/birac_white.png" alt="Birac" />
+
+          <img src="../img/bioriidl-white.png" alt="Bioriidl" />
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="liveContainer">
+
+      <h2>Live Sessions | Main Conference</h2>
+
+      <hr />
+
+      <div class="liveSessions" id="liveMainSessions"></div>
+
+        <h2>Live Sessions | Regional Conference</h2>
+        
+        <hr />
+
+      <div class="liveSessions" id="liveRegSessions"></div>
+
+    </div>
+
+
+
+    <div class="eventsContainer">
+
+      <div class="daysBtns">
+
+        <button class="dayBtn" onclick="changeCurrentDay(2)">December 2</button>
+
+        <button class="dayBtn" onclick="changeCurrentDay(3)">December 3</button>
+
+        <button class="dayBtn" onclick="changeCurrentDay(4)">December 4</button>
+
+        <button class="dayBtn" onclick="changeCurrentDay(5)">December 5</button>
+
+      </div>
+
+      <div class="eventsList" id="eventsList"></div>
+
+    </div>
+
+
+
+    <div class="collabContainer">
+
+      <h2>Collaborators</h2>
+
+      <hr />
+
+      <div class="collabs" id="collabs"></div>
+
+    </div>
+
+    
+
+    <div class="feedbackForms">
+
+      <a href="https://airtable.com/shrBjb5a8tOLz9506" target="_blank"><button>Send your Feedback</button></a>
+
+      <a href="https://airtable.com/shrETqyJvNfFcCIlq" target="_blank"><button>Share your Experience</button></a>
+
+    </div>
+
+
+
+    <div class="helpContainer">
+
+      <h2>Help Desk</h2>
+
+      <hr />
+
+      <div class="helpDetails">
+
+         <p>
+
+          Zeel Jain:
+
+          <a href="whatsapp://send?text=Hello! I have a query regarding the Darwin Conference. Could you please help me out?&phone=+917666478569"
+
+            >+91 76664 78569</a
+
+          >
+
+        </p>
+
+        <a href="/">darwin@somaiya.edu</a>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="footerContainer">
+
+      <p>Darwin &copy; Copyright 2021. All rights reserved.</p>
+
+      <div class="socialMedia">
+
+        <a href="https://instagram.com/darwinindia"
+
+          ><i class="fa fa-instagram"></i
+
+        ></a>
+
+        <a href="https://twitter.com/darwin_india"
+
+          ><i class="fa fa-twitter"></i
+
+        ></a>
+
+        <a href="https://facebook.com/darwin.bioriidl/"
+
+          ><i class="fa fa-facebook-official"></i
+
+        ></a>
+
+        <a href="https://www.linkedin.com/company/darwin-india"
+
+          ><i class="fa fa-linkedin"></i
+
+        ></a>
+
+      </div>
+
+      <p>
+
+        <a href="https://www.facebook.com/groups/1496081137211146"
+
+          >Join our Facebook Community</a
+
+        >
+
+      </p>
+
+    </div>
+
+
+
+    <script>
+
+      const nav = document.querySelector("nav");
+
+      const input = document.querySelectorAll("input");
+
+      let currentDay;
+
+
+
+      const height = window.innerHeight;
+
+
+
+      window.onscroll = function () {
+
+        let scroll = window.scrollY;
+
+
+
+        if (scroll > height * 0.1) {
+
+          nav.classList.add("navBGChange");
+
+        } else {
+
+          nav.classList.remove("navBGChange");
+
+        }
+
+      };
+
+
+
+      let dec2Events = [];
+
+      let dec3Events = [];
+
+      let dec4Events = [];
+
+      let dec5Events = [];
+
+      let liveMainEvents = [];
+
+      let liveRegEvents = [];
+
+
+
+      const getEventClassName = (status) => {
+
+        if (status == "Ended") return "done";
+
+        else if (status == "Upcoming") return "upcoming";
+
+        else return "";
+
+      };
+
+
+
+      const openLive = (status,link) => {
+
+        if (status == "Live") window.open(link);
+
+      };
+
+
+
+      const refreshLive = () => {
+
+        let template1 = "";
+        let template2 = "";
+
+        liveMainEvents.forEach((live) => {
+
+          template1 += `
+
+          <div class="sessionBox" onclick="openLive('Live','${live.link}')" >
+
+            <h3 class="eventName">${live.name}</h3>
+
+            <p><i class="fa fa-circle"></i> Live</p>
+
+          </div>
+
+          `;
+
+        });
+
+         liveRegEvents.forEach((live) => {
+
+          template2 += `
+
+          <div class="sessionBox" onclick="openLive('Live','${live.link}')" >
+
+            <h3 class="eventName">${live.name}</h3>
+
+            <p><i class="fa fa-circle"></i> Live</p>
+
+          </div>
+
+          `;
+
+        });
+
+        document.getElementById("liveMainSessions").innerHTML = template1;
+        document.getElementById("liveRegSessions").innerHTML = template2;
+
+      };
+
+
+
+      const changeCurrentDay = (index) => {
+
+        currentDay = index;
+
+        index -= 2;
+
+        let btns = Array.from(document.getElementsByClassName("dayBtn"));
+
+        btns.forEach((bt) => bt.classList.remove("activeDay"));
+
+        let btn = btns[index];
+
+        btn.classList.add("activeDay");
+
+        refreshShownList();
+
+      };
+
+
+
+      const refreshShownList = () => {
+
+        let selectedList;
+
+        if (currentDay == 2) selectedList = dec2Events;
+
+        if (currentDay == 3) selectedList = dec3Events;
+
+        if (currentDay == 4) selectedList = dec4Events;
+
+        if (currentDay == 5) selectedList = dec5Events;
+
+        let template = "";
+
+        // change 2021 HERE
+
+        selectedList.forEach((event) => {
+
+          var stringDate1= event.from_timestamp.toString();
+          var stringDate2 = event.to_timestamp.toString();
+
+         //converting to date object
+         var date1 = new Date(stringDate1);
+         var date2 = new Date(stringDate2);
+
+          // Coverting to local datetime 
+          var localTime1 = date1.toString();
+          var localTime2 = date2.toString();
+     
+          // in local time AM/PM 
+          var local1inAMPM = date1.toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+          var local2inAMPM = date2.toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+      
+          template += `
+
+          <div class="eventTab">
+
+            <h3>${event.name}</h3>
+
+            <p>${local1inAMPM} - ${local2inAMPM}</p>
+
+            <button onclick="openLive('${event.status}','${event.link}')" class="${getEventClassName(event.status)}">${event.status === "Live" ? "Join" : event.status}</button>
+
+            ${
+
+              event.status == "Live"
+
+                ? "<span><i class='fa fa-circle'></i>Live</span>"
+
+                : ""
+
+            } 
+
+          </div>
+
+          `;
+
+        });
+
+        document.getElementById("eventsList").innerHTML = template;
+
+      };
+
+
+
+      const refreshList = () => {
+
+        $.ajax({
+
+          type: "POST",
+
+          url: "../backend/fetchRecords.php",
+
+          success: function (res) {
+
+            let events = JSON.parse(res);
+
+            events.sort((a,b) => a.id - b.id); 
+
+            liveMainEvents = [];
+
+            liveRegEvents = [];
+
+            dec2Events = [];
+
+            dec3Events = [];
+
+            dec4Events = [];
+
+            dec5Events = [];
+
+            events.forEach((event) => {
+
+//main and regional live events
+              if (event.status == "Live" && event.session_type == "Main") liveMainEvents.push(event);
+
+              if (event.status == "Live" && event.session_type == "Regional") liveRegEvents.push(event);
+
+              if (event.day == 2) dec2Events.push(event);
+
+              else if (event.day == 3) dec3Events.push(event);
+
+              else if (event.day == 4) dec4Events.push(event);
+
+              else if (event.day == 5) dec5Events.push(event);
+
+            });
+
+            refreshLive();
+
+            refreshShownList();
+
+            console.log("Website updated");
+
+          },
+
+        });
+
+      };
+
+      
+
+        async function checkFeedback(email) {
+
+            let base = new Airtable({ apiKey: "keyiZXGBC4056oZ5W" }).base(
+
+                "app8my77Rrfg25nyz"
+
+            );
+
+            const fields = [];
+
+            const records = await base("Feedback form")
+
+                .select({
+
+                filterByFormula: `{Email ID} = "${email}"`,
+
+                })
+
+                .all();
+
+            records.forEach(function (record) {
+
+                fields.push(record.fields);
+
+            });
+
+            if(fields.length > 0) return true;
+
+            return false;
+
+        }
+
+
+
+      window.onload = async function () {
+        currentDay = 2;
+        //default 2nd dec
+        changeCurrentDay(2);
+        let darwinLiveUserName = await localStorage.getItem("darwin-live-name");
+        let email = await localStorage.getItem("darwin-live-email");
+
+
+        //if user hasn't logged in
+        if (!darwinLiveUserName) {
+
+          window.location.href = "/login";
+
+        } else {
+
+          await localStorage.removeItem("darwin-live-name");
+
+          document.getElementById("userName").innerHTML =
+
+            "Welcome " + darwinLiveUserName;
+
+          refreshList();
+
+          updateCollaborators();
+
+          const feedBackDone = await checkFeedback(email);
+
+          if(feedBackDone) {
+
+            document.getElementById("certBtn").style.display = "block";
+
+          }
+
+          const timer = setInterval(() => {
+
+            refreshList();
+
+          }, 20000);
+
+        }
+
+      };
+
+      
+
+    function openCert() {
+
+        window.location.href = "/certificate";
+
+    }
+
+    
+
+    // window.onload = async function () {
+
+    //     currentDay = 2;
+
+    //     changeCurrentDay(2);
+
+    //     document.getElementById("userName").style.display = "none";
+
+    //     refreshList();
+
+    //     updateCollaborators();
+
+    //     const timer = setInterval(() => {
+
+    //       refreshList();
+
+    //     }, 20000);
+
+    // };
+
+
+
+      const animateDynamicElements = () => {
+
+        // Do nothing
+
+      };
+
+    </script>
+
+  </body>
+
+</html>
+

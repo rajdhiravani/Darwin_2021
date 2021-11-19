@@ -1,136 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="keywords"
-      content="international conference, biology conference, covid19 conference, biohacking, diy biology"
-    />
-    <meta
-      name="description"
-      content="An International Conference brought to you in the comfort of your portable devices. Darwin provides an endless drive to encourage innovation and connect bio-enthusiasts from across the globe. With the ongoing pandemic, we have decided to go virtual this year!"
-    />
-    <meta name="robots" content="index, follow" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous"
-    ></script>
-    <link rel="icon" type="image/png" href="../img/favico.png" />
-    <link rel="stylesheet" href="./login.css" />
-    <script src="../js/airtable.browser.js"></script>
-    <script src="./login.js"></script>
-    <title>Login | Darwin</title>
-  </head>
-  <body>
-    <nav>
-      <!--<input type="checkbox" id="check" />-->
-      <!--<label for="check" class="checkBtn"><i class="fa fa-bars"></i></label>-->
-      <div class="navbarLogos">
-        <a href="#">
-          <img src="../img/darwin.png" alt="Darwin" />
-        </a>
-      </div>
-
-      <!--<ul>-->
-      <!--  <li><a href="../#about">About</a></li>-->
-      <!--  <li>-->
-      <!--    <a href="../#eventsSection">Events</a>-->
-      <!--  </li>-->
-      <!--  <li>-->
-      <!--    <a href="../#register">Tickets</a>-->
-      <!--  </li>-->
-      <!--  <li>-->
-      <!--    <a href="../#speakers">Speakers</a>-->
-      <!--  </li>-->
-      <!--  <li>-->
-      <!--    <a href="../#contact">Contact</a>-->
-      <!--  </li>-->
-      <!--  <li>-->
-      <!--    <a-->
-      <!--      href=""-->
-      <!--      onclick="window.open('http://riidl.org/thedarwin.in/darwin2019.html')"-->
-      <!--      >Darwin 2019</a-->
-      <!--    >-->
-      <!--  </li>-->
-      <!--  <li>-->
-      <!--    <a href="http://thedarwin.in/login/login.html" class="loginNavbar"-->
-      <!--      >Login</a-->
-      <!--    >-->
-      <!--  </li>-->
-      <!--</ul>-->
-    </nav>
-
-    <div class="loginContainer">
-      <div class="loginCard">
-        <h2>Login</h2>
-        <form onsubmit="goToLive(event)">
-          <input type="email" name="email" id="emailID" placeholder="Email Address" />
-          <input type="password" name="pwd" id="pwd" placeholder="Password" />
-          <div class="conditions">
-            <input type="checkbox" name="agree" id="agree" />
-            <span
-              >I accept the
-              <a href="./conditions.html">Terms & Conditions</a></span
-            >
-          </div>
-          <input type="submit" value="Login" />
-          <span id="error"></span>
-        </form>
-      </div>
-    </div>
-    
-    <script>
-      async function goToLive(e) {
-        e.preventDefault();
-        const email = document.getElementById("emailID").value;
-        const pwd = document.getElementById("pwd").value;
-        if (!document.getElementById("agree").checked) {
-          document.getElementById("error").innerHTML =
-            "Please read and accept the Terms & Conditions";
-          setTimeout(
-            () => (document.getElementById("error").innerHTML = ""),
-            3000
-          );
-          return false;
-        }
-        if(pwd != "Darwin2020@BioRiidl") {
-          document.getElementById("error").innerHTML =
-            "Invalid credentials";
-          setTimeout(
-            () => (document.getElementById("error").innerHTML = ""),
-            3000
-          );
-          return false;
-        } 
-        $.ajax({
-          type: "POST",
-          url: "../backend/checkIfRegistered.php",
-          data: { email },
-          success: async function (res) {
-            const resJson = JSON.parse(res);
-            if(resJson.length === 0) {
-              document.getElementById("error").innerHTML =
-                "No registration found with this Email ID";
-              setTimeout(
-                () => (document.getElementById("error").innerHTML = ""),
-                3000
-              );
-              return false;
-            } else {
-              await localStorage.setItem("darwin-live-name",resJson[0]["Name"]);
-              await localStorage.setItem("darwin-live-email",resJson[0]["Email ID"]);
-              window.location.href = '/live';
-            }
-          },
-        });
-      }
-    </script>
-    
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="international conference, biology conference, covid19 conference, biohacking, diy biology"/>
+    <meta name="description" content="An International Conference brought to you in the comfort of your portable devices. Darwin provides an endless drive to encourage innovation and connect bio-enthusiasts from across the globe. With the ongoing pandemic, we have decided to go virtual this year!"/>
+    <meta name="robots" content="index, follow" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="../img/favico.png" />
+    <link rel="stylesheet" href="./login.css" />
+    <script src="../js/airtable.browser.js"></script>
+    <script src="./login.js"></script>
+    <title>Login | Darwin</title>
+  </head>
+  <body>
+    <nav>
+      <!--<input type="checkbox" id="check" />-->
+      <!--<label for="check" class="checkBtn"><i class="fa fa-bars"></i></label>-->
+      <div class="navbarLogos">
+        <a href="#"><img src="../img/darwin.png" alt="Darwin" /></a>
+      </div>
+      <!--<ul>-->
+      <!--  <li><a href="../#about">About</a></li>-->
+      <!--  <li>-->
+      <!--    <a href="../#eventsSection">Events</a>-->
+      <!--  </li>-->
+      <!--  <li>-->
+      <!--    <a href="../#register">Tickets</a>-->
+      <!--  </li>-->
+      <!--  <li>-->
+      <!--    <a href="../#speakers">Speakers</a>-->
+      <!--  </li>-->
+      <!--  <li>-->
+      <!--    <a href="../#contact">Contact</a>-->
+      <!--  </li>-->
+      <!--  <li>-->
+      <!--    <a-->
+      <!--      href=""-->
+      <!--      onclick="window.open('http://riidl.org/thedarwin.in/darwin2019.html')"-->
+      <!--      >Darwin 2019</a-->
+      <!--    >-->
+      <!--  </li>-->
+      <!--  <li>-->
+      <!--    <a href="http://thedarwin.in/login/login.html" class="loginNavbar"-->
+      <!--      >Login</a-->
+      <!--    >-->
+      <!--  </li>-->
+      <!--</ul>-->
+
+    </nav>
+
+    <div class="loginContainer">
+      <div class="loginCard">
+        <h2>Login</h2>
+        <form onsubmit="goToLive(event)">
+          <input type="email" name="email" id="emailID" placeholder="Email Address" />
+          <input type="password" name="pwd" id="pwd" placeholder="Password" />
+          <div class="conditions">
+            <input type="checkbox" name="agree" id="agree" />
+            <span>I accept the<a href="./conditions.html">Terms & Conditions</a></span>
+          </div>
+          <input type="submit" value="Login" />
+          <!-- for displaying error -->
+          <span id="error"></span>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      async function goToLive(e) {
+        e.preventDefault();
+        const email = document.getElementById("emailID").value;
+        const pwd = document.getElementById("pwd").value;
+
+        // if t&c isn't checked
+        if (!document.getElementById("agree").checked) {
+          document.getElementById("error").innerHTML = "Please read and accept the Terms & Conditions";
+          //defaults to empty string after 4s
+          setTimeout( () => (document.getElementById("error").innerHTML = ""), 4000 );
+          return false;
+        }
+
+        //if password doesn't match
+        if(pwd != "Darwin2020@BioRiidl") {
+          document.getElementById("error").innerHTML = "Invalid credentials";
+         setTimeout(() => (document.getElementById("error").innerHTML = ""), 4000);
+          return false;
+        }
+
+        $.ajax({
+          type: "POST",
+          url: "../backend/checkIfRegistered.php",
+          url: "../backend/checkIfRegistered.php",
+          data: { email },
+          success: async function (res) {
+            const resJson = JSON.parse(res);
+
+            if(resJson.length === 0) {
+              document.getElementById("error").innerHTML = "No registration found with this Email ID";
+              setTimeout(() => (document.getElementById("error").innerHTML = ""), 4000);
+              return false;
+
+            } 
+            // registered email found, setting name and email id as localstorage
+            else {
+              await localStorage.setItem("darwin-live-name",resJson[0]["Name"]);
+              await localStorage.setItem("darwin-live-email",resJson[0]["Email ID"]);
+              // go to live
+              window.location.href = '/live';
+            }
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
+

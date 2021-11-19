@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Darwin Admin"
+AuthUserFile "/home1/riidlorg/.htpasswds/public_html/thedarwin.in/2020/admin/passwd"
+require valid-user

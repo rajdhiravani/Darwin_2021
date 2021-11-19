@@ -32,7 +32,6 @@ const metaData = {
   ],
 };
 
-let conferenceOverview = [];
 let speakerProfiles = [];
 let preEvents = [];
 let collaborators = [];
@@ -45,7 +44,6 @@ let benefits = [];
 let highlights = [];
 
 const getAirtableData = async () => {
-  updateConference();
   updateSpeakers();
   updateWorkshops();
   // updateTestimonials();
@@ -220,32 +218,7 @@ const updateDetails = async () => {
   document.querySelector("#aboutLab").innerHTML = template9;
 };
 
-const updateConference = async () => {
-  conferenceOverview = await getRecords("Conference overview");
-  conferenceOverview = sortByOrder(conferenceOverview);
-  let template = "";
-  let template2 = "";
-  let template3 = "";
 
-  conferenceOverview.forEach((conference, index) => {
-    if (conference.Type === "Talk")
-      template += `
-    <div class="blogCard">
-      <div class="blogPic" style="background: url('${conference.Speakers[0].url}') center/cover" >
-        <div class="blogPicTint"></div>
-      </div>
-      <div class="blogContent">
-        <h3>${conference.Name}</h3>
-        <button onclick="openModalWithMessage('${conference.Name}','${conference.Topic}', '${conference.Description}', '${conference.Name}')">Read More</button>
-      </div>
-    </div>
-    `;
-  });
-  document.querySelector("#conferenceOverview > .blogsRow").innerHTML =
-    template;
-
-  // animateDynamicElements();
-};
 
 const updateSpeakers = async () => {
   speakerProfiles = await getRecords("Speakers&Panelist");

@@ -62,7 +62,7 @@ const getRecords = async (tableName) => {
   const fields = [];
   const records = await base(tableName)
     .select({
-      filterByFormula: "( visible = TRUE() )",
+      // filterByFormula: "( visible = TRUE() )",
     })
     .all();
   records.forEach(function (record) {
@@ -293,11 +293,32 @@ const updateSpeakers = async () => {
 };
 
 const updateWorkshops = async () => {
+
   workshops = await getRecords("Workshops");
   workshops = sortByOrder(workshops);
   let template = "";
+  let count=0;
+  let unchekedCount = 0;
   workshops.forEach((workshop, index) => {
-    template += `
+    count++;
+    if (workshop.Visible){
+      console.log(index)
+      console.log(workshop);
+
+      console.log("chechked");
+    }
+    //unchecked
+   else{
+      console.log(index)
+      console.log(workshop);
+      console.log("unchecked");
+      unchekedCount++;
+    }
+    // if ( workshop.visible ) {
+    //   console.log("Workshops are unticked!");
+    // }
+    if(workshop.Visible){
+      template += `
     <div class="blogCard">
       <div class="blogPic" style="background: url(${workshop.Poster[0].url}) center/cover;">
         <div class="blogPicTint"></div>
@@ -308,9 +329,19 @@ const updateWorkshops = async () => {
       </div>
     </div>
     `;
-  });
-  document.getElementById("workshop").innerHTML = template;
+    }else{
+      template+= ``;
+    }
 
+  });
+  if(count== unchekedCount){
+    console.log("all entries are unchecked");
+    //all rows are unchecked
+    //hide the section
+  }
+ 
+    document.getElementById("workshop").innerHTML = template;
+  
   // animateDynamicElements();
 };
 

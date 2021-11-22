@@ -1,39 +1,29 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
   <head>
-
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script
-
       src="https://code.jquery.com/jquery-3.5.1.js"
-
       integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-
       crossorigin="anonymous"
-
     ></script>
 
     <link rel="stylesheet" href="./admin.css" />
 
     <title>Admin | Darwin</title>
-
   </head>
 
   <body>
-
     <h1 class="heading">Darwin 2021 Live Schedule</h1>
 
-    <h1 id="organized_name"></h1>
+    <h1 id="organizedName"></h1>
 
     <table id="eventTable">
-
       <tr>
-
         <th>ID</th>
 
         <th>Name</th>
@@ -55,26 +45,18 @@
         <th>Link</th>
 
         <th>Change Link</th>
-
       </tr>
-
     </table>
 
     <script>
-
       let events = [];
 
-  
-
       const updateEvent = (index) => {
-
-
         const selects = document.getElementsByClassName("selectStatus");
 
         const data = { newStatus: selects[index].value, id: events[index].id };
 
         $.ajax({
-
           type: "POST",
 
           data,
@@ -82,33 +64,22 @@
           url: "../backend/changeStatus.php",
 
           success: function (res) {
-
             if (res === "Updated") {
-
               window.location.reload();
-
             }
-
           },
-
         });
-
       };
 
-      
-
       const updateLink = (index) => {
-
         const oldLink = events[index].link;
 
-        const newLink = prompt("Enter new link",oldLink);
+        const newLink = prompt("Enter new link", oldLink);
 
-        if(newLink){
-
+        if (newLink) {
           const data = { newLink, id: events[index].id };
 
           $.ajax({
-
             type: "POST",
 
             data,
@@ -116,56 +87,44 @@
             url: "../backend/changeLink.php",
 
             success: function (res) {
-
               if (res === "Updated") {
-
                 window.location.reload();
-
               }
-
             },
-
           });
-
         }
-
       };
 
-
-
       window.onload = async function () {
-        console.log("Checking")
-        var name= await localStorage.getItem("darwin-admin-name");
-        var template= [];
+        console.log("Checking");
+        var name = await localStorage.getItem("darwin-admin-name");
+        var template = [];
 
-        template= `
-          Name: ${name}
+        template = `
+          Welcome ${name}
         `;
-        var rc_name_section= document.getElementById("organized_name");
-        rc_name_section.innerHTML= template;
+        var rc_name_section = document.getElementById("organizedName");
+        rc_name_section.innerHTML = template;
 
-      console.log(localStorage.getItem("darwin-admin-username"));
+        console.log(localStorage.getItem("darwin-admin-username"));
 
-//if logged in as Darwin
-        if( name == "darwin"){
+        //if logged in as Darwin
+        if (name == "darwin") {
           $.ajax({
-
             type: "POST",
 
             url: "../backend/fetchRecords.php",
 
             success: function (res) {
-
               events = JSON.parse(res);
 
-              events.sort((a, b) => a.id - b.id)
+              events.sort((a, b) => a.id - b.id);
 
               console.log(events[0]);
 
               let template = "";
 
               events.forEach((event, index) => {
-
                 template += `
 
             <tr>
@@ -213,20 +172,15 @@
             </tr>
 
               `;
-
               });
 
               document.getElementById("eventTable").innerHTML += template;
-
             },
-
           });
-
         }
-//if logged in as one of the RCs
-        else{
+        //if logged in as one of the RCs
+        else {
           $.ajax({
-
             type: "POST",
 
             data: { name: name },
@@ -234,17 +188,15 @@
             url: "../backend/fetchRCRecords.php",
 
             success: function (res) {
-
               events = JSON.parse(res);
 
-              events.sort((a, b) => a.id - b.id)
+              events.sort((a, b) => a.id - b.id);
 
               console.log(events[0]);
 
               let template = "";
 
               events.forEach((event, index) => {
-
                 template += `
 
             <tr>
@@ -292,23 +244,13 @@
             </tr>
 
               `;
-
               });
 
               document.getElementById("eventTable").innerHTML += template;
-
             },
-
           });
-
-
         }
-     
       };
-
     </script>
-
   </body>
-
 </html>
-

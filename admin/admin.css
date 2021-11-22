@@ -1,69 +1,98 @@
-body,
-html {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.heading {
-  text-align: center;
-  font-size: 42px;
-}
-
-#eventTable {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 80%;
-  margin: 5vh auto;
-}
-
-#eventTable td,
-#eventTable th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-/* 
-#eventTable tr:nth-child(even) {
-  background-color: #f2f2f2;
-} */
-
-#eventTable tr:hover {
-  background-color: #ddd;
-}
-
-#eventTable th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4caf50;
-  color: white;
-  font-size: 18px;
-}
-
-.Ended p {
-  padding: 10px;
-  background-color: #ff0000;
-  color: #fff;
-}
-
-.Live p {
-  padding: 10px;
-  background-color: #4caf50;
-  color: #fff;
-}
-
-.Upcoming p {
-  padding: 10px;
-  background-color: #ddd;
-  color: #000;
-}
-
-.selectStatus {
-  padding: 5px;
-  margin-bottom: 8px;
-}
-
-.updateBtn {
-  padding: 5px 10px;
-  margin: auto;
-}
+body,
+html {
+  margin: 0;
+
+  padding: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.heading {
+  text-align: center;
+
+  font-size: 42px;
+}
+
+#organizedName {
+  text-align: right;
+  margin-right: 10%;
+}
+
+#eventTable {
+  font-family: Arial, Helvetica, sans-serif;
+
+  border-collapse: collapse;
+
+  width: 80%;
+
+  margin: 5vh auto;
+}
+
+#eventTable td,
+#eventTable th {
+  border: 1px solid #ddd;
+
+  padding: 8px;
+}
+
+/* 
+
+#eventTable tr:nth-child(even) {
+
+  background-color: #f2f2f2;
+
+} */
+
+#eventTable tr:hover {
+  background-color: #ddd;
+}
+
+#eventTable th {
+  padding-top: 12px;
+
+  padding-bottom: 12px;
+
+  text-align: left;
+
+  background-color: #4caf50;
+
+  color: white;
+
+  font-size: 18px;
+}
+
+.Ended p {
+  padding: 10px;
+
+  background-color: #ff0000;
+
+  color: #fff;
+}
+
+.Live p {
+  padding: 10px;
+
+  background-color: #4caf50;
+
+  color: #fff;
+}
+
+.Upcoming p {
+  padding: 10px;
+
+  background-color: #ddd;
+
+  color: #000;
+}
+
+.selectStatus {
+  padding: 5px;
+
+  margin-bottom: 8px;
+}
+
+.updateBtn {
+  padding: 5px 10px;
+
+  margin: auto;
+}

@@ -3,7 +3,7 @@
 
        
         $username = $_POST['username'];
-    // $pwd = $_POST['pwd']; 
+        $pwd = $_POST['pwd']; 
 
     // echo $username;
 
@@ -20,7 +20,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql= "SELECT * FROM `rc_credentials` WHERE `Username`= '$username'";
+        $sql= "SELECT * FROM `rc_credentials` WHERE `Username`= '$username' AND `password`= '$pwd'";
         $result = mysqli_query($conn,$sql);
         $output = array();
         

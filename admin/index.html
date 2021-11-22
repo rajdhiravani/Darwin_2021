@@ -98,106 +98,39 @@
       window.onload = async function () {
         console.log("Checking");
         var name = await localStorage.getItem("darwin-admin-name");
-        var template = [];
 
-        template = `
+        if (!name) {
+          window.location.href = '/admin_login';
+        }
+        else{
+          var template = [];
+
+          template = `
           Welcome ${name}
         `;
-        var rc_name_section = document.getElementById("organizedName");
-        rc_name_section.innerHTML = template;
+          var rc_name_section = document.getElementById("organizedName");
+          rc_name_section.innerHTML = template;
 
-        console.log(localStorage.getItem("darwin-admin-username"));
+          console.log(localStorage.getItem("darwin-admin-username"));
 
-        //if logged in as Darwin
-        if (name == "darwin") {
-          $.ajax({
-            type: "POST",
+          //if logged in as Darwin
+          if (name == "darwin") {
+            $.ajax({
+              type: "POST",
 
-            url: "../backend/fetchRecords.php",
+              url: "../backend/fetchRecords.php",
 
-            success: function (res) {
-              events = JSON.parse(res);
+              success: function (res) {
+                events = JSON.parse(res);
 
-              events.sort((a, b) => a.id - b.id);
+                events.sort((a, b) => a.id - b.id);
 
-              console.log(events[0]);
+                console.log(events[0]);
 
-              let template = "";
+                let template = "";
 
-              events.forEach((event, index) => {
-                template += `
-
-            <tr>
-
-                <td>${index + 1}</td>
-
-                <td>${event.name}</td>
-
-                <td>${event.type}</td>
-
-                <td>${event.speakers}</td>
-
-                <td>${event.day}</td>
-
-                <td>${event.from_timestamp}</td>
-
-                <td>${event.to_timestamp}</td>
-
-                <td class="${event.status}"><p>${event.status}</p></td>
-
-                <td>
-
-                    <select class="selectStatus">
-
-                        <option value="Upcoming">Upcoming</option>
-
-                        <option value="Live">Live</option>
-
-                        <option value="Ended">Ended</option>
-
-                    </select>
-
-                    <button class="updateBtn" onclick="updateEvent(${index})">Update Status</button>
-
-                </td>
-
-                <td>${event.link}</td>
-
-                <td>
-
-                  <button class="updateBtn" onclick="updateLink(${index})">Change Link</button>
-
-                </td>
-
-            </tr>
-
-              `;
-              });
-
-              document.getElementById("eventTable").innerHTML += template;
-            },
-          });
-        }
-        //if logged in as one of the RCs
-        else {
-          $.ajax({
-            type: "POST",
-
-            data: { name: name },
-
-            url: "../backend/fetchRCRecords.php",
-
-            success: function (res) {
-              events = JSON.parse(res);
-
-              events.sort((a, b) => a.id - b.id);
-
-              console.log(events[0]);
-
-              let template = "";
-
-              events.forEach((event, index) => {
-                template += `
+                events.forEach((event, index) => {
+                  template += `
 
             <tr>
 
@@ -244,12 +177,86 @@
             </tr>
 
               `;
-              });
+                });
 
-              document.getElementById("eventTable").innerHTML += template;
-            },
-          });
-        }
+                document.getElementById("eventTable").innerHTML += template;
+              },
+            });
+          }
+          //if logged in as one of the RCs
+          else {
+            $.ajax({
+              type: "POST",
+
+              data: { name: name },
+
+              url: "../backend/fetchRCRecords.php",
+
+              success: function (res) {
+                events = JSON.parse(res);
+
+                events.sort((a, b) => a.id - b.id);
+
+                console.log(events[0]);
+
+                let template = "";
+
+                events.forEach((event, index) => {
+                  template += `
+
+            <tr>
+
+                <td>${index + 1}</td>
+
+                <td>${event.name}</td>
+
+                <td>${event.type}</td>
+
+                <td>${event.speakers}</td>
+
+                <td>${event.day}</td>
+
+                <td>${event.from_timestamp}</td>
+
+                <td>${event.to_timestamp}</td>
+
+                <td class="${event.status}"><p>${event.status}</p></td>
+
+                <td>
+
+                    <select class="selectStatus">
+
+                        <option value="Upcoming">Upcoming</option>
+
+                        <option value="Live">Live</option>
+
+                        <option value="Ended">Ended</option>
+
+                    </select>
+
+                    <button class="updateBtn" onclick="updateEvent(${index})">Update Status</button>
+
+                </td>
+
+                <td>${event.link}</td>
+
+                <td>
+
+                  <button class="updateBtn" onclick="updateLink(${index})">Change Link</button>
+
+                </td>
+
+            </tr>
+
+              `;
+                });
+
+                document.getElementById("eventTable").innerHTML += template;
+              },
+            });
+          }
+}
+        
       };
     </script>
   </body>

@@ -299,6 +299,7 @@ const updateWorkshops = async () => {
   let template = "";
   let count=0;
   let unchekedCount = 0;
+  
   workshops.forEach((workshop, index) => {
     count++;
     if (workshop.Visible){
@@ -309,8 +310,8 @@ const updateWorkshops = async () => {
     }
     //unchecked
    else{
-      console.log(index)
-      console.log(workshop);
+      // console.log(index)
+      // console.log(workshop);
       console.log("unchecked");
       unchekedCount++;
     }

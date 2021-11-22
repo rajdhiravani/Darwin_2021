@@ -93,9 +93,9 @@
         $.ajax({
           type: "POST",
           url: "../backend/checkIfRegistered.php",
-          url: "../backend/checkIfRegistered.php",
           data: { email },
           success: async function (res) {
+            console.log(res);
             const resJson = JSON.parse(res);
 
             if(resJson.length === 0) {

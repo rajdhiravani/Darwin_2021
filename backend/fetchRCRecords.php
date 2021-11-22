@@ -1,11 +1,15 @@
 <?php
 
-        $newStatus = $_POST['newStatus']; 
+
+        $name = $_POST['name']; 
         
-        $id = $_POST['id']; 
+
         $servername = "localhost";
+
         $username = "riidlorg_d2021";
+
         $password = "darwin@riidl520";
+
         $dbname = "riidlorg_darwin2021";
 
 
@@ -26,13 +30,23 @@
 
         //start code
 
-        $sql = "UPDATE `schedule` SET `status` = '{$newStatus}' WHERE `id`= '$id'";
+        $output = "";
+
+        $sql= "SELECT * FROM `schedule` WHERE `organized_by`= '$name'";
 
         $result = mysqli_query($conn,$sql);
 
+        $output = array();
+
+        while($row = mysqli_fetch_array($result)){
+
+            array_push($output,$row);
+
+        }
+
     
 
-        echo "Updated";
+        echo json_encode($output);
 
                 
 

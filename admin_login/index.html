@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="international conference, biology conference, covid19 conference, biohacking, diy biology"/>
+    <meta name="description" content="An International Conference brought to you in the comfort of your portable devices. Darwin provides an endless drive to encourage innovation and connect bio-enthusiasts from across the globe. With the ongoing pandemic, we have decided to go virtual this year!"/>
+    <meta name="robots" content="index, follow" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="../img/favico.png" />
+    <link rel="stylesheet" href="./login.css" />
+    <script src="../js/airtable.browser.js"></script>
+    <script src="./login.js"></script>
+    <title>Sign in | Darwin Admin</title>
+  </head>
+  <body>
+    <nav>
+      <div class="navbarLogos">
+        <a href="#"><img src="../img/darwin.png" alt="Darwin" /></a>
+      </div>
+    </nav>
+
+    <div class="loginContainer">
+      <div class="loginCard">
+        <h2>Login</h2>
+        <form onsubmit="goToLive(event)">
+          <input type="username" name="username" id="username" placeholder="Username" />
+          <input type="password" name="pwd" id="pwd" placeholder="Password" />
+      
+          <input type="submit" name="submit" value="Login" />
+          <!-- for displaying error -->
+          <span id="error"></span>
+        </form>
+      </div> 
+    </div>
+
+    <script>
+      async function goToLive(e) {
+        e.preventDefault();
+        const username = document.getElementById("username").value;
+        const pwd = document.getElementById("pwd").value;
+
+         const data= {username: username, pwd: pwd};
+        $.ajax({
+          type: "POST",
+          url: "../backend/checkCredentials.php",
+          data,
+          // data: {
+          //   username: username, 
+          //   pwd: pwd,
+          // },
+        
+      
+          success: async function (res) {
+            const resJson = JSON.parse(res);
+
+            console.log(resJson); 
+            if(resJson.length === 0) {
+              document.getElementById("error").innerHTML = "Invalid credentials";
+              setTimeout(() => (document.getElementById("error").innerHTML = ""), 4500);
+              return false;
+
+            } 
+            // registered credentials found, setting name and username of as localstorage
+            else {
+              await localStorage.setItem("darwin-admin-name",resJson[0]["name"]);
+              await localStorage.setItem("darwin-admin-username",resJson[0]["Username"]);
+  
+              // go to admin
+              window.location.href = '/admin';
+            }
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
+

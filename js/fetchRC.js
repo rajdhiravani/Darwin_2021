@@ -5,7 +5,7 @@ let Airtable = require("airtable");
 let AirtableBaseID = sessionStorage.getItem("ConferenceID");
 let AirtableBaseName = sessionStorage.getItem("ConferenceName");
 
-if (AirtableBaseID===null){
+if (AirtableBaseID === null) {
   window.location.replace("https://thedarwin.in/");
 }
 // Airtable credentials
@@ -56,13 +56,11 @@ const getAirtableData = async () => {
 };
 
 const getRecords = async (tableName) => {
-  let base = new Airtable({ apiKey: "key6ft2ZcKHUhULL5" }).base(
-    AirtableBaseID
-  );
+  let base = new Airtable({ apiKey: "key6ft2ZcKHUhULL5" }).base(AirtableBaseID);
   const fields = [];
   const records = await base(tableName)
     .select({
-      // filterByFormula: "( visible = TRUE() )",
+      filterByFormula: "( visible = TRUE() )",
     })
     .all();
   records.forEach(function (record) {
@@ -90,9 +88,9 @@ const updateDetails = async () => {
   let template7 = "";
   let template8 = "";
   let template9 = "";
-  let temp1ate10="";
+  let temp1ate10 = "";
 
-  let RCname="";
+  let RCname = "";
 
   // RC logo
   websiteDetails.forEach((detail, index) => {
@@ -100,15 +98,13 @@ const updateDetails = async () => {
       template5 += `
         <img src= "${websiteDetails[index].Attachments[0].url}" alt="darwin RC logo" />
         `;
-      temp1ate10 +=`
+      temp1ate10 += `
         <a href="#">
        <img src= "${websiteDetails[index].Attachments[0].url}" alt="darwin RC logo"  />
         </a>
-      `
+      `;
     }
   });
-
-
 
   //RC name
   websiteDetails.forEach((detail, index) => {
@@ -218,18 +214,22 @@ const updateDetails = async () => {
   document.querySelector("#aboutLab").innerHTML = template9;
 };
 
-
-
 const updateSpeakers = async () => {
   speakerProfiles = await getRecords("Speakers&Panelist");
   speakerProfiles = sortByOrder(speakerProfiles);
   let template1 = "";
   let template2 = "";
-  // let template3 = "";
-  // let template4 = "";
+  let spcount = 0;
+  let count = 0;
+  let sflag = true;
+  let pflag = true;
+  let neverReached = true;
+  let neverReachedPanel = true;
 
   speakerProfiles.forEach((speaker, index) => {
-    if (speaker.SessionType === "Talk")
+    if (speaker.SessionType === "Talk") {
+      spcount++;
+      neverReached = false;
       template1 += `
       <div class="speaker revealFromBottom" style="background: url('${
         speaker.ProfilePic ? speaker.ProfilePic[0].url : null
@@ -240,7 +240,9 @@ const updateSpeakers = async () => {
         </div>
       </div>
       `;
-    else if (speaker.SessionType === "Panel")
+    } else if (speaker.SessionType === "Panel") {
+      count++;
+      neverReachedPanel = false;
       template2 += `
       <div class="speaker revealFromBottom" style="background: url('${
         speaker.ProfilePic ? speaker.ProfilePic[0].url : null
@@ -251,29 +253,29 @@ const updateSpeakers = async () => {
         </div>
       </div>
       `;
-    // else if (speaker.SessionType === "Medical Biology")
-    //   template3 += `
-    //   <div class="speaker revealFromBottom" style="background: url('${
-    //     speaker.ProfilePic ? speaker.ProfilePic[0].url : null
-    //   }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
-    //     <div class="speakerTint">
-    //       <h3>${speaker.Name}</h3>
-    //       <p>${speaker.Designation}</p>
-    //     </div>
-    //   </div>
-    //   `;
-    // else if (speaker.SessionType === "Cell Biology")
-    //   template4 += `
-    //   <div class="speaker revealFromBottom" style="background: url('${
-    //     speaker.ProfilePic ? speaker.ProfilePic[0].url : null
-    //   }') center/cover" onclick="openModalWithMessage(speakerProfiles[${index}].Name,speakerProfiles[${index}].ProfileDescription)">
-    //     <div class="speakerTint">
-    //       <h3>${speaker.Name}</h3>
-    //       <p>${speaker.Designation}</p>
-    //     </div>
-    //   </div>
-    //   `;
+    }
 
+    if (spcount == 1) {
+      if (sflag) {
+        const headingSpeak = document.createElement("h2");
+        headingSpeak.innerHTML = "Our Speaker";
+        document
+          .getElementsByClassName("subSpeaker")[0]
+          .appendChild(headingSpeak);
+        spcount = 0;
+        sflag = false;
+      }
+    }
+
+    if (count == 1) {
+      if (pflag) {
+        const headingSpeak = document.createElement("h2");
+        headingSpeak.innerHTML = "Our Panel";
+        document.getElementsByClassName("sub")[0].appendChild(headingSpeak);
+        count = 0;
+        pflag = false;
+      }
+    }
     const speakers = document.getElementById("speakers");
     const [speakersRow] = speakers.getElementsByClassName("speakersRow");
     speakersRow.innerHTML = template1;
@@ -281,68 +283,107 @@ const updateSpeakers = async () => {
     const panel1 = document.getElementById("cf");
     const [panel1Row] = panel1.getElementsByClassName("speakersRow");
     panel1Row.innerHTML = template2;
-
-    // const panel2 = document.getElementById("panel2");
-    // const [panel2Row] = panel2.getElementsByClassName("speakersRow");
-    // panel2Row.innerHTML = template3;
-
-    // const panel3 = document.getElementById("panel3");
-    // const [panel3Row] = panel3.getElementsByClassName("speakersRow");
-    // panel3Row.innerHTML = template4;
   });
+
+  if (neverReached) {
+    document.getElementById("speakers").style.display = "none";
+  }
+  if (neverReachedPanel) {
+    document.getElementById("cf").style.display = "none";
+  }
 };
 
-const updateWorkshops = async () => {
+// const updateWorkshops = async () => {
+//   workshops = await getRecords("Workshops");
+//   workshops = sortByOrder(workshops);
+//   let template = "";
 
+//   workshops.forEach((workshop, index) => {
+//     count++;
+//     if (workshop.Visible) {
+//       console.log(index);
+//       console.log(workshop);
+
+//       console.log("chechked");
+//     }
+//     //unchecked
+//     else {
+//       // console.log(index)
+//       // console.log(workshop);
+//       console.log("unchecked");
+//       unchekedCount++;
+//     }
+//     // if ( workshop.visible ) {
+//     //   console.log("Workshops are unticked!");
+//     // }
+//     if (workshop.Visible) {
+//       template += `
+//     <div class="blogCard">
+//       <div class="blogPic" style="background: url(${workshop.Poster[0].url}) center/cover;">
+//         <div class="blogPicTint"></div>
+//       </div>
+//       <div class="blogContent">
+//         <h3>${workshop.Title}</h3>
+//         <button onclick="openModalWithMessage('${workshop.Title}', '${workshop.Description}', '${workshop.Conductedby}')">Read More</button>
+//       </div>
+//     </div>
+//     `;
+//     } else {
+//       template += ``;
+//     }
+//   });
+//   if (count == unchekedCount) {
+//     console.log("all entries are unchecked");
+//     //all rows are unchecked
+//     //hide the section
+//   }
+
+//   document.getElementById("workshop").innerHTML = template;
+
+//   // animateDynamicElements();
+// };
+
+const updateWorkshops = async () => {
   workshops = await getRecords("Workshops");
   workshops = sortByOrder(workshops);
   let template = "";
-  let count=0;
-  let unchekedCount = 0;
-  
+  let count = 0;
+  let wflag = true;
+  let neverReached = true;
+
   workshops.forEach((workshop, index) => {
     count++;
-    if (workshop.Visible){
-      console.log(index)
-      console.log(workshop);
-
-      console.log("chechked");
-    }
-    //unchecked
-   else{
-      // console.log(index)
-      // console.log(workshop);
-      console.log("unchecked");
-      unchekedCount++;
-    }
-    // if ( workshop.visible ) {
-    //   console.log("Workshops are unticked!");
-    // }
-    if(workshop.Visible){
-      template += `
-    <div class="blogCard">
-      <div class="blogPic" style="background: url(${workshop.Poster[0].url}) center/cover;">
-        <div class="blogPicTint"></div>
-      </div>
-      <div class="blogContent">
-        <h3>${workshop.Title}</h3>
-        <button onclick="openModalWithMessage('${workshop.Title}', '${workshop.Description}', '${workshop.Conductedby}')">Read More</button>
-      </div>
+    neverReached = false;
+    template += `
+  <div class="blogCard">
+    <div class="blogPic" style="background: url(${workshop.Poster[0].url}) center/cover;">
+      <div class="blogPicTint"></div>
     </div>
-    `;
-    }else{
-      template+= ``;
-    }
+    <div class="blogContent">
+      <h3>${workshop.Title}</h3>
+      <button onclick="openModalWithMessage('${workshop.Conductedby}', '${workshop.Description}')">Read More</button>
+    </div>
+  </div>
+  `;
 
-  });
-  if(count== unchekedCount){
-    console.log("all entries are unchecked");
-    //all rows are unchecked
-    //hide the section
-  }
- 
+    if (count >= 1) {
+      if (wflag) {
+        const workshopH = document.createElement("h2");
+        workshopH.innerHTML = "Workshops";
+        document
+          .getElementsByClassName("workshopHeading")[0]
+          .appendChild(workshopH);
+        count = 0;
+        wflag = false;
+      }
+    }
     document.getElementById("workshop").innerHTML = template;
-  
+  });
+
+  console.log(neverReached);
+  if (neverReached) {
+    document.getElementById("workContainer").style.display = "none";
+  }
   // animateDynamicElements();
 };
 
@@ -350,7 +391,13 @@ const updateCollaborators = async () => {
   collaborators = await getRecords("Collaborators");
   collaborators = sortByOrder(collaborators);
   let template = "";
+  let count = 0;
+  let cflag = true;
+  let neverReached = true;
+
   collaborators.forEach((collaborator, index) => {
+    count++;
+    neverReached = false;
     template += `
     <a href="${collaborator.Link}" target="_blank">
     <img src="${collaborator.Logo[0].url}" alt="Collaborator" />
@@ -359,9 +406,22 @@ const updateCollaborators = async () => {
     <h3>${collaborator.Name}</h3>
     <p>${collaborator.Description}</p>
     `;
+    if (count >= 1) {
+      if (cflag) {
+        const collabHeading = document.createElement("h2");
+        collabHeading.innerHTML = "Our Collaborators";
+        document
+          .getElementsByClassName("collabHeading")[0]
+          .appendChild(collabHeading);
+        count = 0;
+        cflag = false;
+      }
+    }
+    document.getElementById("collaborators").innerHTML = template;
   });
-  document.getElementById("collaborators").innerHTML = template;
-
+  if (neverReached) {
+    document.getElementById("collaborator").style.display = "none";
+  }
   // animateDynamicElements();
 };
 

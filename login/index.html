@@ -82,24 +82,19 @@
           setTimeout( () => (document.getElementById("error").innerHTML = ""), 4000 );
           return false;
         }
-
-        //if password doesn't match
-        if(pwd != "Darwin2020@BioRiidl") {
-          document.getElementById("error").innerHTML = "Invalid credentials";
-         setTimeout(() => (document.getElementById("error").innerHTML = ""), 4000);
-          return false;
-        }
-
+          
+        const data= {email: email, pwd: pwd};
         $.ajax({
           type: "POST",
           url: "../backend/checkIfRegistered.php",
-          data: { email },
+          data,
+
           success: async function (res) {
             console.log(res);
             const resJson = JSON.parse(res);
 
             if(resJson.length === 0) {
-              document.getElementById("error").innerHTML = "No registration found with this Email ID";
+              document.getElementById("error").innerHTML = "Invalid Credentials";
               setTimeout(() => (document.getElementById("error").innerHTML = ""), 4000);
               return false;
 
@@ -107,7 +102,9 @@
             // registered email found, setting name and email id as localstorage
             else {
               await localStorage.setItem("darwin-live-name",resJson[0]["Name"]);
-              await localStorage.setItem("darwin-live-email",resJson[0]["Email ID"]);
+              await localStorage.setItem("darwin-live-email",resJson[0]["Email ID"]);                                                 
+              await localStorage.setItem("attendee_type", resJson[0]["Attendee_Type"]);
+        
               // go to live
               window.location.href = '/live';
             }

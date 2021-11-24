@@ -67,7 +67,7 @@
             else {
               await localStorage.setItem("darwin-admin-name",resJson[0]["name"]);
               await localStorage.setItem("darwin-admin-username",resJson[0]["Username"]);
-  
+              await localStorage.setItem("darwin-admin-fullname", resJson[0]["full_name"]);
               // go to admin
               window.location.href = '/admin';
             }

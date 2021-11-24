@@ -43,6 +43,16 @@ html {
 
 } */
 
+.logout {
+  margin-right: 10px;
+  margin: 0px 10px 5px 10px;
+  padding: 7px;
+  color: white;
+  float: right;
+  background: linear-gradient(to top right, #c8247c, #f82e9a);
+  border-radius: 2px;
+}
+
 #eventTable tr:hover {
   background-color: #ddd;
 }

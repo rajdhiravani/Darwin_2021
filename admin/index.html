@@ -18,11 +18,10 @@
   </head>
 
   <body>
+    <button onclick="adminLogout()" class="logoutBtn">Logout</button>
     <h1 class="heading">Darwin 2021 Live Schedule</h1>
 
     <h1 id="organizedName"></h1>
-
-    <button onclick="adminLogout()">Logout</button>
 
     <table id="eventTable">
       <tr>
@@ -56,7 +55,7 @@
         localStorage.removeItem("darwin-admin-name");
         localStorage.removeItem("darwin-admin-username");
         localStorage.removeItem("darwin-admin-fullname");
-        window.location.href="/admin_login";
+        window.location.href = "/admin_login";
       }
       let events = [];
 
@@ -107,12 +106,11 @@
       window.onload = async function () {
         console.log("Checking");
         var name = await localStorage.getItem("darwin-admin-name");
-        var fullName= await localStorage.getItem("darwin-admin-fullname");
+        var fullName = await localStorage.getItem("darwin-admin-fullname");
 
         if (!name) {
-          window.location.href = '/admin_login';
-        }
-        else{
+          window.location.href = "/admin_login";
+        } else {
           var template = [];
 
           template = `
@@ -265,8 +263,7 @@
               },
             });
           }
-}
-        
+        }
       };
     </script>
   </body>

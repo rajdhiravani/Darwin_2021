@@ -22,6 +22,8 @@
 
     <h1 id="organizedName"></h1>
 
+    <button onclick="adminLogout()">Logout</button>
+
     <table id="eventTable">
       <tr>
         <th>ID</th>
@@ -49,6 +51,12 @@
     </table>
 
     <script>
+      function adminLogout() {
+        //remove all storage variables
+        sessionStorage.removeItem("darwin-admin-name");
+        localStorage.removeItem("darwin-admin-username");
+        localStorage.removeItem("darwin-admin-fullname");
+      }
       let events = [];
 
       const updateEvent = (index) => {
@@ -97,7 +105,8 @@
 
       window.onload = async function () {
         console.log("Checking");
-        var name = await localStorage.getItem("darwin-admin-name");
+        var name = await sessionStorage.getItem("darwin-admin-name");
+        var fullName= await localStorage.getItem("darwin-admin-fullname");
 
         if (!name) {
           window.location.href = '/admin_login';
@@ -106,7 +115,7 @@
           var template = [];
 
           template = `
-          Welcome ${name}
+          Welcome, ${fullName}
         `;
           var rc_name_section = document.getElementById("organizedName");
           rc_name_section.innerHTML = template;

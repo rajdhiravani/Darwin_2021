@@ -170,17 +170,17 @@
 
     <div class="liveContainer">
 
-      <h2>Live Sessions | Main Conference</h2>
-
-      <hr />
-
-      <div class="liveSessions" id="liveMainSessions"></div>
-
-        <h2>Live Sessions | Regional Conference</h2>
-        
+      <div id="MainLiveStrip">
+        <h2 id="headMain">Live Sessions | Main Conference</h2>
         <hr />
+        <div class="liveSessions" id="liveMainSessions"></div>
+      </div>
 
-      <div class="liveSessions" id="liveRegSessions"></div>
+      <div id="RegLiveStrip">
+        <h2 id="headReg">Live Sessions | Regional Conference</h2>
+        <hr />
+        <div class="liveSessions" id="liveRegSessions"></div>
+      </div>
 
     </div>
 
@@ -220,9 +220,9 @@
 
     <div class="feedbackForms">
 
-      <a href="https://airtable.com/shrBjb5a8tOLz9506" target="_blank"><button>Send your Feedback</button></a>
+      <a href="https://airtable.com/shrBjb5a8tOLz9506" target="_blank"><button id="FeedbackBtn">Send your Feedback</button></a>
 
-      <a href="https://airtable.com/shrETqyJvNfFcCIlq" target="_blank"><button>Share your Experience</button></a>
+      <a href="https://airtable.com/shrETqyJvNfFcCIlq" target="_blank"><button id="ShareExpBtn">Share your Experience</button></a>
 
     </div>
 
@@ -374,6 +374,8 @@
 
         let template1 = "";
         let template2 = "";
+        let attendee_type= localStorage.getItem("attendee_type");
+
 
         liveMainEvents.forEach((live) => {
 
@@ -407,8 +409,21 @@
 
         });
 
-        document.getElementById("liveMainSessions").innerHTML = template1;
-        document.getElementById("liveRegSessions").innerHTML = template2;
+        
+        //regional attendee
+        if(attendee_type!="Main"){
+          document.getElementById("liveMainSessions").innerHTML = template1;
+          document.getElementById("liveRegSessions").innerHTML = template2;
+
+          //order
+          document.getElementById("MainLiveStrip").style.order = "2";
+          document.getElementById("RegLiveStrip").style.order = "1";
+        }//main conf attendee
+        else{
+          document.getElementById("liveMainSessions").innerHTML = template1;
+          var liveStrip = document.getElementById("RegLiveStrip");
+          liveStrip.style.display = 'none';
+        }
 
       };
 
@@ -497,7 +512,29 @@
 
       };
 
+// const getAttendeeType = () => {
 
+//       $.ajax({
+
+//     type: "POST",
+
+//     url: "../backend/checkAttendeeType.php",
+
+//     success: function (res) {
+//           const resJson = JSON.parse(res);
+
+//           if (!resJson.length === 0) {
+//             await localStorage.setItem("antendee_type", resJson[0]["Attendee_Type"]);
+
+//           }
+//           // registered email found, setting name and email id as localstorage
+//           else {
+//            console.log("cant be found!");
+//           }
+//         },
+//     },);
+
+// }
 
       const refreshList = () => {
 
@@ -570,7 +607,7 @@
 
                 .select({
 
-                filterByFormula: `{Email ID} = "${email}"`,
+                filterByFormula: `AND({Email ID} = "${email}"`,
 
                 })
 
@@ -588,9 +625,72 @@
 
         }
 
+         async function checkConfType(email) {
+
+            let base = new Airtable({ apiKey: "keyiZXGBC4056oZ5W" }).base(
+
+              "app8my77Rrfg25nyz"
+
+            );
+            const type= "Main"; 
+
+            const fields = [];
+
+            const records = await base("Attendee Registration")
+
+              .select({
+
+                filterByFormula: `AND({Conf Type} = "Main" , {Email ID} = "${email}")`,
+
+              })
+
+              .all();
+
+            records.forEach(function (record) {
+
+              fields.push(record.fields);
+
+            });
+
+            if (fields.length > 0) return true;
+
+            return false;
+
+          }
+
+
 
 
       window.onload = async function () {
+        var button1 = document.getElementById('FeedbackBtn');
+        var button2 = document.getElementById('ShareExpBtn');
+        var certificateBtn= document.getElementById("certBtn");
+        
+       function checkDates() {
+          var dateToday = new Date().toLocaleString();
+
+          //TO PUT
+          var dateDarwinEnd = new Date('December 05, 2021 06:00 PM').toLocaleString();
+      
+          if (dateToday == dateDarwinEnd) 
+            return true;
+          else 
+            return false;
+        }
+        const canClick= checkDates();
+
+        //show both btns
+        if(canClick){
+          button1.style.visibility = 'visible';
+          button2.style.visibility = 'visible';
+          certificateBtn.style.visibility="visible";
+          // button.onclick = function () { this.disabled = false }
+        }
+        else{
+           button1.style.display = "none";
+           button2.style.display = "none";
+           certificateBtn.style.visibility = "none";
+        }
         currentDay = 2;
         //default 2nd dec
         changeCurrentDay(2);
@@ -617,7 +717,13 @@
 
           const feedBackDone = await checkFeedback(email);
 
-          if(feedBackDone) {
+          //to check if attendee is from main conf or not
+          const attendeeType=  await checkConfType(email);
+          console.log(attendeeType);
+
+          // console.log(feedBackDone);
+
+          if(feedBackDone && attendeeType) {
 
             document.getElementById("certBtn").style.display = "block";
 

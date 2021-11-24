@@ -53,9 +53,10 @@
     <script>
       function adminLogout() {
         //remove all storage variables
-        sessionStorage.removeItem("darwin-admin-name");
+        localStorage.removeItem("darwin-admin-name");
         localStorage.removeItem("darwin-admin-username");
         localStorage.removeItem("darwin-admin-fullname");
+        window.location.href="/admin_login";
       }
       let events = [];
 
@@ -105,7 +106,7 @@
 
       window.onload = async function () {
         console.log("Checking");
-        var name = await sessionStorage.getItem("darwin-admin-name");
+        var name = await localStorage.getItem("darwin-admin-name");
         var fullName= await localStorage.getItem("darwin-admin-fullname");
 
         if (!name) {

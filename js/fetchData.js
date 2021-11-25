@@ -211,7 +211,7 @@ const getRCInfo = async () => {
     rcID = event.RC_ID;
     template += `
     <div class="blogCard">
-      <div class="blogPic" style="background: url(${event.Poster[0].url})">
+      <div class="blogPic" style="background: url(${event.Poster[0].url}) center/cover">
       <div class="blogPicTint"></div>
 
     </div>

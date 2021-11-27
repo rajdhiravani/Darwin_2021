@@ -1,7 +1,9 @@
 <?php
 
 
-
+  $attendee_region = $_POST['attendee_region']; 
+  $attendee_type = $_POST['attendee_type']; 
+  
         $servername = "localhost";
 
         $username = "riidlorg_d2021";
@@ -30,7 +32,16 @@
 
         $output = "";
 
-        $sql= "SELECT * FROM `schedule`";
+        if($attendee_type == "Regional") {
+           $sql= "SELECT * FROM `schedule` WHERE `RC_Region`= '$attendee_region' OR `RC_Region` = 'Main' 
+           ORDER BY IF(session_type = 'Regional', 1, 2) 
+           ASC";
+        }
+        else if($attendee_type == "Main"){
+         $sql= "SELECT * FROM `schedule` ORDER BY IF(session_type = 'Main', 1, 2) ASC";
+        }
+
+       
 
         $result = mysqli_query($conn,$sql);
 

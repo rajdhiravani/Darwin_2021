@@ -104,10 +104,11 @@
               await localStorage.setItem("darwin-live-name",resJson[0]["Name"]);
               await localStorage.setItem("darwin-live-email",resJson[0]["Email ID"]);                                                 
               await localStorage.setItem("attendee_type", resJson[0]["Attendee_Type"]);
-        
-              // go to live
+              await localStorage.setItem("attendee_region", resJson[0]["Region"]);  
+
+                // go to live
               window.location.href = '/live';
-            }
+          }
           },
         });
       }

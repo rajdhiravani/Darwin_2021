@@ -151,14 +151,14 @@
 
       <div class="eventsList" id="eventsList"></div>
     </div>
-
+    <!-- 
     <div class="collabContainer">
       <h2>Collaborators</h2>
 
       <hr />
 
       <div class="collabs" id="collabs"></div>
-    </div>
+    </div> -->
 
     <div class="feedbackForms">
       <a href="https://airtable.com/shrBjb5a8tOLz9506" target="_blank"
@@ -279,8 +279,8 @@
 
           `;
         });
-        console.log("Checking reg events array")
-         console.log(liveRegEvents);
+        console.log("Checking reg events array");
+        console.log(liveRegEvents);
         liveRegEvents.forEach((live) => {
           template2 += `
 
@@ -462,110 +462,106 @@
       };
 
       const refreshList = () => {
-        
-          //regional user
-          if(attendee_type== "Regional"){
-            console.log(attendee_region);
-            //main events
-                 $.ajax({
-                     type: "POST",
-                     url: "../backend/fetchRecords.php",
-                     data: { attendee_region: attendee_region, attendee_type: attendee_type },
-    
-                     success: function (res) {
-                         let events = JSON.parse(res);
-                        //  events.sort((a, b) => a.id - b.id);
-                         liveMainEvents = [];
-                         liveRegEvents = [];
-                         dec2Events = [];
-                         dec3Events = [];
-                         dec4Events = [];
-                         dec5Events = [];
-                         events.forEach((event) => {
-                        //main events
-                             if(event.session_type == "Main"){
-                                 //main live
-                                 if (event.status == "Live") liveMainEvents.push(event);
-                                 //for schedule -- main events
-                                 if (event.day == 2) dec2Events.push(event);
-                                 else if (event.day == 3) dec3Events.push(event);
-                                 else if (event.day == 4) dec4Events.push(event);
-                                 else if (event.day == 5) dec5Events.push(event);
-                             }
-                           // regional events
-                            else{
+        //regional user
+        if (attendee_type == "Regional") {
+          console.log(attendee_region);
+          //main events
+          $.ajax({
+            type: "POST",
+            url: "../backend/fetchRecords.php",
+            data: {
+              attendee_region: attendee_region,
+              attendee_type: attendee_type,
+            },
 
-                                             // for live regional whose region== user region
-                                             if (event.status == "Live") {
-                                                liveRegEvents.push(event);
-                                                console.log(liveRegEvents);
-                                              }
+            success: function (res) {
+              let events = JSON.parse(res);
+              //  events.sort((a, b) => a.id - b.id);
+              liveMainEvents = [];
+              liveRegEvents = [];
+              dec2Events = [];
+              dec3Events = [];
+              dec4Events = [];
+              dec5Events = [];
+              events.forEach((event) => {
+                //main events
+                if (event.session_type == "Main") {
+                  //main live
+                  if (event.status == "Live") liveMainEvents.push(event);
+                  //for schedule -- main events
+                  if (event.day == 2) dec2Events.push(event);
+                  else if (event.day == 3) dec3Events.push(event);
+                  else if (event.day == 4) dec4Events.push(event);
+                  else if (event.day == 5) dec5Events.push(event);
+                }
+                // regional events
+                else {
+                  // for live regional whose region== user region
+                  if (event.status == "Live") {
+                    liveRegEvents.push(event);
+                    console.log(liveRegEvents);
+                  }
 
-                                             //for schedule -- regional events
-                                             if (event.day == 2) {
-                                                dec2Events.push(event);
-                                                 console.log(dec2Events);
-                                             }
-
-                                             else if (event.day == 3) dec3Events.push(event);
-                                             else if (event.day == 4) dec4Events.push(event);
-                                             else if (event.day == 5) dec5Events.push(event);
-
-                                        
-                              }
-                         
-                         });
-                         refreshLive();
-                         refreshShownList();
-                         console.log("Website updated for regional conf user");
-                     },
-                 });
-             
-          }
-          //main confer user---old normal code
-          else{
-              $.ajax({
-                  type: "POST",
-                  url: "../backend/fetchRecords.php",
-                   data: { attendee_region: attendee_region, attendee_type: attendee_type },
-                  
-                  success: function (res) {
-                      let events = JSON.parse(res);
-
-                      // events.sort((a, b) => a.id - b.id);
-
-                      liveMainEvents = [];
-                      liveRegEvents = [];
-                      dec2Events = [];
-                      dec3Events = [];
-                      dec4Events = [];
-                      dec5Events = [];
-                      events.forEach((event) => {
-                          //main and regional live events
-                          if (event.status == "Live" && event.session_type == "Main")
-                              liveMainEvents.push(event);
-
-                          if (event.status == "Live" && event.session_type == "Regional")
-                              liveRegEvents.push(event);
-
-                          if (event.day == 2) dec2Events.push(event);
-                          else if (event.day == 3) dec3Events.push(event);
-                          else if (event.day == 4) dec4Events.push(event);
-                          else if (event.day == 5) dec5Events.push(event);
-                      });
-                      refreshLive();
-                      refreshShownList();
-                      console.log("Website updated for main user");
-                  },
+                  //for schedule -- regional events
+                  if (event.day == 2) {
+                    dec2Events.push(event);
+                    console.log(dec2Events);
+                  } else if (event.day == 3) dec3Events.push(event);
+                  else if (event.day == 4) dec4Events.push(event);
+                  else if (event.day == 5) dec5Events.push(event);
+                }
               });
-          }
-   
+              refreshLive();
+              refreshShownList();
+              console.log("Website updated for regional conf user");
+            },
+          });
+        }
+        //main confer user---old normal code
+        else {
+          $.ajax({
+            type: "POST",
+            url: "../backend/fetchRecords.php",
+            data: {
+              attendee_region: attendee_region,
+              attendee_type: attendee_type,
+            },
+
+            success: function (res) {
+              let events = JSON.parse(res);
+
+              // events.sort((a, b) => a.id - b.id);
+
+              liveMainEvents = [];
+              liveRegEvents = [];
+              dec2Events = [];
+              dec3Events = [];
+              dec4Events = [];
+              dec5Events = [];
+              events.forEach((event) => {
+                //main and regional live events
+                if (event.status == "Live" && event.session_type == "Main")
+                  liveMainEvents.push(event);
+
+                if (event.status == "Live" && event.session_type == "Regional")
+                  liveRegEvents.push(event);
+
+                if (event.day == 2) dec2Events.push(event);
+                else if (event.day == 3) dec3Events.push(event);
+                else if (event.day == 4) dec4Events.push(event);
+                else if (event.day == 5) dec5Events.push(event);
+              });
+              refreshLive();
+              refreshShownList();
+              console.log("Website updated for main user");
+            },
+          });
+        }
       };
 
       async function checkFeedback(email) {
-
         let attType = await localStorage.getItem("attendee_type");
-        if(attType=="Main"){
+        if (attType == "Main") {
           let base = new Airtable({ apiKey: "keyiZXGBC4056oZ5W" }).base(
             "app8my77Rrfg25nyz"
           );
@@ -586,10 +582,9 @@
           if (fields.length > 0) return true;
 
           return false;
-        }else{
+        } else {
           return false;
         }
-      
       }
 
       window.onload = async function () {
@@ -627,8 +622,6 @@
         let darwinLiveUserName = await localStorage.getItem("darwin-live-name");
         let email = await localStorage.getItem("darwin-live-email");
 
-    
-
         //if user hasn't logged in
         if (!darwinLiveUserName) {
           window.location.href = "/login";
@@ -640,7 +633,7 @@
 
           refreshList();
 
-          updateCollaborators();
+          // updateCollaborators();
 
           const feedBackDone = await checkFeedback(email);
 

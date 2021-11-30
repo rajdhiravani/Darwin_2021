@@ -528,6 +528,8 @@ nav ul li a:hover {
   border-radius: 25px;
   background-color: #6a0074;
   color: white;
+  /* margin-right: -47px; */
+  margin-left: -35vh;
 }
 
 .sessionBox p {
@@ -578,11 +580,21 @@ nav ul li a:hover {
   .sessionBox {
     min-width: 45%;
   }
+
+  .chip {
+    margin-top: 5%;
+    margin-left: 0vh;
+  }
 }
 
 @media (max-width: 560px) {
   .sessionBox {
     min-width: 95%;
+  }
+
+  .chip {
+    margin-top: 5%;
+    margin-left: 0vh;
   }
 }
 

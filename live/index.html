@@ -390,11 +390,10 @@
             } else {
               template += `
 
-                        <div class="eventTab">
-                            <h3>${event.name}</h3>
-                            <div class="chip">${
-                              event.session_type
-                            } Conference</div>
+                      <div class="eventTab">
+                              <h3>${event.name}</h3>
+                              <div class="chip">${event.session_type} Conference
+                              </div>
                             <p>${local1inAMPM} - ${local2inAMPM}</p>
                             <button onclick="openLive('${event.status}','${
                 event.link
@@ -407,7 +406,7 @@
                                 ? "<span><i class='fa fa-circle'></i>Live</span>"
                                 : ""
                             } 
-                        </div>
+                      </div>
 
           `;
             }
@@ -415,11 +414,12 @@
             if (event.session_type == "Main") {
               template += `
 
-                        <div class="eventTab">
-                            <h3>${event.name}</h3>
-                            <div class="chip">${
-                              event.session_type
-                            } Conference</div>
+                      <div class="eventTab">
+                                  <h3>${event.name}</h3>
+                                  <div class="chip">${
+                                    event.session_type
+                                  } Conference
+                                  </div>
                             <p>${local1inAMPM} - ${local2inAMPM}</p>
                             <button onclick="openLive('${event.status}','${
                 event.link
@@ -431,7 +431,7 @@
                                 ? "<span><i class='fa fa-circle'></i>Live</span>"
                                 : ""
                             } 
-                        </div>
+                      </div>
 
           `;
             } else {
@@ -487,8 +487,8 @@
                 //main events
                 if (event.session_type == "Main") {
                   //main live
-                  if (event.status == "Live" && event.session_type == "Main") 
-                  liveMainEvents.push(event);
+                  if (event.status == "Live" && event.session_type == "Main")
+                    liveMainEvents.push(event);
                   //for schedule -- main events
                   if (event.day == 2) dec2Events.push(event);
                   else if (event.day == 3) dec3Events.push(event);

@@ -250,7 +250,7 @@
 
       let attendee_type = localStorage.getItem("attendee_type");
 
-      let attendee_region = localStorage.getItem("attendee_region");
+      let attendee_rc = localStorage.getItem("attendee_rc");
 
       const getEventClassName = (status) => {
         if (status == "Ended") return "done";
@@ -390,10 +390,11 @@
             } else {
               template += `
 
-                      <div class="eventTab">
-                              <h3>${event.name}</h3>
-                              <div class="chip">${event.session_type} Conference
-                              </div>
+                        <div class="eventTab">
+                            <h3>${event.name}</h3>
+                            <div class="chip">${
+                              event.session_type
+                            } Conference</div>
                             <p>${local1inAMPM} - ${local2inAMPM}</p>
                             <button onclick="openLive('${event.status}','${
                 event.link
@@ -406,7 +407,7 @@
                                 ? "<span><i class='fa fa-circle'></i>Live</span>"
                                 : ""
                             } 
-                      </div>
+                        </div>
 
           `;
             }
@@ -414,12 +415,11 @@
             if (event.session_type == "Main") {
               template += `
 
-                      <div class="eventTab">
-                                  <h3>${event.name}</h3>
-                                  <div class="chip">${
-                                    event.session_type
-                                  } Conference
-                                  </div>
+                        <div class="eventTab">
+                            <h3>${event.name}</h3>
+                            <div class="chip">${
+                              event.session_type
+                            } Conference</div>
                             <p>${local1inAMPM} - ${local2inAMPM}</p>
                             <button onclick="openLive('${event.status}','${
                 event.link
@@ -431,7 +431,7 @@
                                 ? "<span><i class='fa fa-circle'></i>Live</span>"
                                 : ""
                             } 
-                      </div>
+                        </div>
 
           `;
             } else {
@@ -464,13 +464,13 @@
       const refreshList = () => {
         //regional user
         if (attendee_type == "Regional") {
-          console.log(attendee_region);
+          console.log(attendee_rc);
           //main events
           $.ajax({
             type: "POST",
             url: "../backend/fetchRecords.php",
             data: {
-              attendee_region: attendee_region,
+              attendee_rc: attendee_rc,
               attendee_type: attendee_type,
             },
 
@@ -487,12 +487,12 @@
                 //main events
                 if (event.session_type == "Main") {
                   //main live
-                  if (event.status == "Live" && event.session_type == "Main")
-                    liveMainEvents.push(event);
+                  if (event.status == "Live" && event.session_type == "Main") 
+                  liveMainEvents.push(event);
                   //for schedule -- main events
                   if (event.day == 2) dec2Events.push(event);
                   else if (event.day == 3) dec3Events.push(event);
-                  else if (event.day == 4) dec4Events.push(event);
+                  else if (event.day == 4) dec4Events.push(event); 
                   else if (event.day == 5) dec5Events.push(event);
                 }
                 // regional events
@@ -524,7 +524,7 @@
             type: "POST",
             url: "../backend/fetchRecords.php",
             data: {
-              attendee_region: attendee_region,
+              attendee_rc: attendee_rc,
               attendee_type: attendee_type,
             },
 

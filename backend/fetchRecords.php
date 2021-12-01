@@ -1,7 +1,7 @@
 <?php
 
 
-  $attendee_region = $_POST['attendee_region']; 
+  $attendee_rc = $_POST['attendee_rc']; 
   $attendee_type = $_POST['attendee_type']; 
   
         $servername = "localhost";
@@ -33,7 +33,7 @@
         $output = "";
 
         if($attendee_type == "Regional") {
-           $sql= "SELECT * FROM `schedule` WHERE `RC_Region`= '$attendee_region' OR `RC_Region` = 'Main' 
+           $sql= "SELECT * FROM `schedule` WHERE `organized_by`= '$attendee_rc' OR `organized_by` = 'darwin' 
            ORDER BY IF(session_type = 'Regional', 1, 2) 
            ASC, id ASC";
         }

@@ -124,6 +124,17 @@
       </div>
     </div>
 
+    <!-- Button for share your experience and Feedback Form -->
+    <!-- 
+          <div class="flexbox">
+            <div class="btn-pink">
+              <a href="#">Feedback Form</a>
+            </div>
+            <div class="btngreen">
+              <a href="#">Share your experience</a>
+            </div>
+          </div> -->
+
     <div class="liveContainer">
       <div id="MainLiveStrip">
         <h2 id="headMain">Live Sessions | Main Conference</h2>
@@ -487,12 +498,12 @@
                 //main events
                 if (event.session_type == "Main") {
                   //main live
-                  if (event.status == "Live" && event.session_type == "Main") 
-                  liveMainEvents.push(event);
+                  if (event.status == "Live" && event.session_type == "Main")
+                    liveMainEvents.push(event);
                   //for schedule -- main events
                   if (event.day == 2) dec2Events.push(event);
                   else if (event.day == 3) dec3Events.push(event);
-                  else if (event.day == 4) dec4Events.push(event); 
+                  else if (event.day == 4) dec4Events.push(event);
                   else if (event.day == 5) dec5Events.push(event);
                 }
                 // regional events

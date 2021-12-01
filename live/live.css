@@ -455,7 +455,7 @@ nav ul li a:hover {
 
 @media (max-width: 380px) {
   .logoStrip {
-    bottom: -40px;
+    bottom: -16px;
   }
 }
 
@@ -1084,5 +1084,75 @@ nav ul li a:hover {
   .collabContainer h2,
   .helpContainer h2 {
     font-size: 36px;
+  }
+}
+
+/* Buttons for feedback and share your experience */
+.flexbox {
+  display: flex;
+  width: 500px;
+  align-content: space-between;
+  padding: 5px;
+  margin-bottom: 6px;
+  margin: auto;
+}
+
+.flexbox > div {
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 12px;
+}
+
+.flexbox > .btn-pink {
+  width: 50%;
+  margin-right: 10px;
+  border-radius: 2px;
+  background: linear-gradient(to top right, #c8247c, #f82e9a);
+}
+
+.flexbox > .btngreen {
+  width: 60%;
+  border-radius: 2px;
+  background: linear-gradient(to top, #47bb43, #23801f);
+}
+
+.btn-pink a {
+  text-decoration: none;
+}
+
+.btngreen a {
+  text-decoration: none;
+}
+
+@media (max-width: 576px) {
+  .flexbox {
+    flex-flow: row wrap;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 7%;
+  }
+  .flexbox > .btn-pink {
+    order: 1;
+  }
+  .flexbox > .btn-green {
+    order: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .flexbox {
+    flex-flow: row nowrap;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 13%;
+  }
+  .flexbox > div {
+    width: 50% !important;
+  }
+  .flexbox > .btn-pink {
+    order: 1;
+  }
+  .flexbox > .btn-green {
+    order: 2;
   }
 }

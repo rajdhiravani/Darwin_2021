@@ -564,7 +564,6 @@ a {
   text-decoration: none;
   font-size: 20px;
   color: white;
-
 }
 
 /* end  */
@@ -2070,4 +2069,15 @@ rect {
   .vid {
     font-size: 32px;
   }
+}
+
+.scheduleContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 2px 20% 2px 20%;
+}
+
+.scheduleContainer img {
+  margin: 5px;
+  /* border: 10px solid #47bb43; */
 }

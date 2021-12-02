@@ -1,2 +1,0 @@
-[13-Nov-2020 14:36:11 Etc/GMT] PHP Warning:  mysqli::mysqli(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/riidlorg/public_html/thedarwin.in/2020/backend/fetchRecords.php on line 9
-[13-Nov-2020 14:36:42 Etc/GMT] PHP Warning:  mysqli::mysqli(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home1/riidlorg/public_html/thedarwin.in/2020/backend/fetchRecords.php on line 9

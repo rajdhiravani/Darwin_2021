@@ -50,6 +50,21 @@
     </script>
 
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-180099025-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-180099025-1");
+    </script>
+
     <title>Live Events | Darwin</title>
   </head>
 
@@ -196,7 +211,7 @@
       <h2>Help Desk</h2>
       <hr />
 
-      <div class="helpDetails" id="contactDetails" >
+      <div class="helpDetails" id="contactDetails">
         <!-- <p>
           Zeel Jain:
 
@@ -273,6 +288,7 @@
 
       let attendee_rc = localStorage.getItem("attendee_rc");
 
+<<<<<<< HEAD
       const getContactDetails= async (attendee_rc, attendee_type) => {
           let template1 = "";
           let template2 = "";
@@ -324,6 +340,64 @@
               darwin_contact_name= "Zeel Jain";
               darwin_contact_number= "+91 76664 78569";
               template2 += `
+=======
+      const getContactDetails = async (attendee_rc, attendee_type) => {
+        let template = "";
+
+        if (attendee_type == "Regional") {
+          $.ajax({
+            type: "POST",
+            url: "../backend/fetchContactsRC.php",
+            data: {
+              attendee_rc: attendee_rc,
+            },
+
+            success: async function (res) {
+              let resJson = JSON.parse(res);
+              if (resJson.length === 0) {
+                console.log("Cant find contact details!!");
+              } else {
+                await localStorage.setItem(
+                  "rc_contact_name",
+                  resJson[0]["Contact_Name"]
+                );
+                await localStorage.setItem(
+                  "rc_contact_number",
+                  resJson[0]["Contact_Number"]
+                );
+              }
+            },
+          });
+        } else {
+          //main conf user
+          await localStorage.setItem("darwin_contact_name", "Zeel Jain");
+          await localStorage.setItem(
+            "darwin_contact_number",
+            "+91 76664 78569"
+          );
+        }
+        let rc_contact_name = localStorage.getItem("rc_contact_name");
+        let rc_contact_number = localStorage.getItem("rc_contact_number");
+        let darwin_contact_name = localStorage.getItem("darwin_contact_name");
+        let darwin_contact_number = localStorage.getItem(
+          "darwin_contact_number"
+        );
+
+        //template:
+        if (attendee_type == "Regional") {
+          template += `
+  
+              <p>
+                ${rc_contact_name}::
+                <a
+                  href="whatsapp://send?text=Hello! I have a query regarding the Darwin Conference. Could you please help me out?&phone=+${rc_contact_number}"
+                  >${rc_contact_number}</a
+                >
+              </p>         
+        `;
+        } else {
+          template += `
+>>>>>>> 93fbade1838ae3ab0095b039b6f914f465636729
               <p>
                 ${darwin_contact_name}:
                 <a
@@ -334,12 +408,18 @@
               <a href="/">darwin@somaiya.edu</a>
          
         `;
+<<<<<<< HEAD
          document.getElementById("contactDetails").innerHTML = template2;
           }
           
+=======
+>>>>>>> 93fbade1838ae3ab0095b039b6f914f465636729
         }
 
-        getContactDetails(attendee_rc, attendee_type);
+        document.getElementById("contactDetails").innerHTML = template;
+      };
+
+      getContactDetails(attendee_rc, attendee_type);
 
       const getEventClassName = (status) => {
         if (status == "Ended") return "done";

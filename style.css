@@ -2081,3 +2081,15 @@ rect {
   margin: 5px;
   /* border: 10px solid #47bb43; */
 }
+
+@media (max-width: 760px) {
+  .scheduleContainer {
+    margin: 2px 8% 2px 8%;
+  }
+}
+
+@media (max-width: 560px) {
+  .scheduleContainer {
+    margin: 2px 8% 2px 8%;
+  }
+}

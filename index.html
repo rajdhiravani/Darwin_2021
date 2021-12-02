@@ -115,7 +115,7 @@
         <p><i class="fa fa-calendar"></i> December 2 to 5, 2021</p>
         <p><i class="fa fa-flask"></i> Cutting Edge Biology</p>
 
-        <div class="countdown">
+        <!-- <div class="countdown">
           <div class="time">
             <h3 id="days">00</h3>
             <p>Days</p>
@@ -132,7 +132,7 @@
             <h3 id="secs">00</h3>
             <p>Seconds</p>
           </div>
-        </div>
+        </div> -->
 
         <!-- <button class="RCBtn" onclick="getConferenceName('stemi')">For STEMi</button><br><br> -->
 
@@ -156,11 +156,16 @@
               >Present Research Paper</a
             >
           </div> -->
-          <div class="btn-pink">
+          <!-- <div class="btngreen">
             <a href="https://thedarwin.in/login">Login</a>
+          </div> -->
+          <div class="btngreen" onclick="location.href='login';" style="cursor: pointer;">Login
           </div>
-          <div class="btn-pink">
+          
+          <!-- <div class="btn-pink">
             <a href="./schedule.html" target="_blank">Schedule</a>
+          </div> -->
+          <div class="btn-pink" onclick="location.href='/schedule.html';" style="cursor: pointer;">Schedule
           </div>
         </div>
 
@@ -456,25 +461,25 @@
 
       const darwinDate = new Date("December 2, 2021, 10:00:00").getTime();
 
-      const countdown = setInterval(() => {
-        let currentDate = Date.now();
-        let diff = darwinDate - currentDate;
+      // const countdown = setInterval(() => {
+      //   let currentDate = Date.now();
+      //   let diff = darwinDate - currentDate;
 
-        let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        let hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        let secs = Math.floor((diff % (1000 * 60)) / 1000);
+      //   let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      //   let hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      //   let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      //   let secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.getElementById("days").innerHTML =
-          days < 10 ? "0" + days : days;
-        document.getElementById("hrs").innerHTML = hrs < 10 ? "0" + hrs : hrs;
-        document.getElementById("mins").innerHTML =
-          mins < 10 ? "0" + mins : mins;
-        document.getElementById("secs").innerHTML =
-          secs < 10 ? "0" + secs : secs;
+      //   document.getElementById("days").innerHTML =
+      //     days < 10 ? "0" + days : days;
+      //   document.getElementById("hrs").innerHTML = hrs < 10 ? "0" + hrs : hrs;
+      //   document.getElementById("mins").innerHTML =
+      //     mins < 10 ? "0" + mins : mins;
+      //   document.getElementById("secs").innerHTML =
+      //     secs < 10 ? "0" + secs : secs;
 
-        if (diff < 0) clearInterval(countdown);
-      }, 1000);
+      //   if (diff < 0) clearInterval(countdown);
+      // }, 1000);
 
       // Map
 

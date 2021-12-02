@@ -3,16 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="international conference, biology conference, covid19 conference, biohacking, diy biology"/>
-    <meta name="description" content="An International Conference brought to you in the comfort of your portable devices. Darwin provides an endless drive to encourage innovation and connect bio-enthusiasts from across the globe. With the ongoing pandemic, we have decided to go virtual this year!"/>
+    <meta
+      name="keywords"
+      content="international conference, biology conference, covid19 conference, biohacking, diy biology"
+    />
+    <meta
+      name="description"
+      content="An International Conference brought to you in the comfort of your portable devices. Darwin provides an endless drive to encourage innovation and connect bio-enthusiasts from across the globe. With the ongoing pandemic, we have decided to go virtual this year!"
+    />
     <meta name="robots" content="index, follow" />
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
     <link rel="icon" type="image/png" href="../img/favico.png" />
     <link rel="stylesheet" href="./login.css" />
     <script src="../js/airtable.browser.js"></script>
     <script src="./login.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-180099025-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-180099025-1");
+    </script>
     <title>Login | Darwin</title>
   </head>
   <body>
@@ -49,24 +76,32 @@
       <!--    >-->
       <!--  </li>-->
       <!--</ul>-->
-
     </nav>
 
     <div class="loginContainer">
       <div class="loginCard">
         <h2>Login</h2>
         <form onsubmit="goToLive(event)">
-          <input type="email" name="email" id="emailID" placeholder="Email Address" />
+          <input
+            type="email"
+            name="email"
+            id="emailID"
+            placeholder="Email Address"
+          />
           <input type="password" name="pwd" id="pwd" placeholder="Password" />
           <div class="conditions">
             <input type="checkbox" name="agree" id="agree" />
-            <span>I accept the<a href="./conditions.html">Terms & Conditions</a></span>
+            <span
+              >I accept the<a href="./conditions.html"
+                >Terms & Conditions</a
+              ></span
+            >
           </div>
           <input type="submit" value="Login" />
           <!-- for displaying error -->
           <span id="error"></span>
         </form>
-      </div> 
+      </div>
     </div>
 
     <script>
@@ -77,13 +112,17 @@
 
         // if t&c isn't checked
         if (!document.getElementById("agree").checked) {
-          document.getElementById("error").innerHTML = "Please read and accept the Terms & Conditions";
+          document.getElementById("error").innerHTML =
+            "Please read and accept the Terms & Conditions";
           //defaults to empty string after 4s
-          setTimeout( () => (document.getElementById("error").innerHTML = ""), 4000 );
+          setTimeout(
+            () => (document.getElementById("error").innerHTML = ""),
+            4000
+          );
           return false;
         }
-          
-        const data= {email: email, pwd: pwd};
+
+        const data = { email: email, pwd: pwd };
         $.ajax({
           type: "POST",
           url: "../backend/checkIfRegistered.php",
@@ -93,26 +132,40 @@
             console.log(res);
             const resJson = JSON.parse(res);
 
-            if(resJson.length === 0) {
-              document.getElementById("error").innerHTML = "Invalid Credentials";
-              setTimeout(() => (document.getElementById("error").innerHTML = ""), 4000);
+            if (resJson.length === 0) {
+              document.getElementById("error").innerHTML =
+                "Invalid Credentials";
+              setTimeout(
+                () => (document.getElementById("error").innerHTML = ""),
+                4000
+              );
               return false;
-
-            } 
+            }
             // registered email found, setting name and email id as localstorage
             else {
-              await localStorage.setItem("darwin-live-name",resJson[0]["Name"]);
-              await localStorage.setItem("darwin-live-email",resJson[0]["Email ID"]);                                                 
-              await localStorage.setItem("attendee_type", resJson[0]["Attendee_Type"]);
-              await localStorage.setItem("attendee_rc", resJson[0]["Registered_RC"]);  
+              await localStorage.setItem(
+                "darwin-live-name",
+                resJson[0]["Name"]
+              );
+              await localStorage.setItem(
+                "darwin-live-email",
+                resJson[0]["Email ID"]
+              );
+              await localStorage.setItem(
+                "attendee_type",
+                resJson[0]["Attendee_Type"]
+              );
+              await localStorage.setItem(
+                "attendee_rc",
+                resJson[0]["Registered_RC"]
+              );
 
-                // go to live
-              window.location.href = '/live';
-          }
+              // go to live
+              window.location.href = "/live";
+            }
           },
         });
       }
     </script>
   </body>
 </html>
-

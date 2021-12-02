@@ -288,59 +288,6 @@
 
       let attendee_rc = localStorage.getItem("attendee_rc");
 
-<<<<<<< HEAD
-      const getContactDetails= async (attendee_rc, attendee_type) => {
-          let template1 = "";
-          let template2 = "";
-
-         let rc_contact_name="";
-          let rc_contact_number = "";
-          let darwin_contact_name = "";
-          let darwin_contact_number = "";
-
-          if (attendee_type == "Regional") {
-            $.ajax({
-              type: "POST",
-              url: "../backend/fetchContactsRC.php",
-              data: {
-                attendee_rc: attendee_rc,
-              },
-
-              success: async function (res) {
-                let resJson = JSON.parse(res);
-                if (resJson.length === 0) {
-                  console.log("Cant find contact details!!");
-                } else {
-                   rc_contact_name= resJson[0]["Contact_Name"];
-                   rc_contact_number= resJson[0]["Contact_Number"];
-                   console.log(rc_contact_name);
-
-                              template1 += `
-              
-                          <p>
-                            ${rc_contact_name}:
-                            <a
-                              href="whatsapp://send?text=Hello! I have a query regarding the Darwin Conference. Could you please help me out?&phone=+${rc_contact_number}"
-                              >${rc_contact_number}</a
-                            >
-                          </p>         
-                    `;
-
-                }
-                console.log(template1); 
-                document.getElementById("contactDetails").innerHTML = template1;  
-                
-              }
-            });
-           
-
-
-          } else {
-                //main conf user
-              darwin_contact_name= "Zeel Jain";
-              darwin_contact_number= "+91 76664 78569";
-              template2 += `
-=======
       const getContactDetails = async (attendee_rc, attendee_type) => {
         let template = "";
 
@@ -397,7 +344,6 @@
         `;
         } else {
           template += `
->>>>>>> 93fbade1838ae3ab0095b039b6f914f465636729
               <p>
                 ${darwin_contact_name}:
                 <a
@@ -408,12 +354,6 @@
               <a href="/">darwin@somaiya.edu</a>
          
         `;
-<<<<<<< HEAD
-         document.getElementById("contactDetails").innerHTML = template2;
-          }
-          
-=======
->>>>>>> 93fbade1838ae3ab0095b039b6f914f465636729
         }
 
         document.getElementById("contactDetails").innerHTML = template;

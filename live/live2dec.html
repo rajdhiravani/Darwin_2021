@@ -95,11 +95,11 @@
         <div class="liveSessions" id="liveMainSessions"></div>
       </div>
 
-      <!-- <div id="RegLiveStrip">
+      <div id="RegLiveStrip">
         <h2 id="headReg">Live Sessions | Regional Conference</h2>
         <hr />
         <div class="liveSessions" id="liveRegSessions"></div>
-      </div> -->
+      </div>
     </div>
 
     <div class="eventsContainer">
@@ -200,6 +200,8 @@
 
       let liveMainEvents = [];
 
+      let liveRegEvents= [];
+
       const getEventClassName = (status) => {
         if (status == "Ended") return "done";
         else if (status == "Upcoming") return "upcoming";
@@ -212,6 +214,7 @@
 
       const refreshLive = () => {
         let template1 = "";
+        let template2= "";
         liveMainEvents.forEach((live) => {
           if (live.day == 2) {
             template1 += `
@@ -227,9 +230,25 @@
           `;
           }
         });
+        liveRegEvents.forEach((live) => {
+          if (live.day == 2) {
+            template2 += `
+
+           <div class="sessionBox" onclick="openLive('Live','${live.link}')" >
+
+            <h3 class="eventName">${live.name}</h3>
+
+            <p><i class="fa fa-circle"></i> Live</p>
+
+          </div>
+
+          `;
+          }
+        });
         //main attendee
 
         document.getElementById("liveMainSessions").innerHTML = template1;
+        document.getElementById("liveRegSessions").innerHTML = template2;
       };
 
       const changeCurrentDay = (index) => {
@@ -301,6 +320,24 @@
 
           `;
           }
+          else if(event.session_type == "Regional") {
+            template += `
+                        <div class="eventTab">
+                            <h3>${event.name}</h3>
+                            <div class="chip">${ event.session_type } Conference</div>
+                            <p>${local1inAMPM} - ${local2inAMPM}</p>
+                            <button onclick="openLive('${event.status}','${event.link
+              }')" class="${getEventClassName(event.status)}">${event.status === "Live" ? "Join" : event.status
+              }</button>
+
+                            ${event.status == "Live"
+                ? "<span><i class='fa fa-circle'></i>Live</span>"
+                : ""
+              } 
+                        </div>
+
+          `;
+          }
         });
         document.getElementById("eventsList").innerHTML = template;
       };
@@ -309,7 +346,7 @@
         $.ajax({
           type: "POST",
 
-          url: "../backend/fetchDarwinSchedule.php",
+          url: "../backend/fetchAllSchedule.php",
 
           success: function (res) {
             let events = JSON.parse(res);
@@ -317,6 +354,7 @@
             events.sort((a, b) => a.id - b.id);
 
             liveMainEvents = [];
+            liveRegEvents= [];
 
             dec2Events = [];
 
@@ -324,6 +362,9 @@
               //main and regional live events
               if (event.status == "Live" && event.session_type == "Main")
                 liveMainEvents.push(event);
+
+              if (event.status == "Live" && event.session_type == "Regional")
+                liveRegEvents.push(event);
 
               if (event.day == 2) dec2Events.push(event);
             });

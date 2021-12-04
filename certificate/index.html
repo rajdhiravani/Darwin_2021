@@ -266,8 +266,10 @@
           });
       };
       window.onload = async function () {
-        const name = await localStorage.getItem("darwin-live-name");
-        document.getElementById("nameOut").innerHTML = name;
+        // const name = await localStorage.getItem("darwin-live-name");
+        const demoName= "Darwin Demo";
+        // document.getElementById("nameOut").innerHTML = name;
+        document.getElementById("nameOut").innerHTML = demoName;
         downloadTicket();
       };
     </script>

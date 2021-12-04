@@ -308,7 +308,7 @@ nav ul li a:hover {
 
   transition: 0.2s;
 
-  display: none;
+  /* display: none; */
 }
 
 @media (max-width: 860px) {
